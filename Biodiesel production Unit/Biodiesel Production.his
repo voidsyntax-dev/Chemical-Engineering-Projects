@@ -1,0 +1,2812 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       OCTOBER 7, 2026     
+ VERSION: 41.0   Build 609                               WEDNESDAY   
+ INSTALLATION:                                           12:30:26 A.M.       
+
+ THIS COPY OF ASPEN PLUS LICENSED TO INDIAN INSTITUTE OF TECH        
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           OCTOBER 7, 2026     
+   12:30:26 A.M.                          WEDNESDAY   
+   INPUT FILE: _2948mav.inm
+   RUN ID : _2948mav
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 41.0 at 00:30:25 Wed Oct 7, 2026
+          3    ;Directory D:\Chemical Engineering\ASPEN\Biodiesel  Runid BIODIESEL PRODUCTION
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    TITLE 'ALKALI CATALYSED PRODUCTION OF BIODIESEL FROM '
+         11
+         12    IN-UNITS MET VOLUME-FLOW='cum/hr' PRESSURE=bar TEMPERATURE=C  &
+         13            DELTA-T=C HEAD=meter PDROP=bar
+         14
+         15    DEF-STREAMS CONVEN ALL
+         16
+         17    SIM-OPTIONS MASS-BAL-CHE=YES NPHASE=3 PARADIGM=SM
+         18
+         19    MODEL-OPTION
+         20
+         21    DESCRIPTION "
+         22        SIMULATION OF ALKALI CATALYSED PRODUCTION OF BIODIESEL FROM
+         23        VEGETABLE OIL. BASED UPON INFORMATION IN THE PAPER: Y.
+         24        ZHANG, M.A. DUBE, D.D. MCLEAN, M. KATES, 'BIODIESEL
+         25        PRODUCTION FROM WASTE COOKING OIL: 1.PROCESS DESIGN AND
+         26        TECHNOLOGICAL ASSESSMENT', BIORESOURCE TECHCHNOLOGY,
+         27        89:1-16, 2003.
+         28        "
+         29
+         30    DATABANKS 'APV150 BIODIESEL' / 'APV150 AQUEOUS' /  &
+         31            'APV150 INORGANIC' / 'APV150 PURE41' /  &
+         32            'NISTV150 NIST-TRC' / 'APV150 SOLIDS' / 'APV150 ASPENPCD'
+         33
+         34    PROP-SOURCES 'APV150 BIODIESEL' / 'APV150 AQUEOUS' /  &
+         35            'APV150 INORGANIC' / 'APV150 PURE41' /  &
+         36            'NISTV150 NIST-TRC' / 'APV150 SOLIDS' / 'APV150 ASPENPCD'
+         37
+         38    COMPONENTS
+         39        METHANOL CH4O /
+         40        OOO C57H104O6 /
+         41        MMM C45H86O6 /
+         42        METHYL-O C19H36O2 /
+         43        GLYCEROL C3H8O3 /
+         44        NAOH NAOH /
+         45        WATER H2O /
+         46        H3PO4 H3PO4 /
+         47        NA3PO4 NA3PO4 /
+         48        PPP C51H98O6 /
+         49        METHYL-P C17H34O2-N1 /
+         50        PPS C53H102O6-13 /
+         51        PPO C53H100O6-5 /
+         52        POS C55H104O6-3 /
+         53        MMP C47H90O6-10 /
+         54        PPLI C53H98O6-5 /
+         55        POO C55H102O6-6 /
+         56        PLIO C55H100O6-7 /
+         57        OOS C57H106O6-4 /
+         58        OOLI C57H102O6-5 /
+         59        MPLI C51H94O6-3 /
+         60        METHYL-M C15H30O2-N1 /
+         61        METHYL-S C19H38O2-N1 /
+         62        METHY-LI C19H34O2 /
+         63        1-M C17H34O4 /
+         64        1-P C19H38O4 /
+         65        1-S C21H42O4 /
+         66        1-O C21H40O4 /
+         67        1-LI C21H38O4-1 /
+         68        MM C31H60O5-1 /
+         69        PP C35H68O5-1 /
+         70        OO C39H72O5-2 /
+         71        PO C37H70O5-3 /
+         72        PLI C37H68O5-3 /
+         73        MP C33H64O5-7 /
+         74        PS C37H72O5-7 /
+         75        OS C39H74O5-4 /
+         76        LIO C39H70O5-8 /
+         77        MLI C35H64O5-3
+         78
+         79    FORMULA PPS C53H102O6-13 / MMP C47H90O6-10 / PPLI C53H98O6-5 / &
+         80            POO C55H102O6-6 / PLIO C55H100O6-7 / OOS C57H106O6-4 /  &
+         81            OOLI C57H102O6-5 / MPLI C51H94O6-3 / PP C35H68O5-1 /  &
+         82            PLI C37H68O5-3 / MLI C35H64O5-3
+         83
+         84    SOLVE
+         85        RUN-MODE MODE=SIM
+         86
+         87    FLOWSHEET
+         88        BLOCK MIXER1 IN=MEOH NAOH OUT=MIX1
+         89        BLOCK PUMP1 IN=MIX1 OUT=MIX2
+         90        BLOCK MIXER2 IN=MEOHREC MIX2 OUT=MIX3
+         91        BLOCK PUMP2 IN=OIL2 OUT=OIL3
+         92        BLOCK HX1 IN=OIL3 OUT=OIL4
+         93        BLOCK MEOHCOL IN=REACOUT OUT=MEOHREC EST1
+         94        BLOCK PUMP3 IN=EST1 OUT=EST2
+         95        BLOCK HX2 IN=EST2 OUT=EST3
+         96        BLOCK ESTCOL IN=EST4 OUT=MEOHWAT FAME OILREC
+         97        BLOCK NEUTR IN=H3PO4 AQU1 OUT=AQU2
+         98        BLOCK FILTER IN=AQU2 OUT=AQU3 SOLIDS
+         99        BLOCK WASHCOL IN=WATER EST3 OUT=EST4 AQU1
+        100        BLOCK B2 IN=OILREC OUT=OILREC2
+        101        BLOCK B3 IN=OIL OILREC2 OUT=OIL2
+        102        BLOCK REACTOR IN=MIX3 OIL4 OUT=REACOUT
+        103        BLOCK B1 IN=AQU3 OUT=DIRTYH2O GLYCEROL WATMEOH
+        104
+        105    PROPERTIES UNIF-DMD TRUE-COMPS=YES
+        106        PROPERTIES NRTL
+        107
+        108    PROP-REPLACE UNIF-DMD UNIF-DMD
+        109        PROP VLMX VLMXQUAD
+        110
+        111    STRUCTURES
+        112        STRUCTURES 1-LI C1 C2 S / C1 C4 S / C2 C3 S / C3  &
+        113            C5 S / C4 O6 S / C4 O7 D / C5 C8 S / O6 C9  &
+        114            S / C8 C10 S / C9 C11 S / C10 C12 S / C11 C13  &
+        115            S / C11 O14 S / C12 C15 S / C13 O16 S / C15  &
+        116            C17 D / C17 C18 S / C18 C19 S / C19 C20 D /  &
+        117            C20 C21 S / C21 C22 S / C22 C23 S / C23 C24 S /  &
+        118            C24 C25 S
+        119
+        120    PROP-DATA
+        121        PROP-LIST ATOMNO / NOATOM
+        122        PVAL 1-LI 6 8 1 / 21.0 4.0 38.0
+        123
+        124    STRUCTURES
+        125        STRUCTURES 1-M O1 C2 S / O1 C5 S / C2 C3 S / C2 O4  &
+        126            D / C3 C6 S / C5 C7 S / C6 C8 S / C7 C9 S /  &
+        127            C7 O10 S / C8 C11 S / C9 O12 S / C11 C13 S /  &
+        128            C13 C14 S / C14 C15 S / C15 C16 S / C16 C17 S /  &
+        129            C17 C18 S / C18 C19 S / C19 C20 S / C20 C21 S
+        130
+        131    PROP-DATA
+        132        PROP-LIST ATOMNO / NOATOM
+        133        PVAL 1-M 6 8 1 / 17.0 4.0 34.0
+        134
+        135    STRUCTURES
+        136        STRUCTURES 1-O C1 C2 S / C1 C4 S / C2 C3 S / C3 C5  &
+        137            S / C4 O6 S / C4 O7 D / C5 C8 S / O6 C9 S /  &
+        138            C8 C10 S / C9 C11 S / C10 C12 S / C11 C13 S /  &
+        139            C11 O14 S / C12 C15 S / C13 O16 S / C15 C17 D /  &
+        140            C17 C18 S / C18 C19 S / C19 C20 S / C20 C21 S /  &
+        141            C21 C22 S / C22 C23 S / C23 C24 S / C24 C25 S
+        142
+        143    PROP-DATA
+        144        PROP-LIST ATOMNO / NOATOM
+        145        PVAL 1-O 6 8 1 / 21.0 4.0 40.0
+        146
+        147    STRUCTURES
+        148        STRUCTURES 1-P C1 C2 S / C1 C3 S / C2 O4 S / C2 O5  &
+        149            D / C3 C6 S / O4 C7 S / C6 C8 S / C7 C9 S /  &
+        150            C8 C10 S / C9 C11 S / C9 O12 S / C10 C13 S /  &
+        151            C11 O14 S / C13 C15 S / C15 C16 S / C16 C17 S /  &
+        152            C17 C18 S / C18 C19 S / C19 C20 S / C20 C21 S /  &
+        153            C21 C22 S / C22 C23 S
+        154
+        155    PROP-DATA
+        156        PROP-LIST ATOMNO / NOATOM
+        157        PVAL 1-P 6 8 1 / 19.0 4.0 38.0
+        158
+        159    STRUCTURES
+        160        STRUCTURES 1-S C1 C2 S / C1 C4 S / C2 C3 S / C3 C5  &
+        161            S / C4 O6 S / C4 O7 D / C5 C8 S / O6 C9 S /  &
+        162            C8 C10 S / C9 C11 S / C10 C12 S / C11 C13 S /  &
+        163            C11 O14 S / C12 C15 S / C13 O16 S / C15 C17 S /  &
+        164            C17 C18 S / C18 C19 S / C19 C20 S / C20 C21 S /  &
+        165            C21 C22 S / C22 C23 S / C23 C24 S / C24 C25 S
+        166
+        167    PROP-DATA
+        168        PROP-LIST ATOMNO / NOATOM
+        169        PVAL 1-S 6 8 1 / 21.0 4.0 42.0
+        170
+        171    STRUCTURES
+        172        UNIF-DMD H3PO4 1300 1
+        173        STRUCTURES LIO O1 C2 S / C2 C3 S / C2 C4 S / C3 O5  &
+        174            S / C4 O6 S / O5 C7 S / O6 C8 S / C7 C9 S /  &
+        175            C7 O10 D / C8 C11 S / C8 O12 D / C9 C13 S /  &
+        176            C11 C14 S / C13 C15 S / C14 C16 S / C15 C17 S /  &
+        177            C16 C18 S / C17 C19 S / C18 C20 S / C19 C21 S /  &
+        178            C20 C22 S / C21 C23 S / C22 C24 S / C23 C25 S /  &
+        179            C24 C26 S / C25 C27 D / C26 C28 D / C27 C29 S /  &
+        180            C28 C30 S / C29 C31 S / C30 C32 S / C32 C33 D /  &
+        181            C33 C34 S / C34 C35 S / C35 C36 S / C36 C37 S /  &
+        182            C37 C38 S / C31 C39 S / C39 C40 S / C40 C41 S /  &
+        183            C41 C42 S / C42 C43 S / C43 C44 S
+        184
+        185    PROP-DATA
+        186        PROP-LIST ATOMNO / NOATOM
+        187        PVAL LIO 8 6 1 / 5. 39. 70.
+        188
+        189    STRUCTURES
+        190        STRUCTURES METHY-LI C1 C2 D / C1 C3 S / C2 C4 S /  &
+        191            C3 C5 S / C4 C9 S / C5 C6 S / C6 C7 S / C7  &
+        192            C8 S / C9 C10 D / C10 C11 S / C11 C12 S / C12  &
+        193            C13 S / C13 C14 S / C14 C15 S / C15 C16 S /  &
+        194            C16 C17 S / C17 C18 S / C18 O19 S / C18 O20 D /  &
+        195            O19 C21 S
+        196        UNIF-DMD METHY-LI 1010 11 / 1015 2 / 1065 2 / 1500 1
+        197
+        198    PROP-DATA
+        199        PROP-LIST ATOMNO / NOATOM
+        200        PVAL METHY-LI 6 8 1 / 19.0 2.0 34.0
+        201
+        202    STRUCTURES
+        203        STRUCTURES METHYL-M C1 O2 S / O2 C3 S / C3 C4 S /  &
+        204            C3 O5 D / C4 C6 S / C6 C7 S / C7 C8 S / C8  &
+        205            C9 S / C9 C10 S / C10 C11 S / C11 C12 S / C12  &
+        206            C13 S / C13 C14 S / C14 C15 S / C15 C16 S /  &
+        207            C16 C17 S
+        208
+        209    PROP-DATA
+        210        PROP-LIST ATOMNO / NOATOM
+        211        PVAL METHYL-M 6 8 1 / 15.0 2.0 30.0
+        212
+        213    STRUCTURES
+        214        STRUCTURES METHYL-O C1 C2 S / C1 C3 S / C2 C4 S /  &
+        215            C3 C5 S / C4 C6 S / C5 C7 S / C6 C8 D / C7  &
+        216            C9 S / C8 C10 S / C9 C11 S / C10 C12 S / C11  &
+        217            O13 S / C11 O14 D / C12 C15 S / O13 C16 S /  &
+        218            C15 C17 S / C17 C18 S / C18 C19 S / C19 C20 S /  &
+        219            C20 C21 S
+        220
+        221    PROP-DATA
+        222        PROP-LIST ATOMNO / NOATOM
+        223        PVAL METHYL-O 6 8 1 / 19.0 2.0 36.0
+        224
+        225    STRUCTURES
+        226        STRUCTURES METHYL-P C1 O2 S / O2 C3 S / C3 C4 S /  &
+        227            C3 O5 D / C4 C6 S / C6 C7 S / C7 C8 S / C8  &
+        228            C9 S / C9 C10 S / C10 C11 S / C11 C12 S / C12  &
+        229            C13 S / C13 C14 S / C14 C15 S / C15 C16 S /  &
+        230            C16 C17 S / C17 C18 S / C18 C19 S
+        231
+        232    PROP-DATA
+        233        PROP-LIST ATOMNO / NOATOM
+        234        PVAL METHYL-P 6 8 1 / 17.0 2.0 34.0
+        235
+        236    STRUCTURES
+        237        STRUCTURES METHYL-S C1 C2 S / C2 C3 S / C3 C4 S /  &
+        238            C4 C5 S / C5 C6 S / C6 C7 S / C7 C8 S / C8  &
+        239            C9 S / C9 C10 S / C10 C11 S / C11 C12 S / C12  &
+        240            C13 S / C13 C14 S / C14 C15 S / C15 C16 S /  &
+        241            C16 C17 S / C17 C18 S / C18 O19 S / C18 O20 D /  &
+        242            O19 C21 S
+        243
+        244    PROP-DATA
+        245        PROP-LIST ATOMNO / NOATOM
+        246        PVAL METHYL-S 6 8 1 / 19.0 2.0 38.0
+        247
+        248    STRUCTURES
+        249        STRUCTURES MLI O1 C2 S / C2 C3 S / C2 C4 S / C3 O5  &
+        250            S / C4 O6 S / O5 C7 S / O6 C8 S / C7 C9 S /  &
+        251            C7 O10 D / C8 C11 S / C8 O12 D / C9 C13 S /  &
+        252            C11 C14 S / C13 C15 S / C14 C16 S / C15 C17 S /  &
+        253            C16 C18 S / C17 C19 S / C18 C20 S / C19 C21 S /  &
+        254            C20 C22 S / C21 C23 S / C22 C24 S / C23 C25 S /  &
+        255            C24 C26 S / C25 C27 D / C26 C28 S / C27 C29 S /  &
+        256            C28 C30 S / C29 C31 S / C30 C32 S / C32 C33 S /  &
+        257            C33 C34 S / C31 C35 D / C35 C36 S / C36 C37 S /  &
+        258            C37 C38 S / C38 C39 S / C39 C40 S
+        259
+        260    PROP-DATA
+        261        PROP-LIST ATOMNO / NOATOM
+        262        PVAL MLI 8 6 1 / 5. 35. 64.
+        263
+        264    STRUCTURES
+        265        STRUCTURES MM C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        266            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        267            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        268            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        269            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        270            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        271            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        272            C29 C30 S / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        273            C33 C34 S / C32 C35 S / C35 C36 S
+        274
+        275    PROP-DATA
+        276        PROP-LIST ATOMNO / NOATOM
+        277        PVAL MM 6 8 1 / 31.0 5.0 60.0
+        278
+        279    STRUCTURES
+        280        STRUCTURES MMM O1 C2 S / O1 C5 S / C2 C3 S / C2 C4  &
+        281            S / C3 O6 S / C4 O7 S / C5 C8 S / C5 O9 D /  &
+        282            O6 C10 S / O7 C11 S / C8 C12 S / C10 C13 S /  &
+        283            C10 O14 D / C11 C15 S / C11 O16 D / C12 C17 S /  &
+        284            C13 C18 S / C15 C19 S / C17 C20 S / C18 C21 S /  &
+        285            C19 C22 S / C20 C23 S / C21 C24 S / C22 C25 S /  &
+        286            C23 C26 S / C24 C27 S / C25 C28 S / C26 C29 S /  &
+        287            C27 C30 S / C28 C31 S / C29 C32 S / C30 C33 S /  &
+        288            C31 C34 S / C32 C35 S / C33 C36 S / C34 C37 S /  &
+        289            C35 C38 S / C36 C39 S / C37 C40 S / C38 C41 S /  &
+        290            C39 C42 S / C40 C43 S / C41 C44 S / C42 C45 S /  &
+        291            C43 C46 S / C44 C47 S / C45 C48 S / C46 C49 S /  &
+        292            C48 C50 S / C49 C51 S
+        293
+        294    PROP-DATA
+        295        PROP-LIST ATOMNO / NOATOM
+        296        PVAL MMM 8 6 1 / 6.0 45.0 86.0
+        297
+        298    STRUCTURES
+        299        STRUCTURES MMP O1 C2 S / O1 C5 S / C2 C3 S / C2 C4  &
+        300            S / C3 O6 S / C4 O7 S / C5 C8 S / C5 O9 D /  &
+        301            O6 C10 S / O7 C11 S / C8 C12 S / C10 C13 S /  &
+        302            C10 O14 D / C11 C15 S / C11 O16 D / C12 C17 S /  &
+        303            C13 C18 S / C15 C19 S / C17 C20 S / C18 C21 S /  &
+        304            C19 C22 S / C20 C23 S / C21 C24 S / C22 C25 S /  &
+        305            C23 C26 S / C24 C27 S / C25 C28 S / C26 C29 S /  &
+        306            C27 C30 S / C28 C31 S / C29 C32 S / C30 C33 S /  &
+        307            C31 C34 S / C32 C35 S / C33 C36 S / C34 C37 S /  &
+        308            C35 C38 S / C36 C39 S / C37 C40 S / C38 C41 S /  &
+        309            C39 C42 S / C40 C43 S / C42 C44 S / C43 C45 S /  &
+        310            C44 C46 S / C45 C47 S / C46 C48 S / C47 C49 S /  &
+        311            C41 C50 S / C50 C51 S / C48 C52 S / C52 C53 S
+        312
+        313    PROP-DATA
+        314        PROP-LIST ATOMNO / NOATOM
+        315        PVAL MMP 6 8 1 / 47.0 6.0 90.0
+        316
+        317    STRUCTURES
+        318        STRUCTURES MP C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        319            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        320            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        321            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        322            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        323            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        324            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        325            C29 C30 S / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        326            C33 C34 S / C32 C35 S / C35 C36 S / C36 C37 S /  &
+        327            C37 C38 S
+        328
+        329    PROP-DATA
+        330        PROP-LIST ATOMNO / NOATOM
+        331        PVAL MP 6 8 1 / 33.0 5.0 64.0
+        332
+        333    STRUCTURES
+        334        STRUCTURES MPLI C1 C2 S / C2 C3 S / C3 C4 S / C4  &
+        335            C5 S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9  &
+        336            S / C9 C10 S / C10 C11 S / C11 C12 S / C12 O13  &
+        337            S / C12 O14 D / O13 C15 S / C15 C16 S / C16  &
+        338            C17 S / C16 O18 S / C17 O19 S / O18 C33 S /  &
+        339            O19 C20 S / C20 O21 D / C20 C22 S / C22 C23 S /  &
+        340            C23 C24 S / C24 C25 S / C25 C26 S / C26 C27 S /  &
+        341            C27 C28 S / C28 C29 S / C29 C30 S / C30 C31 S /  &
+        342            C31 C32 S / C33 C34 S / C33 O35 D / C34 C36 S /  &
+        343            C36 C37 S / C37 C38 S / C38 C39 S / C39 C40 S /  &
+        344            C40 C41 S / C41 C42 S / C42 C43 D / C43 C44 S /  &
+        345            C44 C45 S / C45 C46 D / C46 C47 S / C32 C48 S /  &
+        346            C48 C49 S / C47 C50 S / C50 C51 S / C51 C52 S /  &
+        347            C52 C53 S / C49 C54 S / C54 C55 S / C1 C56 S /  &
+        348            C56 C57 S
+        349
+        350    PROP-DATA
+        351        PROP-LIST ATOMNO / NOATOM
+        352        PVAL MPLI 6 8 1 / 51.0 6.0 94.0
+        353
+        354    STRUCTURES
+        355        UNIF-DMD NA3PO4 1300 1
+        356        UNIF-DMD NAOH 1300 1
+        357        STRUCTURES OO C1 C2 S / C2 C3 S / C3 C4 D / C4 C5  &
+        358            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        359            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        360            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        361            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        362            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        363            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        364            C29 C30 D / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        365            C33 C34 S / C32 C35 S / C35 C36 S / C34 C37 S /  &
+        366            C36 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        367            C37 C42 S / C42 C43 S / C43 C44 S
+        368
+        369    PROP-DATA
+        370        PROP-LIST ATOMNO / NOATOM
+        371        PVAL OO 6 8 1 / 39.0 5.0 72.0
+        372
+        373    STRUCTURES
+        374        STRUCTURES OOLI C22 C23 S / C23 C24 S / C24 C25 D /  &
+        375            C26 C27 S / C27 C28 S / C28 C29 S / C29 C30 S /  &
+        376            C30 C31 S / C31 C32 D / C33 C34 D / C34 C35 S /  &
+        377            C35 C36 S / C36 C37 S / C37 C38 S / C38 C39 S /  &
+        378            C33 C40 S / C1 C2 S / C40 C41 S / C1 O3 S /  &
+        379            C41 C42 S / C2 C4 S / C42 C43 S / C2 O5 S /  &
+        380            C43 C44 S / O3 C7 S / C44 C45 S / C4 O6 S /  &
+        381            C45 C46 S / O5 C8 S / C46 C47 S / O6 C9 S /  &
+        382            C25 C48 S / C7 O10 D / C48 C49 S / C7 C11 S /  &
+        383            C49 C50 S / C8 O13 D / C50 C51 D / C8 C14 S /  &
+        384            C51 C52 S / C9 O16 D / C52 C53 S / C9 C17 S /  &
+        385            C53 C54 S / C11 C12 S / C54 C55 S / C12 C39 S /  &
+        386            C32 C56 S / C14 C15 S / C56 C57 S / C15 C26 S /  &
+        387            C57 C58 S / C17 C18 S / C58 C59 S / C18 C19 S /  &
+        388            C59 C60 S / C19 C20 S / C60 C61 S / C20 C21 S /  &
+        389            C61 C62 S / C21 C22 S / C62 C63 S
+        390
+        391    PROP-DATA
+        392        PROP-LIST ATOMNO / NOATOM
+        393        PVAL OOLI 6 8 1 / 57.0 6.0 102.0
+        394
+        395    STRUCTURES
+        396        STRUCTURES OOO C1 C2 S / C1 O3 S / C2 C4 S / C2 O5  &
+        397            S / O3 C7 S / C4 O6 S / O5 C8 S / O6 C9 S /  &
+        398            C7 O10 D / C7 C11 S / C8 O13 D / C8 C14 S /  &
+        399            C9 O16 D / C9 C17 S / C11 C12 S / C12 C63 S /  &
+        400            C14 C15 S / C15 C34 S / C17 C18 S / C18 C19 S /  &
+        401            C19 C20 S / C20 C21 S / C21 C22 S / C22 C23 S /  &
+        402            C23 C24 S / C24 C25 D / C25 C26 S / C26 C27 S /  &
+        403            C27 C28 S / C28 C29 S / C29 C30 S / C30 C31 S /  &
+        404            C31 C32 S / C32 C33 S / C34 C35 S / C35 C36 S /  &
+        405            C36 C37 S / C37 C38 S / C38 C39 S / C39 C40 D /  &
+        406            C40 C41 S / C41 C42 S / C42 C43 S / C43 C44 S /  &
+        407            C44 C45 S / C45 C46 S / C46 C47 S / C47 C48 S /  &
+        408            C49 C50 S / C50 C51 S / C51 C52 S / C52 C53 S /  &
+        409            C53 C54 S / C54 C55 S / C55 C56 S / C56 C57 S /  &
+        410            C57 C58 D / C58 C59 S / C59 C60 S / C60 C61 S /  &
+        411            C61 C62 S / C62 C63 S
+        412        UNIFAC OOO 1005 1 / 1010 41 / 1015 3 / 1200 1 /  &
+        413            1500 3 / 1065 3
+        414
+        415    PROP-DATA
+        416        PROP-LIST ATOMNO / NOATOM
+        417        PVAL OOO 6 8 1 / 57.0 6.0 104.0
+        418
+        419    STRUCTURES
+        420        STRUCTURES OOS C22 C23 S / C23 C24 S / C24 C25 S /  &
+        421            C26 C27 S / C27 C28 S / C28 C29 S / C29 C30 S /  &
+        422            C30 C31 S / C31 C32 D / C33 C34 D / C34 C35 S /  &
+        423            C35 C36 S / C36 C37 S / C37 C38 S / C38 C39 S /  &
+        424            C33 C40 S / C1 C2 S / C40 C41 S / C1 O3 S /  &
+        425            C41 C42 S / C2 C4 S / C42 C43 S / C2 O5 S /  &
+        426            C43 C44 S / O3 C7 S / C44 C45 S / C4 O6 S /  &
+        427            C45 C46 S / O5 C8 S / C46 C47 S / O6 C9 S /  &
+        428            C25 C48 S / C7 O10 D / C48 C49 S / C7 C11 S /  &
+        429            C8 O13 D / C8 C14 S / C9 O16 D / C9 C17 S /  &
+        430            C11 C12 S / C12 C39 S / C32 C50 S / C14 C15 S /  &
+        431            C50 C51 S / C15 C26 S / C51 C52 S / C17 C18 S /  &
+        432            C52 C53 S / C18 C19 S / C53 C54 S / C19 C20 S /  &
+        433            C54 C55 S / C20 C21 S / C55 C56 S / C21 C22 S /  &
+        434            C56 C57 S / C49 C58 S / C58 C59 S / C59 C60 S /  &
+        435            C60 C61 S / C61 C62 S / C62 C63 S
+        436
+        437    PROP-DATA
+        438        PROP-LIST ATOMNO / NOATOM
+        439        PVAL OOS 8 6 1 / 6.0 57.0 106.0
+        440
+        441    STRUCTURES
+        442        STRUCTURES OS O1 C2 S / C2 C3 S / C2 C4 S / C3 O5  &
+        443            S / C4 O6 S / O5 C7 S / O6 C8 S / C7 C9 S /  &
+        444            C7 O10 D / C8 C11 S / C8 O12 D / C9 C13 S /  &
+        445            C11 C14 S / C13 C15 S / C14 C16 S / C15 C17 S /  &
+        446            C16 C18 S / C17 C19 S / C18 C20 S / C19 C21 S /  &
+        447            C20 C22 S / C21 C23 S / C22 C24 S / C23 C25 S /  &
+        448            C24 C26 S / C25 C27 S / C26 C28 D / C27 C29 S /  &
+        449            C28 C30 S / C29 C31 S / C30 C32 S / C32 C33 S /  &
+        450            C33 C34 S / C34 C35 S / C35 C36 S / C36 C37 S /  &
+        451            C37 C38 S / C31 C39 S / C39 C40 S / C40 C41 S /  &
+        452            C41 C42 S / C42 C43 S / C43 C44 S
+        453
+        454    PROP-DATA
+        455        PROP-LIST ATOMNO / NOATOM
+        456        PVAL OS 6 8 1 / 39. 5. 74.
+        457
+        458    STRUCTURES
+        459        STRUCTURES PLI C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        460            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        461            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        462            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        463            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        464            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        465            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        466            C29 C30 D / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        467            C33 C34 S / C34 C35 S / C35 C36 S / C32 C37 D /  &
+        468            C37 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        469            C41 C42 S
+        470
+        471    PROP-DATA
+        472        PROP-LIST ATOMNO / NOATOM
+        473        PVAL PLI 6 8 1 / 37.0 5.0 68.0
+        474
+        475    STRUCTURES
+        476        STRUCTURES PLIO C1 C2 S / C2 C3 S / C3 C4 S / C4  &
+        477            C5 S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9  &
+        478            S / C9 C10 S / C10 C11 S / C11 C12 S / C12 O13  &
+        479            S / C12 O14 D / O13 C15 S / C15 C16 S / C16  &
+        480            C17 S / C16 O18 S / C17 O19 S / O18 C33 S /  &
+        481            O19 C20 S / C20 O21 D / C20 C22 S / C22 C23 S /  &
+        482            C23 C24 S / C24 C25 S / C25 C26 S / C26 C27 S /  &
+        483            C27 C28 S / C28 C29 S / C29 C30 D / C30 C31 S /  &
+        484            C31 C32 S / C33 C34 S / C33 O35 D / C34 C36 S /  &
+        485            C36 C37 S / C37 C38 S / C38 C39 S / C39 C40 S /  &
+        486            C40 C41 S / C41 C42 S / C42 C43 D / C43 C44 S /  &
+        487            C44 C45 S / C45 C46 S / C46 C47 S / C32 C48 D /  &
+        488            C48 C49 S / C47 C50 S / C50 C51 S / C51 C52 S /  &
+        489            C52 C53 S / C49 C54 S / C54 C55 S / C55 C56 S /  &
+        490            C56 C57 S / C1 C58 S / C58 C59 S / C59 C60 S /  &
+        491            C60 C61 S
+        492
+        493    PROP-DATA
+        494        PROP-LIST ATOMNO / NOATOM
+        495        PVAL PLIO 6 8 1 / 55.0 6.0 100.0
+        496
+        497    STRUCTURES
+        498        STRUCTURES PO C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        499            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        500            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        501            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        502            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        503            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        504            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        505            C29 C30 D / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        506            C33 C34 S / C34 C35 S / C35 C36 S / C32 C37 S /  &
+        507            C37 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        508            C41 C42 S
+        509
+        510    PROP-DATA
+        511        PROP-LIST ATOMNO / NOATOM
+        512        PVAL PO 6 8 1 / 37.0 5.0 70.0
+        513
+        514    STRUCTURES
+        515        STRUCTURES POO C22 C23 S / C23 C24 S / C24 C25 S /  &
+        516            C26 C27 S / C27 C28 S / C28 C29 S / C29 C30 S /  &
+        517            C30 C31 S / C31 C32 D / C33 C34 D / C34 C35 S /  &
+        518            C35 C36 S / C36 C37 S / C37 C38 S / C38 C39 S /  &
+        519            C33 C40 S / C1 C2 S / C40 C41 S / C1 O3 S /  &
+        520            C41 C42 S / C2 C4 S / C42 C43 S / C2 O5 S /  &
+        521            C43 C44 S / O3 C7 S / C44 C45 S / C4 O6 S /  &
+        522            C45 C46 S / O5 C8 S / C46 C47 S / O6 C9 S /  &
+        523            C25 C48 S / C7 O10 D / C48 C49 S / C7 C11 S /  &
+        524            C8 O13 D / C8 C14 S / C9 O16 D / C9 C17 S /  &
+        525            C11 C12 S / C12 C39 S / C32 C50 S / C14 C15 S /  &
+        526            C50 C51 S / C15 C26 S / C51 C52 S / C17 C18 S /  &
+        527            C52 C53 S / C18 C19 S / C53 C54 S / C19 C20 S /  &
+        528            C54 C55 S / C20 C21 S / C55 C56 S / C21 C22 S /  &
+        529            C56 C57 S / C49 C58 S / C58 C59 S / C59 C60 S /  &
+        530            C60 C61 S
+        531
+        532    PROP-DATA
+        533        PROP-LIST ATOMNO / NOATOM
+        534        PVAL POO 6 8 1 / 55.0 6.0 102.0
+        535
+        536    STRUCTURES
+        537        STRUCTURES POS C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        538            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        539            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        540            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        541            C16 O18 S / C17 O19 S / O18 C33 S / O19 C20 S /  &
+        542            C20 O21 D / C20 C22 S / C22 C23 S / C23 C24 S /  &
+        543            C24 C25 S / C25 C26 S / C26 C27 S / C27 C28 S /  &
+        544            C28 C29 S / C29 C30 S / C30 C31 S / C31 C32 S /  &
+        545            C33 C34 S / C33 O35 D / C34 C36 S / C36 C37 S /  &
+        546            C37 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        547            C41 C42 S / C42 C43 D / C43 C44 S / C44 C45 S /  &
+        548            C45 C46 S / C46 C47 S / C32 C48 S / C48 C49 S /  &
+        549            C47 C50 S / C50 C51 S / C51 C52 S / C52 C53 S /  &
+        550            C49 C54 S / C54 C55 S / C55 C56 S / C56 C57 S /  &
+        551            C1 C58 S / C58 C59 S / C59 C60 S / C60 C61 S
+        552
+        553    PROP-DATA
+        554        PROP-LIST ATOMNO / NOATOM
+        555        PVAL POS 6 8 1 / 55.0 6.0 104.0
+        556
+        557    STRUCTURES
+        558        STRUCTURES PP C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        559            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        560            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        561            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        562            C16 O18 S / C17 O19 S / O19 C20 S / C20 O21 D /  &
+        563            C20 C22 S / C22 C23 S / C23 C24 S / C24 C25 S /  &
+        564            C25 C26 S / C26 C27 S / C27 C28 S / C28 C29 S /  &
+        565            C29 C30 S / C30 C31 S / C31 C32 S / C1 C33 S /  &
+        566            C33 C34 S / C32 C35 S / C35 C36 S / C34 C37 S /  &
+        567            C37 C38 S / C36 C39 S / C39 C40 S
+        568
+        569    PROP-DATA
+        570        PROP-LIST ATOMNO / NOATOM
+        571        PVAL PP 6 8 1 / 35.0 5.0 68.0
+        572
+        573    STRUCTURES
+        574        STRUCTURES PPLI C1 C2 S / C2 C3 S / C3 C4 S / C4  &
+        575            C5 S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9  &
+        576            S / C9 C10 S / C10 C11 S / C11 C12 S / C12 O13  &
+        577            S / C12 O14 D / O13 C15 S / C15 C16 S / C16  &
+        578            C17 S / C16 O18 S / C17 O19 S / O18 C33 S /  &
+        579            O19 C20 S / C20 O21 D / C20 C22 S / C22 C23 S /  &
+        580            C23 C24 S / C24 C25 S / C25 C26 S / C26 C27 S /  &
+        581            C27 C28 S / C28 C29 S / C29 C30 S / C30 C31 S /  &
+        582            C31 C32 S / C33 C34 S / C33 O35 D / C34 C36 S /  &
+        583            C36 C37 S / C37 C38 S / C38 C39 S / C39 C40 S /  &
+        584            C40 C41 S / C41 C42 S / C42 C43 D / C43 C44 S /  &
+        585            C44 C45 S / C45 C46 D / C46 C47 S / C47 C48 S /  &
+        586            C48 C49 S / C49 C50 S / C50 C51 S / C1 C52 S /  &
+        587            C52 C53 S / C32 C54 S / C54 C55 S / C53 C56 S /  &
+        588            C56 C57 S / C55 C58 S / C58 C59 S
+        589
+        590    PROP-DATA
+        591        PROP-LIST ATOMNO / NOATOM
+        592        PVAL PPLI 8 6 1 / 6.0 53.0 98.0
+        593
+        594    STRUCTURES
+        595        STRUCTURES PPO C1 C2 S / C2 C3 S / C3 C4 S / C4 C5  &
+        596            S / C5 C6 S / C6 C7 S / C7 C8 S / C8 C9 S /  &
+        597            C9 C10 S / C10 C11 S / C11 C12 S / C12 O13 S /  &
+        598            C12 O14 D / O13 C15 S / C15 C16 S / C16 C17 S /  &
+        599            C16 O18 S / C17 O19 S / O18 C33 S / O19 C20 S /  &
+        600            C20 O21 D / C20 C22 S / C22 C23 S / C23 C24 S /  &
+        601            C24 C25 S / C25 C26 S / C26 C27 S / C27 C28 S /  &
+        602            C28 C29 S / C29 C30 S / C30 C31 S / C31 C32 S /  &
+        603            C33 C34 S / C33 O35 D / C34 C36 S / C36 C37 S /  &
+        604            C37 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        605            C41 C42 S / C42 C43 D / C43 C44 S / C44 C45 S /  &
+        606            C45 C46 S / C46 C47 S / C32 C48 S / C48 C49 S /  &
+        607            C47 C50 S / C50 C51 S / C51 C52 S / C52 C53 S /  &
+        608            C49 C54 S / C54 C55 S / C1 C56 S / C56 C57 S /  &
+        609            C57 C58 S / C58 C59 S
+        610
+        611    PROP-DATA
+        612        PROP-LIST ATOMNO / NOATOM
+        613        PVAL PPO 8 6 1 / 6.0 53.0 100.0
+        614
+        615    STRUCTURES
+        616        STRUCTURES PPP O1 C2 S / O1 C3 S / C2 C20 S / C3  &
+        617            O4 D / C3 C5 S / C5 C6 S / C6 C7 S / C7 C8  &
+        618            S / C8 C9 S / C9 C10 S / C10 C11 S / C11 C12  &
+        619            S / C12 C13 S / C13 C14 S / C14 C15 S / C15  &
+        620            C16 S / C16 C17 S / C17 C18 S / C18 C19 S /  &
+        621            C20 C21 S / C20 O22 S / C21 O23 S / O22 C24 S /  &
+        622            O23 C41 S / C24 C25 S / C24 O26 D / C25 C27 S /  &
+        623            C27 C28 S / C28 C29 S / C29 C30 S / C30 C31 S /  &
+        624            C31 C32 S / C32 C33 S / C33 C34 S / C34 C35 S /  &
+        625            C35 C36 S / C36 C37 S / C37 C38 S / C38 C39 S /  &
+        626            C39 C40 S / C41 C42 S / C41 O43 D / C42 C44 S /  &
+        627            C44 C45 S / C45 C46 S / C46 C47 S / C47 C48 S /  &
+        628            C48 C49 S / C49 C50 S / C50 C51 S / C51 C52 S /  &
+        629            C52 C53 S / C53 C54 S / C54 C55 S / C55 C56 S /  &
+        630            C56 C57 S
+        631
+        632    PROP-DATA
+        633        PROP-LIST ATOMNO / NOATOM
+        634        PVAL PPP 6 8 1 / 51.0 6.0 98.0
+        635
+        636    STRUCTURES
+        637        STRUCTURES PPS O1 C2 S / O1 C3 S / C2 C16 S / C3  &
+        638            O4 D / C3 C5 S / C5 C6 S / C6 C7 S / C7 C8  &
+        639            S / C8 C9 S / C9 C10 S / C10 C11 S / C11 C12  &
+        640            S / C12 C13 S / C13 C14 S / C14 C15 S / C16  &
+        641            C17 S / C16 O18 S / C17 O19 S / O18 C20 S /  &
+        642            O19 C37 S / C20 C21 S / C20 O22 D / C21 C23 S /  &
+        643            C23 C24 S / C24 C25 S / C25 C26 S / C26 C27 S /  &
+        644            C27 C28 S / C28 C29 S / C29 C30 S / C30 C31 S /  &
+        645            C31 C32 S / C32 C33 S / C33 C34 S / C34 C35 S /  &
+        646            C35 C36 S / C37 C38 S / C37 O39 D / C38 C40 S /  &
+        647            C40 C41 S / C41 C42 S / C42 C43 S / C43 C44 S /  &
+        648            C44 C45 S / C45 C46 S / C46 C47 S / C47 C48 S /  &
+        649            C48 C49 S / C49 C50 S / C50 C51 S / C51 C52 S /  &
+        650            C52 C53 S / C15 C54 S / C54 C55 S / C55 C56 S /  &
+        651            C56 C57 S / C57 C58 S / C58 C59 S
+        652
+        653    PROP-DATA
+        654        PROP-LIST ATOMNO / NOATOM
+        655        PVAL PPS 8 6 1 / 6.0 53.0 102.0
+        656
+        657    STRUCTURES
+        658        STRUCTURES PS O1 C2 S / C2 C3 S / C2 C4 S / C3 O5  &
+        659            S / C4 O6 S / O5 C7 S / O6 C8 S / C7 C9 S /  &
+        660            C7 O10 D / C8 C11 S / C8 O12 D / C9 C13 S /  &
+        661            C11 C14 S / C13 C15 S / C14 C16 S / C15 C17 S /  &
+        662            C16 C18 S / C17 C19 S / C18 C20 S / C19 C21 S /  &
+        663            C20 C22 S / C21 C23 S / C22 C24 S / C23 C25 S /  &
+        664            C24 C26 S / C25 C27 S / C26 C28 S / C27 C29 S /  &
+        665            C28 C30 S / C29 C31 S / C30 C32 S / C32 C33 S /  &
+        666            C33 C34 S / C34 C35 S / C35 C36 S / C31 C37 S /  &
+        667            C37 C38 S / C38 C39 S / C39 C40 S / C40 C41 S /  &
+        668            C41 C42 S
+        669
+        670    PROP-DATA
+        671        PROP-LIST ATOMNO / NOATOM
+        672        PVAL PS 6 8 1 / 37. 5. 72.
+        673
+        674    PROP-DATA PURE-1
+        675        IN-UNITS MET DENSITY='kg/cum' ENERGY=kJ ENTHALPY='J/kmol'  &
+        676            ENTROPY='J/kmol-K' VOLUME-FLOW='cum/hr' ENTHALPY-FLO=kW  &
+        677            FORCE=Newton MOLE-HEAT-CA='kJ/kmol-K'  &
+        678            HEAT-TRANS-C='kW/sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        679            THERMAL-COND='kW/m-K' VOLUME=cum DELTA-T=C HEAD=meter  &
+        680            MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        681            MOLE-ENTHALP='kJ/kmol' MASS-ENTHALP='kJ/kg'  &
+        682            MOLE-ENTROPY='kJ/kmol-K' MASS-ENTROPY='kJ/kg-K'  &
+        683            MOLE-VOLUME='cum/kmol' MASS-HEAT-CA='kJ/kg-K' UA='kJ/sec-K'  &
+        684            WORK=kJ HEAT=kJ MOLE-CONC='mol/l'  &
+        685            MASS-TRANS-C='kg/s-sqm-kg/cum' PDROP=bar  &
+        686            VOL-HEAT-CAP='kJ/cum-K' HEAT-FLUX='Watt/m'  &
+        687            VFLOW-LENGTH='sqm/hr' INVERSE-HT-C='sqm-K/kW'  &
+        688            VOL-ENTHALPY='kJ/cum' MASS-VOLUME='cum/kg'
+        689        PROP-LIST MW
+        690        PVAL NAOH 39.997110
+        691        PVAL H3PO4 97.995180
+        692        PVAL NA3PO4 163.940670
+        693
+        694    PROP-DATA CPIG-1
+        695        IN-UNITS MET VOLUME-FLOW='cum/hr' PRESSURE=bar TEMPERATURE=C  &
+        696            DELTA-T=C HEAD=meter PDROP=bar
+        697        PROP-LIST CPIG
+        698        PVAL METHY-LI 96.12198434 .2909333058 -1.7622022E-4  &
+        699            3.19481286E-8 0.0 0.0 6.850000000 826.8500000  &
+        700            8.605426579 .0191025689 1.500000000
+        701
+        702    PROP-DATA PLXANT-1
+        703        IN-UNITS MET VOLUME-FLOW='cum/hr' PRESSURE=bar TEMPERATURE=C  &
+        704            DELTA-T=C HEAD=meter PDROP=bar
+        705        PROP-LIST PLXANT
+        706        PVAL NAOH -1.000000E+20 0.0 273.1500000 0.0 0.0 0.0 0.0  &
+        707            -273.1500000 1726.850000
+        708        PVAL H3PO4 -31.51292546 0.0 273.1500000 0.0 0.0 0.0 0.0  &
+        709            -.1500000000 199.8500000
+        710        PVAL NA3PO4 -1E20 0 273.15
+        711
+        712    PROP-DATA NRTL-1
+        713        IN-UNITS MET DENSITY='kg/cum' ENERGY=kJ ENTHALPY='J/kmol'  &
+        714            ENTROPY='J/kmol-K' VOLUME-FLOW='cum/hr' ENTHALPY-FLO=kW  &
+        715            FORCE=Newton MOLE-HEAT-CA='kJ/kmol-K'  &
+        716            HEAT-TRANS-C='kW/sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        717            THERMAL-COND='kW/m-K' VOLUME=cum DELTA-T=C HEAD=meter  &
+        718            MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        719            MOLE-ENTHALP='kJ/kmol' MASS-ENTHALP='kJ/kg'  &
+        720            MOLE-ENTROPY='kJ/kmol-K' MASS-ENTROPY='kJ/kg-K'  &
+        721            MOLE-VOLUME='cum/kmol' MASS-HEAT-CA='kJ/kg-K' UA='kJ/sec-K'  &
+        722            WORK=kJ HEAT=kJ MOLE-CONC='mol/l'  &
+        723            MASS-TRANS-C='kg/s-sqm-kg/cum' PDROP=bar  &
+        724            VOL-HEAT-CAP='kJ/cum-K' HEAT-FLUX='Watt/m'  &
+        725            VFLOW-LENGTH='sqm/hr' INVERSE-HT-C='sqm-K/kW'  &
+        726            VOL-ENTHALPY='kJ/cum' MASS-VOLUME='cum/kg'
+        727        PROP-LIST NRTL
+        728        BPVAL METHANOL GLYCEROL 0.0 547.83010 .30 0.0 0.0 0.0  &
+        729            25.0 62.50
+        730        BPVAL GLYCEROL METHANOL 0.0 -218.52170 .30 0.0 0.0 0.0  &
+        731            25.0 62.50
+        732        BPVAL METHANOL NAOH -.6930 172.98710 .30 0.0 0.0 0.0  &
+        733            24.990 100.0
+        734        BPVAL NAOH METHANOL 2.73220 -617.26870 .30 0.0 0.0 0.0  &
+        735            24.990 100.0
+        736        BPVAL METHANOL WATER -.6930 172.98710 .30 0.0 0.0 0.0  &
+        737            24.990 100.0
+        738        BPVAL WATER METHANOL 2.73220 -617.26870 .30 0.0 0.0 0.0  &
+        739            24.990 100.0
+        740        BPVAL METHANOL H3PO4 -.6930 172.98710 .30 0.0 0.0 0.0  &
+        741            24.990 100.0
+        742        BPVAL H3PO4 METHANOL 2.73220 -617.26870 .30 0.0 0.0 0.0  &
+        743            24.990 100.0
+        744        BPVAL METHANOL NA3PO4 -.6930 172.98710 .30 0.0 0.0 0.0  &
+        745            24.990 100.0
+        746        BPVAL NA3PO4 METHANOL 2.73220 -617.26870 .30 0.0 0.0 0.0  &
+        747            24.990 100.0
+        748        BPVAL GLYCEROL NAOH -.73180 170.91670 .30 0.0 0.0 0.0  &
+        749            25.0 290.0
+        750        BPVAL NAOH GLYCEROL -1.25150 272.60750 .30 0.0 0.0 0.0  &
+        751            25.0 290.0
+        752        BPVAL GLYCEROL WATER -.73180 170.91670 .30 0.0 0.0 0.0  &
+        753            25.0 290.0
+        754        BPVAL WATER GLYCEROL -1.25150 272.60750 .30 0.0 0.0 0.0  &
+        755            25.0 290.0
+        756        BPVAL GLYCEROL H3PO4 -.73180 170.91670 .30 0.0 0.0 0.0  &
+        757            25.0 290.0
+        758        BPVAL H3PO4 GLYCEROL -1.25150 272.60750 .30 0.0 0.0 0.0  &
+        759            25.0 290.0
+        760        BPVAL GLYCEROL NA3PO4 -.73180 170.91670 .30 0.0 0.0 0.0  &
+        761            25.0 290.0
+        762        BPVAL NA3PO4 GLYCEROL -1.25150 272.60750 .30 0.0 0.0 0.0  &
+        763            25.0 290.0
+        764
+        765    PROP-SET PS-2 RHOMX UNITS='kg/cum' SUBSTREAM=MIXED PHASE=L  &
+        766            TEMP=15.
+        767
+        768    STREAM EST1
+        769        SUBSTREAM MIXED TEMP=59.2142708 PRES=0.2
+        770        MOLE-FLOW METHANOL 0.239073403 / OOO 0.00098826914 / MMM  &
+        771            9.462445E-005 / METHYL-O 1.34667707 / GLYCEROL  &
+        772            1.26870242 / NAOH 0.250018011 / WATER 2.22034704 /  &
+        773            PPP 0.00156610853 / METHYL-P 1.92259841 / PPS  &
+        774            0.00027834538 / PPO 0.00682357985 / POS 0.00104185401 /  &
+        775            MMP 0.00037813879 / PPLI 0.00201295762 / POO  &
+        776            0.00516659955 / PLIO 0.0012721269 / OOS 0.00045576871 /  &
+        777            OOLI 0.00020105220 / MPLI 0.00046791822 / METHYL-M  &
+        778            0.0935652791 / METHYL-S 0.100225291 / METHY-LI  &
+        779            0.271418145 / 1-M 0.00135417003 / 1-P 0.021448676 /  &
+        780            1-S 0.00145529129 / 1-O 0.0196371826 / 1-LI  &
+        781            0.00381169411 / MM 4.207557E-005 / PP 0.00220502962 /  &
+        782            OO 0.0012497906 / PO 0.00352511322 / PLI  &
+        783            0.00070339804 / MP 0.00021332365 / PS 0.00023281120 /  &
+        784            OS 0.00022354034 / LIO 0.00039581626 / MLI  &
+        785            4.851244E-005
+        786
+        787    STREAM H3PO4
+        788        SUBSTREAM MIXED TEMP=20.0 PRES=1.10 MASS-FLOW=50.0
+        789        MASS-FRAC WATER .80 / H3PO4 .20
+        790
+        791    STREAM MEOH
+        792        SUBSTREAM MIXED TEMP=25.0 PRES=1.0 MASS-FLOW=117.20
+        793        MASS-FRAC METHANOL 1.0
+        794
+        795    STREAM MEOHREC
+        796        SUBSTREAM MIXED TEMP=28.8039786 PRES=0.2
+        797        MASS-FLOW METHANOL 120.016232 / OOO 1.407773E-033 / MMM  &
+        798            4.210757E-028 / METHYL-O 6.464082E-011 / GLYCEROL  &
+        799            8.963271E-015 / NAOH 4.542446E-060 / WATER 2.40933423 /  &
+        800            PPP 1.598287E-029 / METHYL-P 2.956410E-008 / PPS  &
+        801            2.259708E-030 / PPO 2.451544E-029 / POS 2.983276E-030 /  &
+        802            MMP 2.183001E-028 / PPLI 3.297692E-030 / POO  &
+        803            6.677162E-030 / PLIO 7.627029E-031 / OOS 4.703300E-031 / &
+        804            OOLI 4.504478E-032 / MPLI 5.775828E-030 / METHYL-M  &
+        805            6.618359E-008 / METHYL-S 4.272020E-011 / METHY-LI  &
+        806            9.460567E-012 / 1-M 3.305616E-022 / 1-P 3.750648E-022 /  &
+        807            1-S 1.140093E-023 / 1-O 8.452611E-023 / 1-LI  &
+        808            9.471075E-024 / MM 6.303283E-027 / PP 3.989564E-027 /  &
+        809            OO 2.355450E-028 / PO 2.026906E-027 / PLI  &
+        810            1.999049E-028 / MP 3.464756E-027 / PS 2.820168E-028 /  &
+        811            OS 8.665113E-029 / LIO 3.767861E-029 / MLI  &
+        812            1.249939E-028
+        813
+        814    STREAM NAOH
+        815        SUBSTREAM MIXED TEMP=25.0 PRES=1.0 MASS-FLOW=50.0
+        816        MASS-FRAC NAOH .20 / WATER .80
+        817
+        818    STREAM OIL
+        819        SUBSTREAM MIXED TEMP=25.0 PRES=1.0 MASS-FLOW=1050.0
+        820        MASS-FRAC OOO .0440 / MMM .00420 / PPP .05510 / PPS  &
+        821            .01060 / PPO .29620 / POS .0490 / MMP .0170 /  &
+        822            PPLI .09230 / POO .23260 / PLIO .09680 / OOS  &
+        823            .02240 / OOLI .00580 / MPLI .0220 / PP .0520
+        824
+        825    STREAM WATER
+        826        SUBSTREAM MIXED TEMP=25.0 PRES=1.10 MASS-FLOW=50.0
+        827        MASS-FRAC WATER 1.0
+        828
+        829    BLOCK B3 MIXER
+        830        PARAM
+        831
+        832    BLOCK MIXER1 MIXER
+        833        PARAM
+        834
+        835    BLOCK MIXER2 MIXER
+        836        PARAM
+        837
+        838    BLOCK FILTER SEP
+        839        FRAC STREAM=SOLIDS SUBSTREAM=MIXED COMPS=METHANOL OOO  &
+        840            METHYL-O GLYCEROL NAOH WATER H3PO4 NA3PO4 FRACS=0.0  &
+        841            0.0 0.0 0.0 1.0 0.0 1.0 1.0
+        842
+        843    BLOCK B2 HEATER
+        844        PARAM TEMP=25.0 PRES=0.0 DPPARMOPT=NO
+        845
+        846    BLOCK HX1 HEATER
+        847        PARAM TEMP=60.0 PRES=0.0 DPPARMOPT=NO
+        848
+        849    BLOCK HX2 HEATER
+        850        PARAM TEMP=60.0 PRES=0.0 DPPARMOPT=NO
+        851
+        852    BLOCK B1 DISTL
+        853        PARAM NSTAGE=8 FEED-LOC=4 RR=2. PTOP=0.4 PBOT=0.5  &
+        854            D:F=0.8514
+        855        BLOCK-OPTION FREE-WATER=DIRTY
+        856
+        857    BLOCK ESTCOL RADFRAC
+        858        PARAM NSTAGE=6 ALGORITHM=STANDARD MAXOL=25 DAMPING=NONE
+        859        PARAM2
+        860        COL-CONFIG CONDENSER=PARTIAL-V-L
+        861        FEEDS EST4 4
+        862        PRODUCTS MEOHWAT 1 V / FAME 1 L / OILREC 6 L
+        863        P-SPEC 1 .10
+        864        COL-SPECS DP-COL=.10 MASS-B=100.0 MASS-RR=1.0 T1=148.30
+        865        SPEC 1 MASS-FRAC .9970 COMPS=METHYL-O METHYL-P METHYL-M  &
+        866            METHYL-S METHY-LI STREAMS=FAME  &
+        867            SPEC-DESCRIP="Mass purity, .9970, PRODUCT"
+        868        VARY 1 MASS-B 25.00000000 250.0000000
+        869
+        870    BLOCK MEOHCOL RADFRAC
+        871        PARAM NSTAGE=7 ALGORITHM=STANDARD MAXOL=25 NPHASE=3  &
+        872            DAMPING=NONE
+        873        PARAM2
+        874        COL-CONFIG CONDENSER=TOTAL
+        875        FEEDS REACOUT 4
+        876        PRODUCTS MEOHREC 1 L / EST1 7 L
+        877        P-SPEC 1 .20
+        878        COL-SPECS MASS-D=111.0 MASS-RR=2.0
+        879        L2-COMPS OOO
+        880        L2-STAGES 1 7
+        881        SPEC 1 MASS-RECOV .940 COMPS=METHANOL STREAMS=MEOHREC  &
+        882            SPEC-DESCRIP="Mass recovery, .940"
+        883        VARY 1 MASS-D 80.00000000 200.0000000
+        884        BLOCK-OPTION FREE-WATER=NO
+        885
+        886    BLOCK WASHCOL EXTRACT
+        887        PARAM NSTAGE=6
+        888        FEEDS WATER 1 / EST3 6
+        889        PRODUCTS EST4 1 L2 / AQU1 6 L1
+        890        P-SPEC 1 1.0
+        891        L1-COMPS GLYCEROL
+        892        L2-COMPS METHYL-O
+        893        T-EST 1 25.0
+        894
+        895    BLOCK NEUTR RSTOIC
+        896        PARAM TEMP=50.0 PRES=1.10
+        897        STOIC 1 MIXED NAOH -3.0 / H3PO4 -1.0 / NA3PO4 1.0 /  &
+        898            WATER 3.0
+        899        CONV 1 MIXED NAOH 1.0
+        900
+        901    BLOCK REACTOR RCSTR
+        902        PARAM TEMP=60.0 PRES=4.0 RES-TIME=1.0
+        903        CONVERGENCE SOLVER=NEWTON
+        904        REACTIONS RXN-IDS=PALM-OIL
+        905        PARAM-MSSTR VAPOR-INLET=NO
+        906
+        907    BLOCK PUMP1 PUMP
+        908        PARAM PRES=4.0
+        909
+        910    BLOCK PUMP2 PUMP
+        911        PARAM PRES=4.0
+        912
+        913    BLOCK PUMP3 PUMP
+        914        PARAM PRES=1.10
+        915
+        916    DESIGN-SPEC MEOHCONC
+        917        DEFINE XMEOH MASS-FRAC STREAM=REACOUT SUBSTREAM=MIXED  &
+        918            COMPONENT=METHANOL
+        919        SPEC "XMEOH" TO "0.092"
+        920        TOL-SPEC "0.092*1.0E-4"
+        921        VARY STREAM-VAR STREAM=MEOH SUBSTREAM=MIXED  &
+        922            VARIABLE=MASS-FLOW UOM="kg/hr"
+        923        LIMITS "10" "1000"
+        924
+        925    EO-CONV-OPTI
+        926
+        927    CALCULATOR PO3FLOW
+        928        IN-UNITS MET DENSITY='kg/cum' ENERGY=kJ ENTHALPY='J/kmol'  &
+        929            ENTROPY='J/kmol-K' VOLUME-FLOW='cum/hr' ENTHALPY-FLO=kW  &
+        930            FORCE=Newton MOLE-HEAT-CA='kJ/kmol-K'  &
+        931            HEAT-TRANS-C='kW/sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        932            THERMAL-COND='kW/m-K' VOLUME=cum DELTA-T=C HEAD=meter  &
+        933            MOLE-DENSITY='kmol/cum' MASS-DENSITY='kg/cum'  &
+        934            MOLE-ENTHALP='kJ/kmol' MASS-ENTHALP='kJ/kg'  &
+        935            MOLE-ENTROPY='kJ/kmol-K' MASS-ENTROPY='kJ/kg-K'  &
+        936            MOLE-VOLUME='cum/kmol' MASS-HEAT-CA='kJ/kg-K' UA='kJ/sec-K'  &
+        937            WORK=kJ HEAT=kJ MOLE-CONC='mol/l'  &
+        938            MASS-TRANS-C='kg/s-sqm-kg/cum' PDROP=bar  &
+        939            VOL-HEAT-CAP='kJ/cum-K' HEAT-FLUX='Watt/m'  &
+        940            VFLOW-LENGTH='sqm/hr' INVERSE-HT-C='sqm-K/kW'  &
+        941            VOL-ENTHALPY='kJ/cum' MASS-VOLUME='cum/kg'
+        942        DEFINE FNAOH MOLE-FLOW STREAM=AQU1 SUBSTREAM=MIXED  &
+        943            COMPONENT=NAOH UOM="kmol/hr"
+        944        DEFINE ACIDM2 STREAM-VAR STREAM=H3PO4 SUBSTREAM=MIXED  &
+        945            VARIABLE=MASS-FLOW UOM="kg/hr"
+        946    F     ACID = FNAOH / 3.0
+        947    F     ACIDM = ACID * 97.99518
+        948    F     ACIDM2 = 1.0001*(ACIDM * 5.0)
+        949        READ-VARS FNAOH
+        950        WRITE-VARS ACIDM2
+        951
+        952    CONV-OPTIONS
+        953        PARAM CHECKSEQ=NO
+        954
+        955    CONVERGENCE C-1 BROYDEN
+        956        TEAR MEOHREC / EST1
+        957        SPEC MEOHCONC
+        958
+        959    STREAM-REPOR MOLEFLOW MASSFLOW MASSFRAC PROPERTIES=PS-2
+        960
+        961    PROPERTY-REP PCES
+        962
+        963    REACTIONS PALM-OIL POWERLAW
+        964        REAC-DATA 1 CBASIS=MOLARITY
+        965        REAC-DATA 2 CBASIS=MOLARITY
+        966        REAC-DATA 3 CBASIS=MOLARITY
+        967        REAC-DATA 4
+        968        REAC-DATA 5
+        969        REAC-DATA 6
+        970        REAC-DATA 7 KINETIC
+        971        REAC-DATA 8 KINETIC
+        972        REAC-DATA 9 KINETIC
+        973        REAC-DATA 10 KINETIC
+        974        REAC-DATA 11 KINETIC
+        975        REAC-DATA 12 KINETIC
+        976        REAC-DATA 13 KINETIC
+        977        REAC-DATA 14 KINETIC
+        978        REAC-DATA 15 KINETIC
+        979        REAC-DATA 16 KINETIC
+        980        REAC-DATA 17 KINETIC
+        981        REAC-DATA 18 KINETIC
+        982        REAC-DATA 19 KINETIC
+        983        REAC-DATA 20 KINETIC
+        984        REAC-DATA 21 KINETIC
+        985        REAC-DATA 22 KINETIC
+        986        REAC-DATA 23 KINETIC
+        987        REAC-DATA 24 KINETIC
+        988        REAC-DATA 25 KINETIC
+        989        REAC-DATA 26 KINETIC
+        990        REAC-DATA 27 KINETIC
+        991        REAC-DATA 28 KINETIC
+        992        REAC-DATA 29 KINETIC
+        993        REAC-DATA 30 KINETIC
+        994        REAC-DATA 31 KINETIC
+        995        REAC-DATA 32 KINETIC
+        996        REAC-DATA 33 KINETIC
+        997        REAC-DATA 34 KINETIC
+        998        REAC-DATA 35 KINETIC
+        999        REAC-DATA 36 KINETIC
+       1000        REAC-DATA 37 KINETIC
+       1001        REAC-DATA 38 KINETIC
+       1002        REAC-DATA 39 KINETIC
+       1003        REAC-DATA 40 KINETIC
+       1004        REAC-DATA 41 KINETIC
+       1005        REAC-DATA 42 KINETIC
+       1006        REAC-DATA 43 KINETIC
+       1007        REAC-DATA 44 KINETIC
+       1008        REAC-DATA 45 KINETIC
+       1009        REAC-DATA 46 KINETIC
+       1010        REAC-DATA 47 KINETIC
+       1011        REAC-DATA 48 KINETIC
+       1012        REAC-DATA 49 KINETIC
+       1013        REAC-DATA 50 KINETIC
+       1014        REAC-DATA 51 KINETIC
+       1015        REAC-DATA 52 KINETIC
+       1016        REAC-DATA 53 KINETIC
+       1017        REAC-DATA 54 KINETIC
+       1018        REAC-DATA 55 KINETIC
+       1019        REAC-DATA 56 KINETIC
+       1020        REAC-DATA 57 KINETIC
+       1021        REAC-DATA 58 KINETIC
+       1022        REAC-DATA 59 KINETIC
+       1023        REAC-DATA 60 KINETIC
+       1024        REAC-DATA 61 KINETIC
+       1025        REAC-DATA 62 KINETIC
+       1026        REAC-DATA 63 KINETIC
+       1027        REAC-DATA 64 KINETIC
+       1028        REAC-DATA 65 KINETIC
+       1029        REAC-DATA 66 KINETIC
+       1030        REAC-DATA 67 KINETIC
+       1031        REAC-DATA 68 KINETIC
+       1032        REAC-DATA 69 KINETIC
+       1033        REAC-DATA 70 KINETIC
+       1034        REAC-DATA 71 KINETIC
+       1035        REAC-DATA 72 KINETIC
+       1036        REAC-DATA 73 KINETIC
+       1037        REAC-DATA 74 KINETIC
+       1038        REAC-DATA 75 KINETIC
+       1039        REAC-DATA 76 KINETIC
+       1040        REAC-DATA 77 KINETIC
+       1041        REAC-DATA 78 KINETIC
+       1042        REAC-DATA 79 KINETIC
+       1043        REAC-DATA 80 KINETIC
+       1044        REAC-DATA 81 KINETIC
+       1045        REAC-DATA 82 KINETIC
+       1046        REAC-DATA 83 KINETIC
+       1047        REAC-DATA 84 KINETIC
+       1048        REAC-DATA 85 KINETIC
+       1049        REAC-DATA 86 KINETIC
+       1050        REAC-DATA 87 KINETIC
+       1051        REAC-DATA 88 KINETIC
+       1052        REAC-DATA 89 KINETIC
+       1053        REAC-DATA 90 KINETIC
+       1054        REAC-DATA 91 KINETIC
+       1055        REAC-DATA 92 KINETIC
+       1056        REAC-DATA 93 KINETIC
+       1057        REAC-DATA 94 KINETIC
+       1058        REAC-DATA 95 KINETIC
+       1059        REAC-DATA 96 KINETIC
+       1060        RATE-CON 1 PRE-EXP=.0231107550 ACT-ENERGY=13500.0 T-REF=50.0
+       1061        RATE-CON 2 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1062        RATE-CON 3 PRE-EXP=.106592460 ACT-ENERGY=17400.0 T-REF=50.0
+       1063        RATE-CON 4 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1064        RATE-CON 5 PRE-EXP=.0575410620 ACT-ENERGY=6200.0 T-REF=50.0
+       1065        RATE-CON 6 PRE-EXP=.0002666670 ACT-ENERGY=11900.0 T-REF=50.0
+       1066        RATE-CON 7 PRE-EXP=.0231107550 ACT-ENERGY=13500.0 T-REF=50.0
+       1067        RATE-CON 8 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1068        RATE-CON 9 PRE-EXP=.106592460 ACT-ENERGY=17400.0 T-REF=50.0
+       1069        RATE-CON 10 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1070        RATE-CON 11 PRE-EXP=.0575410620 ACT-ENERGY=6200.0 T-REF=50.0
+       1071        RATE-CON 12 PRE-EXP=.0002666670 ACT-ENERGY=11900.0 T-REF=50.0
+       1072        RATE-CON 13 PRE-EXP=.0231107550 ACT-ENERGY=13500.0 T-REF=50.0
+       1073        RATE-CON 14 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1074        RATE-CON 15 PRE-EXP=.106592460 ACT-ENERGY=17400.0 T-REF=50.0
+       1075        RATE-CON 16 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1076        RATE-CON 17 PRE-EXP=.0575410620 ACT-ENERGY=6200.0 T-REF=50.0
+       1077        RATE-CON 18 PRE-EXP=.0002666670 ACT-ENERGY=11900.0 T-REF=50.0
+       1078        RATE-CON 19 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1079        RATE-CON 20 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1080        RATE-CON 21 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1081        RATE-CON 22 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1082        RATE-CON 23 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1083        RATE-CON 24 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1084        RATE-CON 25 PRE-EXP=.0575410620 ACT-ENERGY=6200.0 T-REF=50.0
+       1085        RATE-CON 26 PRE-EXP=.0002666670 ACT-ENERGY=11900.0 T-REF=50.0
+       1086        RATE-CON 27 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1087        RATE-CON 28 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1088        RATE-CON 29 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1089        RATE-CON 30 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1090        RATE-CON 31 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1091        RATE-CON 32 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1092        RATE-CON 33 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1093        RATE-CON 34 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1094        RATE-CON 35 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1095        RATE-CON 36 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1096        RATE-CON 37 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1097        RATE-CON 38 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1098        RATE-CON 39 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1099        RATE-CON 40 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1100        RATE-CON 41 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1101        RATE-CON 42 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1102        RATE-CON 43 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1103        RATE-CON 44 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1104        RATE-CON 45 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1105        RATE-CON 46 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1106        RATE-CON 47 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1107        RATE-CON 48 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1108        RATE-CON 49 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1109        RATE-CON 50 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1110        RATE-CON 51 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1111        RATE-CON 52 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1112        RATE-CON 53 PRE-EXP=.0575410620 ACT-ENERGY=6200.0 T-REF=50.0
+       1113        RATE-CON 54 PRE-EXP=.0002666670 ACT-ENERGY=11900.0 T-REF=50.0
+       1114        RATE-CON 55 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1115        RATE-CON 56 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1116        RATE-CON 57 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1117        RATE-CON 58 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1118        RATE-CON 59 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1119        RATE-CON 60 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1120        RATE-CON 61 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1121        RATE-CON 62 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1122        RATE-CON 63 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1123        RATE-CON 64 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1124        RATE-CON 65 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1125        RATE-CON 66 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1126        RATE-CON 67 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1127        RATE-CON 68 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1128        RATE-CON 69 PRE-EXP=.0231107550 ACT-ENERGY=13500.0 T-REF=50.0
+       1129        RATE-CON 70 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1130        RATE-CON 71 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1131        RATE-CON 72 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1132        RATE-CON 73 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1133        RATE-CON 74 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1134        RATE-CON 75 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1135        RATE-CON 76 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1136        RATE-CON 77 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1137        RATE-CON 78 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1138        RATE-CON 79 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1139        RATE-CON 80 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1140        RATE-CON 81 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1141        RATE-CON 82 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1142        RATE-CON 83 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1143        RATE-CON 84 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1144        RATE-CON 85 PRE-EXP=0.0154 ACT-ENERGY=13500.0 T-REF=50.0
+       1145        RATE-CON 86 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1146        RATE-CON 87 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1147        RATE-CON 88 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1148        RATE-CON 89 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1149        RATE-CON 90 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1150        RATE-CON 91 PRE-EXP=0.0077 ACT-ENERGY=13500.0 T-REF=50.0
+       1151        RATE-CON 92 PRE-EXP=.0018666670 ACT-ENERGY=10300.0 T-REF=50.0
+       1152        RATE-CON 93 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1153        RATE-CON 94 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1154        RATE-CON 95 PRE-EXP=0.0533 ACT-ENERGY=17400.0 T-REF=50.0
+       1155        RATE-CON 96 PRE-EXP=.0022166670 ACT-ENERGY=16200.0 T-REF=50.0
+       1156        STOIC 1 MIXED OOO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1157            METHYL-O 1.0 / OO 1.0
+       1158        STOIC 2 MIXED OO -1.0 / METHYL-O -1.0 / OOO 1.0 /  &
+       1159            METHANOL 1.0
+       1160        STOIC 3 MIXED OO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1161            METHYL-O 1.0 / 1-O 1.0
+       1162        STOIC 4 MIXED METHYL-O -1.0 / 1-O -1.0 / OO 1.0 /  &
+       1163            METHANOL 1.0
+       1164        STOIC 5 MIXED 1-O -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1165            GLYCEROL 1.0 / METHYL-O 1.0
+       1166        STOIC 6 MIXED GLYCEROL -1.0 / METHYL-O -1.0 / METHANOL  &
+       1167            1.0 / 1-O 1.0
+       1168        STOIC 7 MIXED MMM -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1169            METHYL-M 1.0 / MM 1.0
+       1170        STOIC 8 MIXED METHYL-M -1.0 / MM -1.0 / MMM 1.0 /  &
+       1171            METHANOL 1.0
+       1172        STOIC 9 MIXED MM -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1173            METHYL-M 1.0 / 1-M 1.0
+       1174        STOIC 10 MIXED METHYL-M -1.0 / 1-M -1.0 / MM 1.0 /  &
+       1175            METHANOL 1.0
+       1176        STOIC 11 MIXED 1-M -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1177            GLYCEROL 1.0 / METHYL-M 1.0
+       1178        STOIC 12 MIXED GLYCEROL -1.0 / METHYL-M -1.0 / METHANOL  &
+       1179            1.0 / 1-M 1.0
+       1180        STOIC 13 MIXED PPP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1181            METHYL-P 1.0 / PP 1.0
+       1182        STOIC 14 MIXED METHYL-P -1.0 / PP -1.0 / PPP 1.0 /  &
+       1183            METHANOL 1.0
+       1184        STOIC 15 MIXED PP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1185            METHYL-P 1.0 / 1-P 1.0
+       1186        STOIC 16 MIXED METHYL-P -1.0 / 1-P -1.0 / METHANOL 1.0 / &
+       1187            PP 1.0
+       1188        STOIC 17 MIXED 1-P -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1189            GLYCEROL 1.0 / METHYL-P 1.0
+       1190        STOIC 18 MIXED GLYCEROL -1.0 / METHYL-P -1.0 / METHANOL  &
+       1191            1.0 / 1-P 1.0
+       1192        STOIC 19 MIXED PPS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1193            METHYL-S 1.0 / PP 1.0
+       1194        STOIC 20 MIXED METHYL-S -1.0 / PP -1.0 / PPS 1.0 /  &
+       1195            METHANOL 1.0
+       1196        STOIC 21 MIXED PPS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1197            METHYL-P 1.0 / PS 1.0
+       1198        STOIC 22 MIXED METHYL-P -1.0 / PS -1.0 / PPS 1.0 /  &
+       1199            METHANOL 1.0
+       1200        STOIC 23 MIXED PS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1201            METHYL-P 1.0 / 1-S 1.0
+       1202        STOIC 24 MIXED METHYL-P -1.0 / 1-S -1.0 / METHANOL 1.0 / &
+       1203            PS 1.0
+       1204        STOIC 25 MIXED 1-S -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1205            GLYCEROL 1.0 / METHYL-S 1.0
+       1206        STOIC 26 MIXED GLYCEROL -1.0 / METHYL-S -1.0 / METHANOL  &
+       1207            1.0 / 1-S 1.0
+       1208        STOIC 27 MIXED PS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1209            METHYL-S 1.0 / 1-P 1.0
+       1210        STOIC 28 MIXED METHYL-S -1.0 / 1-P -1.0 / METHANOL 1.0 / &
+       1211            PS 1.0
+       1212        STOIC 29 MIXED PPO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1213            METHYL-O 1.0 / PP 1.0
+       1214        STOIC 30 MIXED METHYL-O -1.0 / PP -1.0 / PPO 1.0 /  &
+       1215            METHANOL 1.0
+       1216        STOIC 31 MIXED PPO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1217            METHYL-P 1.0 / PO 1.0
+       1218        STOIC 32 MIXED METHYL-P -1.0 / PO -1.0 / PPO 1.0 /  &
+       1219            METHANOL 1.0
+       1220        STOIC 33 MIXED PO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1221            METHYL-P 1.0 / 1-O 1.0
+       1222        STOIC 34 MIXED METHYL-P -1.0 / 1-O -1.0 / METHANOL 1.0 / &
+       1223            PO 1.0
+       1224        STOIC 35 MIXED PO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1225            1-P 1.0 / METHYL-O 1.0
+       1226        STOIC 36 MIXED METHYL-O -1.0 / 1-P -1.0 / PO 1.0 /  &
+       1227            METHANOL 1.0
+       1228        STOIC 37 MIXED MMP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1229            METHYL-P 1.0 / MM 1.0
+       1230        STOIC 38 MIXED MM -1.0 / METHYL-P -1.0 / METHANOL 1.0 /  &
+       1231            MMP 1.0
+       1232        STOIC 39 MIXED MMP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1233            METHYL-M 1.0 / MP 1.0
+       1234        STOIC 40 MIXED MP -1.0 / METHYL-M -1.0 / METHANOL 1.0 /  &
+       1235            MMP 1.0
+       1236        STOIC 41 MIXED MP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1237            METHYL-P 1.0 / 1-M 1.0
+       1238        STOIC 42 MIXED METHYL-P -1.0 / 1-M -1.0 / MP 1.0 /  &
+       1239            METHANOL 1.0
+       1240        STOIC 43 MIXED MP -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1241            METHYL-M 1.0 / 1-P 1.0
+       1242        STOIC 44 MIXED METHYL-M -1.0 / 1-P -1.0 / MP 1.0 /  &
+       1243            METHANOL 1.0
+       1244        STOIC 45 MIXED PPLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1245            METHY-LI 1.0 / PP 1.0
+       1246        STOIC 46 MIXED METHY-LI -1.0 / PP -1.0 / PPLI 1.0 /  &
+       1247            METHANOL 1.0
+       1248        STOIC 47 MIXED PPLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1249            METHYL-P 1.0 / PLI 1.0
+       1250        STOIC 48 MIXED METHYL-P -1.0 / PLI -1.0 / PPLI 1.0 /  &
+       1251            METHANOL 1.0
+       1252        STOIC 49 MIXED PLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1253            METHY-LI 1.0 / 1-P 1.0
+       1254        STOIC 50 MIXED METHY-LI -1.0 / 1-P -1.0 / PLI 1.0 /  &
+       1255            METHANOL 1.0
+       1256        STOIC 51 MIXED PLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1257            METHYL-P 1.0 / 1-LI 1.0
+       1258        STOIC 52 MIXED METHYL-P -1.0 / 1-LI -1.0 / PLI 1.0 /  &
+       1259            METHANOL 1.0
+       1260        STOIC 53 MIXED 1-LI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1261            GLYCEROL 1.0 / METHY-LI 1.0
+       1262        STOIC 54 MIXED GLYCEROL -1.0 / METHY-LI -1.0 / METHANOL  &
+       1263            1.0 / 1-LI 1.0
+       1264        STOIC 55 MIXED POO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1265            METHYL-O 1.0 / PO 1.0
+       1266        STOIC 56 MIXED METHYL-O -1.0 / PO -1.0 / METHANOL 1.0 /  &
+       1267            POO 1.0
+       1268        STOIC 57 MIXED POO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1269            METHYL-P 1.0 / OO 1.0
+       1270        STOIC 58 MIXED METHYL-P -1.0 / OO -1.0 / POO 1.0 /  &
+       1271            METHANOL 1.0
+       1272        STOIC 59 MIXED POS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1273            METHYL-S 1.0 / PO 1.0
+       1274        STOIC 60 MIXED METHYL-S -1.0 / PO -1.0 / METHANOL 1.0 /  &
+       1275            POS 1.0
+       1276        STOIC 61 MIXED POS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1277            METHYL-P 1.0 / OS 1.0
+       1278        STOIC 62 MIXED METHYL-P -1.0 / OS -1.0 / METHANOL 1.0 /  &
+       1279            POS 1.0
+       1280        STOIC 63 MIXED POS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1281            METHYL-O 1.0 / PS 1.0
+       1282        STOIC 64 MIXED METHYL-O -1.0 / PS -1.0 / METHANOL 1.0 /  &
+       1283            POS 1.0
+       1284        STOIC 65 MIXED PLIO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1285            METHYL-O 1.0 / PLI 1.0
+       1286        STOIC 66 MIXED METHYL-O -1.0 / PLI -1.0 / METHANOL 1.0 / &
+       1287            PLIO 1.0
+       1288        STOIC 67 MIXED PLIO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1289            METHYL-P 1.0 / LIO 1.0
+       1290        STOIC 68 MIXED METHYL-P -1.0 / LIO -1.0 / METHANOL 1.0 / &
+       1291            PLIO 1.0
+       1292        STOIC 69 MIXED PLIO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1293            METHY-LI 1.0 / PO 1.0
+       1294        STOIC 70 MIXED METHY-LI -1.0 / PO -1.0 / METHANOL 1.0 /  &
+       1295            PLIO 1.0
+       1296        STOIC 71 MIXED LIO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1297            METHYL-O 1.0 / 1-LI 1.0
+       1298        STOIC 72 MIXED METHYL-O -1.0 / 1-LI -1.0 / LIO 1.0 /  &
+       1299            METHANOL 1.0
+       1300        STOIC 73 MIXED LIO -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1301            METHY-LI 1.0 / 1-O 1.0
+       1302        STOIC 74 MIXED METHY-LI -1.0 / 1-O -1.0 / LIO 1.0 /  &
+       1303            METHANOL 1.0
+       1304        STOIC 75 MIXED OOS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1305            METHYL-S 1.0 / OO 1.0
+       1306        STOIC 76 MIXED METHYL-S -1.0 / OO -1.0 / OOS 1.0 /  &
+       1307            METHANOL 1.0
+       1308        STOIC 77 MIXED OOS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1309            METHYL-O 1.0 / OS 1.0
+       1310        STOIC 78 MIXED METHYL-O -1.0 / OS -1.0 / OOS 1.0 /  &
+       1311            METHANOL 1.0
+       1312        STOIC 79 MIXED OS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1313            METHYL-O 1.0 / 1-S 1.0
+       1314        STOIC 80 MIXED METHYL-O -1.0 / 1-S -1.0 / METHANOL 1.0 / &
+       1315            OS 1.0
+       1316        STOIC 81 MIXED OS -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1317            METHYL-S 1.0 / 1-O 1.0
+       1318        STOIC 82 MIXED METHYL-S -1.0 / 1-O -1.0 / METHANOL 1.0 / &
+       1319            OS 1.0
+       1320        STOIC 83 MIXED OOLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1321            METHY-LI 1.0 / OO 1.0
+       1322        STOIC 84 MIXED METHY-LI -1.0 / OO -1.0 / OOLI 1.0 /  &
+       1323            METHANOL 1.0
+       1324        STOIC 85 MIXED OOLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1325            METHYL-O 1.0 / LIO 1.0
+       1326        STOIC 86 MIXED METHYL-O -1.0 / LIO -1.0 / OOLI 1.0 /  &
+       1327            METHANOL 1.0
+       1328        STOIC 87 MIXED MPLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1329            METHY-LI 1.0 / MP 1.0
+       1330        STOIC 88 MIXED METHY-LI -1.0 / MP -1.0 / MPLI 1.0 /  &
+       1331            METHANOL 1.0
+       1332        STOIC 89 MIXED MPLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1333            METHYL-M 1.0 / PLI 1.0
+       1334        STOIC 90 MIXED METHYL-M -1.0 / PLI -1.0 / MPLI 1.0 /  &
+       1335            METHANOL 1.0
+       1336        STOIC 91 MIXED MPLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1337            METHYL-P 1.0 / MLI 1.0
+       1338        STOIC 92 MIXED METHYL-P -1.0 / MLI -1.0 / MPLI 1.0 /  &
+       1339            METHANOL 1.0
+       1340        STOIC 93 MIXED MLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1341            METHYL-M 1.0 / 1-LI 1.0
+       1342        STOIC 94 MIXED METHYL-M -1.0 / 1-LI -1.0 / MLI 1.0 /  &
+       1343            METHANOL 1.0
+       1344        STOIC 95 MIXED MLI -1.0 / METHANOL -1.0 / NAOH 0.0 /  &
+       1345            METHY-LI 1.0 / 1-M 1.0
+       1346        STOIC 96 MIXED METHY-LI -1.0 / 1-M -1.0 / MLI 1.0 /  &
+       1347            METHANOL 1.0
+       1348        POWLAW-EXP 1 MIXED OOO 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1349            NAOH 1.0
+       1350        POWLAW-EXP 2 MIXED OO 1.0 / MIXED METHYL-O 1.0
+       1351        POWLAW-EXP 3 MIXED OO 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1352            NAOH 1.0
+       1353        POWLAW-EXP 4 MIXED METHYL-O 1.0 / MIXED 1-O 1.0
+       1354        POWLAW-EXP 5 MIXED 1-O 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1355            NAOH 1.0
+       1356        POWLAW-EXP 6 MIXED GLYCEROL 1.0 / MIXED METHYL-O 1.0
+       1357        POWLAW-EXP 7 MIXED MMM 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1358            NAOH 1.0
+       1359        POWLAW-EXP 8 MIXED METHYL-M 1.0 / MIXED MM 1.0
+       1360        POWLAW-EXP 9 MIXED MM 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1361            NAOH 1.0
+       1362        POWLAW-EXP 10 MIXED METHYL-M 1.0 / MIXED 1-M 1.0
+       1363        POWLAW-EXP 11 MIXED 1-M 1.0 / MIXED METHANOL 1.0 /  &
+       1364            MIXED NAOH 1.0
+       1365        POWLAW-EXP 12 MIXED GLYCEROL 1.0 / MIXED METHYL-M 1.0
+       1366        POWLAW-EXP 13 MIXED PPP 1.0 / MIXED METHANOL 1.0 /  &
+       1367            MIXED NAOH 1.0
+       1368        POWLAW-EXP 14 MIXED METHYL-P 1.0 / MIXED PP 1.0
+       1369        POWLAW-EXP 15 MIXED PP 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1370            NAOH 1.0
+       1371        POWLAW-EXP 16 MIXED METHYL-P 1.0 / MIXED 1-P 1.0
+       1372        POWLAW-EXP 17 MIXED 1-P 1.0 / MIXED METHANOL 1.0 /  &
+       1373            MIXED NAOH 1.0
+       1374        POWLAW-EXP 18 MIXED GLYCEROL 1.0 / MIXED METHYL-P -1.0
+       1375        POWLAW-EXP 19 MIXED PPS 1.0 / MIXED METHANOL 1.0 /  &
+       1376            MIXED NAOH 1.0
+       1377        POWLAW-EXP 20 MIXED METHYL-S 1.0 / MIXED PP 1.0
+       1378        POWLAW-EXP 21 MIXED PPS 1.0 / MIXED METHANOL 1.0 /  &
+       1379            MIXED NAOH 1.0
+       1380        POWLAW-EXP 22 MIXED METHYL-P 1.0 / MIXED PS 1.0
+       1381        POWLAW-EXP 23 MIXED PS 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1382            NAOH 1.0
+       1383        POWLAW-EXP 24 MIXED METHYL-P 1.0 / MIXED 1-S 1.0
+       1384        POWLAW-EXP 25 MIXED 1-S 1.0 / MIXED METHANOL 1.0 /  &
+       1385            MIXED NAOH 1.0
+       1386        POWLAW-EXP 26 MIXED GLYCEROL 1.0 / MIXED METHYL-S 1.0
+       1387        POWLAW-EXP 27 MIXED PS 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1388            NAOH 1.0
+       1389        POWLAW-EXP 28 MIXED METHYL-S 1.0 / MIXED 1-P 1.0
+       1390        POWLAW-EXP 29 MIXED PPO 1.0 / MIXED METHANOL 1.0 /  &
+       1391            MIXED NAOH 1.0
+       1392        POWLAW-EXP 30 MIXED METHYL-O 1.0 / MIXED PP 1.0
+       1393        POWLAW-EXP 31 MIXED PPO 1.0 / MIXED METHANOL 1.0 /  &
+       1394            MIXED NAOH 1.0
+       1395        POWLAW-EXP 32 MIXED METHYL-P 1.0 / MIXED PO 1.0
+       1396        POWLAW-EXP 33 MIXED PO 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1397            NAOH 1.0
+       1398        POWLAW-EXP 34 MIXED METHYL-P 1.0 / MIXED 1-O 1.0
+       1399        POWLAW-EXP 35 MIXED PO 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1400            NAOH 1.0
+       1401        POWLAW-EXP 36 MIXED METHYL-O 1.0 / MIXED 1-P 1.0
+       1402        POWLAW-EXP 37 MIXED MMP 1.0 / MIXED METHANOL 1.0 /  &
+       1403            MIXED NAOH 1.0
+       1404        POWLAW-EXP 38 MIXED MM 1.0 / MIXED METHYL-P 1.0
+       1405        POWLAW-EXP 39 MIXED MMP 1.0 / MIXED METHANOL 1.0 /  &
+       1406            MIXED NAOH 1.0
+       1407        POWLAW-EXP 40 MIXED MP 1.0 / MIXED METHYL-M 1.0
+       1408        POWLAW-EXP 41 MIXED MP 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1409            NAOH 1.0
+       1410        POWLAW-EXP 42 MIXED METHYL-P 1.0 / MIXED 1-M 1.0
+       1411        POWLAW-EXP 43 MIXED MP 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1412            NAOH 1.0
+       1413        POWLAW-EXP 44 MIXED METHYL-M 1.0 / MIXED 1-P 1.0
+       1414        POWLAW-EXP 45 MIXED PPLI 1.0 / MIXED METHANOL 1.0 /  &
+       1415            MIXED NAOH 1.0
+       1416        POWLAW-EXP 46 MIXED METHY-LI 1.0 / MIXED PP 1.0
+       1417        POWLAW-EXP 47 MIXED PPLI 1.0 / MIXED METHANOL 1.0 /  &
+       1418            MIXED NAOH 1.0
+       1419        POWLAW-EXP 48 MIXED METHYL-P 1.0 / MIXED PLI 1.0
+       1420        POWLAW-EXP 49 MIXED PLI 1.0 / MIXED METHANOL 1.0 /  &
+       1421            MIXED NAOH 1.0
+       1422        POWLAW-EXP 50 MIXED METHY-LI 1.0 / MIXED 1-P 1.0
+       1423        POWLAW-EXP 51 MIXED PLI 1.0 / MIXED METHANOL 1.0 /  &
+       1424            MIXED NAOH 1.0
+       1425        POWLAW-EXP 52 MIXED METHYL-P 1.0 / MIXED 1-LI 1.0
+       1426        POWLAW-EXP 53 MIXED 1-LI 1.0 / MIXED METHANOL 1.0 /  &
+       1427            MIXED NAOH 1.0
+       1428        POWLAW-EXP 54 MIXED GLYCEROL 1.0 / MIXED METHY-LI 1.0
+       1429        POWLAW-EXP 55 MIXED POO 1.0 / MIXED METHANOL 1.0 /  &
+       1430            MIXED NAOH 1.0
+       1431        POWLAW-EXP 56 MIXED METHYL-O 1.0 / MIXED PO 1.0
+       1432        POWLAW-EXP 57 MIXED POO 1.0 / MIXED METHANOL 1.0 /  &
+       1433            MIXED NAOH 1.0
+       1434        POWLAW-EXP 58 MIXED METHYL-P 1.0 / MIXED OO 1.0
+       1435        POWLAW-EXP 59 MIXED POS 1.0 / MIXED METHANOL 1.0 /  &
+       1436            MIXED NAOH 1.0
+       1437        POWLAW-EXP 60 MIXED METHYL-S 1.0 / MIXED PO 1.0
+       1438        POWLAW-EXP 61 MIXED POS 1.0 / MIXED METHANOL 1.0 /  &
+       1439            MIXED NAOH 1.0
+       1440        POWLAW-EXP 62 MIXED METHYL-P 1.0 / MIXED OS 1.0
+       1441        POWLAW-EXP 63 MIXED POS 1.0 / MIXED METHANOL 1.0 /  &
+       1442            MIXED NAOH 1.0
+       1443        POWLAW-EXP 64 MIXED METHYL-O 1.0 / MIXED PS 1.0
+       1444        POWLAW-EXP 65 MIXED PLIO 1.0 / MIXED METHANOL 1.0 /  &
+       1445            MIXED NAOH 1.0
+       1446        POWLAW-EXP 66 MIXED METHYL-O 1.0 / MIXED PLI 1.0
+       1447        POWLAW-EXP 67 MIXED PLIO 1.0 / MIXED METHANOL 1.0 /  &
+       1448            MIXED NAOH 1.0
+       1449        POWLAW-EXP 68 MIXED METHYL-P 1.0 / MIXED LIO 1.0
+       1450        POWLAW-EXP 69 MIXED PLIO 1.0 / MIXED METHANOL 1.0 /  &
+       1451            MIXED NAOH 1.0
+       1452        POWLAW-EXP 70 MIXED METHY-LI 1.0 / MIXED PO 1.0
+       1453        POWLAW-EXP 71 MIXED LIO 1.0 / MIXED METHANOL 1.0 /  &
+       1454            MIXED NAOH 1.0
+       1455        POWLAW-EXP 72 MIXED METHYL-O 1.0 / MIXED 1-LI 1.0
+       1456        POWLAW-EXP 73 MIXED LIO 1.0 / MIXED METHANOL 1.0 /  &
+       1457            MIXED NAOH 1.0
+       1458        POWLAW-EXP 74 MIXED METHY-LI 1.0 / MIXED 1-O 1.0
+       1459        POWLAW-EXP 75 MIXED OOS 1.0 / MIXED METHANOL 1.0 /  &
+       1460            MIXED NAOH 1.0
+       1461        POWLAW-EXP 76 MIXED METHYL-S 1.0 / MIXED OO 1.0
+       1462        POWLAW-EXP 77 MIXED OOS 1.0 / MIXED METHANOL 1.0 /  &
+       1463            MIXED NAOH 1.0
+       1464        POWLAW-EXP 78 MIXED METHYL-O 1.0 / MIXED OS 1.0
+       1465        POWLAW-EXP 79 MIXED OS 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1466            NAOH 1.0
+       1467        POWLAW-EXP 80 MIXED METHYL-O 1.0 / MIXED 1-S 1.0
+       1468        POWLAW-EXP 81 MIXED OS 1.0 / MIXED METHANOL 1.0 / MIXED  &
+       1469            NAOH 1.0
+       1470        POWLAW-EXP 82 MIXED METHYL-S 1.0 / MIXED 1-O 1.0
+       1471        POWLAW-EXP 83 MIXED OOLI 1.0 / MIXED METHANOL 1.0 /  &
+       1472            MIXED NAOH 1.0
+       1473        POWLAW-EXP 84 MIXED METHY-LI 1.0 / MIXED OO 1.0
+       1474        POWLAW-EXP 85 MIXED OOLI 1.0 / MIXED METHANOL 1.0 /  &
+       1475            MIXED NAOH 1.0
+       1476        POWLAW-EXP 86 MIXED METHYL-O 1.0 / MIXED LIO 1.0
+       1477        POWLAW-EXP 87 MIXED MPLI 1.0 / MIXED METHANOL 1.0 /  &
+       1478            MIXED NAOH 1.0
+       1479        POWLAW-EXP 88 MIXED METHY-LI 1.0 / MIXED MP 1.0
+       1480        POWLAW-EXP 89 MIXED MPLI 1.0 / MIXED METHANOL 1.0 /  &
+       1481            MIXED NAOH 1.0
+       1482        POWLAW-EXP 90 MIXED METHYL-M 1.0 / MIXED PLI 1.0
+       1483        POWLAW-EXP 91 MIXED MPLI 1.0 / MIXED METHANOL 1.0 /  &
+       1484            MIXED NAOH 1.0
+       1485        POWLAW-EXP 92 MIXED METHYL-P 1.0 / MIXED MLI 1.0
+       1486        POWLAW-EXP 93 MIXED MLI 1.0 / MIXED METHANOL 1.0 /  &
+       1487            MIXED NAOH 1.0
+       1488        POWLAW-EXP 94 MIXED METHYL-M 1.0 / MIXED 1-LI 1.0
+       1489        POWLAW-EXP 95 MIXED MLI 1.0 / MIXED METHANOL 1.0 /  &
+       1490            MIXED NAOH 1.0
+       1491        POWLAW-EXP 96 MIXED METHY-LI 1.0 / MIXED 1-M 1.0
+       1492    ;
+       1493    ;
+       1494    ;
+       1495    ;
+       1496    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+      SQLLOCALDB.APESV150 : (DATAVERSION - 41.0.0.10)                         
+      SQLLOCALDB.APV150 : (DATAVERSION - 41.0.0.9)                            
+      SQLLOCALDB.FACTV150 : (DATAVERSION - 41.0.0.6)                          
+      SQLLOCALDB.NISTV150 : (DATAVERSION - 41.0.0.7)                          
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+
+  *   WARNING WHILE CHECKING INPUT SPECIFICATIONS              (PRPCHK.2)       
+      INCONSISTENT FREE WATER SETTING DETECTED FOR 1 STREAMS                    
+      SOURCE BLOCK        FREE WATER STREAM   DESTINATION BLOCK   FREE WATER    
+      =================== ========== ======== =================== ==========    
+      FILTER              NO         AQU3     B1                  DIRTY         
+ 
+ DESIGN SPEC: MEOHCONC WILL BE INTERPRETED 
+ CALCULATOR BLOCK: PO3FLOW WILL BE INTERPRETED 
+ 
+
+ PDF updated                                                                      TIME =      6.07
+
+ *** CALCULATION TRACE ***
+
+ ALKALI CATALYSED PRODUCTION OF BIODIESEL FROM                   
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   NAOH       ----       MIXER1         MEOH       ----       MIXER1  
+   H3PO4      ----       NEUTR          WATER      ----       WASHCOL 
+   OIL        ----       B3             MIX1       MIXER1     PUMP1   
+   MIX2       PUMP1      MIXER2         MIX3       MIXER2     REACTOR 
+   OIL3       PUMP2      HX1            OIL4       HX1        REACTOR 
+   MEOHREC    MEOHCOL    MIXER2         EST1       MEOHCOL    PUMP3   
+   EST2       PUMP3      HX2            EST3       HX2        WASHCOL 
+   MEOHWAT    ESTCOL     ----           FAME       ESTCOL     ----    
+   OILREC     ESTCOL     B2             AQU2       NEUTR      FILTER  
+   AQU3       FILTER     B1             SOLIDS     FILTER     ----    
+   EST4       WASHCOL    ESTCOL         AQU1       WASHCOL    NEUTR   
+   OILREC2    B2         B3             OIL2       B3         PUMP2   
+   REACOUT    REACTOR    MEOHCOL        DIRTYH2O   B1         ----    
+   GLYCEROL   B1         ----           WATMEOH    B1         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   MIXER1       MEOH NAOH                      MIX1                        
+   PUMP1        MIX1                           MIX2                        
+   MIXER2       MEOHREC MIX2                   MIX3                        
+   PUMP2        OIL2                           OIL3                        
+   HX1          OIL3                           OIL4                        
+   MEOHCOL      REACOUT                        MEOHREC EST1                
+   PUMP3        EST1                           EST2                        
+   HX2          EST2                           EST3                        
+   ESTCOL       EST4                           MEOHWAT FAME OILREC         
+   NEUTR        H3PO4 AQU1                     AQU2                        
+   FILTER       AQU2                           AQU3 SOLIDS                 
+   WASHCOL      WATER EST3                     EST4 AQU1                   
+   B2           OILREC                         OILREC2                     
+   B3           OIL OILREC2                    OIL2                        
+   REACTOR      MIX3 OIL4                      REACOUT                     
+   B1           AQU3                           DIRTYH2O GLYCEROL WATMEOH   
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      C-1 MIXER1 PUMP1 MIXER2 PUMP3 HX2 WASHCOL ESTCOL B2 B3 PUMP2 HX1 
+      |  REACTOR MEOHCOL 
+      (RETURN C-1) 
+      PO3FLOW NEUTR FILTER B1 
+
+Calculations begin                                                              time      0.34
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.35
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =      0.35
+     Tear Stream  :  MEOHREC    EST1
+     Tolerance used:  0.100D-03  0.100D-03 
+     Trace molefrac:  0.100D-05  0.100D-05 
+ 
+     SPECS: MEOHCONC
+
+      ENTHALPY CALCULATION FOR INLET STREAM MEOHREC OF BLOCK MIXER2               TIME =      0.35
+      KODE = 2  NTRIAL =   5  T = 301.9540  P =  20000.0      V = 2.419028E-05  BETA =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM EST1 OF BLOCK PUMP3                   TIME =      0.39
+      KODE = 2  NTRIAL =   7  T = 332.3643  P =  20000.0      V =  0.00000      BETA = 0.521815      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM MEOH OF BLOCK MIXER1                  TIME =      0.40
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM NAOH OF BLOCK MIXER1                  TIME =      0.40
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =      0.40
+      NO. TEMP ITER =    5     TEMP =  306.708    
+      KODE = 1  NTRIAL =   3  T = 306.7082  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =      0.42
+      VOL-FLOW   =  0.5433E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   16.30     , BRAKE PWR  =   55.13     , ELEC PWR   =   55.13    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =      0.42
+      KODE = 1  NTRIAL =   8  T = 305.4791  P =  20000.0      V = 1.720150E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =      0.42
+      VOL-FLOW   =  0.4007E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.06     , BRAKE PWR  =   122.0     , ELEC PWR   =   122.0    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =      0.45
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522288      Q =  537.379    
+
+      ENTHALPY CALCULATION FOR INLET STREAM WATER OF BLOCK WASHCOL                TIME =      0.46
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  110000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =      0.46
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1      343.12    
+ 
+          2    2      39.350    
+ 
+          3    2      41.134    
+ 
+          4    2      24.623    
+ 
+          5    3      14.660    
+ 
+          6    2      1.3663    
+ 
+          7    3     0.91666E-01
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =      0.48
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1      324.48    
+          2    5   16      2580.6    
+          3    1    3      966.01    
+          4    9   75      7274.5    
+          5    1    3      4954.5    
+          6    1    5      637.24    
+          7    2    5      431.75    
+          8    4   15      532.69    
+          9    2    4      246.48    
+         10    2    4      54.053    
+         11    2    3      35.168    
+         12    2    3      6.0151    
+         13    2    2     0.24431    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.10622E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =      0.73
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.490853      Q = -9039.57    
+
+      ENTHALPY CALCULATION FOR INLET STREAM OIL OF BLOCK B3                       TIME =      0.75
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =      0.75
+      NO. TEMP ITER =    6     TEMP =  298.052    
+      KODE = 1  NTRIAL =   6  T = 298.0519  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =      0.78
+      VOL-FLOW   =  0.3298E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.3     , BRAKE PWR  =   423.9     , ELEC PWR   =   423.9    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =      0.81
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21859.8    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =      0.82
+      REACTOR DUTY =   8898.40      VOLUME =   1.59162      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.408242    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =      3.19
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    2   12.017    
+          2    5   22   67.783    
+          3    3    9   13.340    
+          4    2    5   1.5902    
+          5    2    4  0.44870    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.31591E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =      3.36
+      ITER   0 For Tear Streams: MEOHREC   EST1
+      ITER   0 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9971  P =  20000.0      V = 1.996620E-08  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      NO. TEMP ITER =    5     TEMP =  320.531    
+      KODE = 1  NTRIAL =   8  T = 333.4336  P =  20000.0      V =  0.00000      BETA = 0.523734      Q =  0.00000    
+      SPEC   1 ERROR = -0.60758E-02 OLD X =  0.10160E-02 NEW X =  0.10160E-02
+
+  LOOP C-1      ITER    1:  43 VARS NOT CONVERGED, MAX ERR/TOL      2124.2        TIME =      3.39
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =      3.40
+      NO. TEMP ITER =    5     TEMP =  306.708    
+      KODE = 1  NTRIAL =   3  T = 306.7082  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =      3.40
+      VOL-FLOW   =  0.5433E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   16.30     , BRAKE PWR  =   55.13     , ELEC PWR   =   55.13    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =      3.40
+      KODE = 1  NTRIAL =   7  T = 305.6001  P =  20000.0      V = 1.566544E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =      3.40
+      VOL-FLOW   =  0.4005E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.05     , BRAKE PWR  =   121.9     , ELEC PWR   =   121.9    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =      3.44
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.523562      Q = -324.319    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =      3.45
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1      3.1877    
+ 
+          2    2     0.88437E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =      3.46
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4   18      4834.0    
+          2    1    8      2308.6    
+          3    1    3      317.19    
+          4    4   12      1426.5    
+          5    1    2      547.71    
+          6    3    6      472.94    
+          7    2    4      136.28    
+          8    2    4      52.256    
+          9    2    4      47.579    
+         10    2    3      7.0273    
+         11    2    2     0.50853    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.12322E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =      3.58
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.478962      Q = -10476.4    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =      3.59
+      NO. TEMP ITER =    6     TEMP =  298.035    
+      KODE = 1  NTRIAL =   6  T = 298.0354  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =      3.61
+      VOL-FLOW   =  0.3316E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   126.0     , BRAKE PWR  =   426.2     , ELEC PWR   =   426.2    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =      3.64
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  22010.5    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =      3.65
+      REACTOR DUTY =   8634.71      VOLUME =   1.58687      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.415736    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =      5.22
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    6   28   402.81    
+          2    3    9   186.09    
+          3    3    9   10.594    
+          4    2    5   3.3321    
+          5    2    5  0.33091    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.29290E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =      5.36
+      ITER   2 For Tear Streams: MEOHREC   EST1
+      ITER   2 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   6  T = 302.0539  P =  20000.0      V = 2.531414E-08  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   9  T = 333.6954  P =  20000.0      V = 2.420888E-06  BETA = 0.474301      Q =  0.00000    
+      SPEC   1 ERROR = -0.12376E-01 OLD X =  0.10160E-02 NEW X =  0.10160E-02
+
+  LOOP C-1      ITER    2:  43 VARS NOT CONVERGED, MAX ERR/TOL      1552.8        TIME =      5.38
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =      5.39
+      NO. TEMP ITER =    5     TEMP =  306.708    
+      KODE = 1  NTRIAL =   3  T = 306.7082  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =      5.39
+      VOL-FLOW   =  0.5433E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   16.30     , BRAKE PWR  =   55.13     , ELEC PWR   =   55.13    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =      5.39
+      KODE = 1  NTRIAL =   7  T = 305.7254  P =  20000.0      V = 1.402200E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =      5.39
+      VOL-FLOW   =  0.4031E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.28     , BRAKE PWR  =   122.7     , ELEC PWR   =   122.7    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =      5.41
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.525366      Q = -538.254    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =      5.42
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1      2.2689    
+ 
+          2    2     0.94729E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =      5.42
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4   16      3428.3    
+          2    1    6      1859.6    
+          3    1    3      247.67    
+          4    4   10      974.47    
+          5    2    5      258.15    
+          6    2    4      133.00    
+          7    2    4      40.788    
+          8    2    3      23.218    
+          9    2    3      3.0976    
+         10    2    2     0.83348    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.13577E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =      5.52
+      KODE = 2  NTRIAL =  17  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.468383      Q = -11542.2    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =      5.53
+      NO. TEMP ITER =    6     TEMP =  298.024    
+      KODE = 1  NTRIAL =   6  T = 298.0242  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =      5.55
+      VOL-FLOW   =  0.3330E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   126.5     , BRAKE PWR  =   427.9     , ELEC PWR   =   427.9    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =      5.58
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  22120.9    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =      5.59
+      REACTOR DUTY =   8373.33      VOLUME =   1.58087      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.422735    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =      7.10
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    7   31   387.29    
+          2    3    9   178.58    
+          3    3    9   10.118    
+          4    2    5   3.3294    
+          5    2    4  0.32128    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.27138E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =      7.22
+      ITER   3 For Tear Streams: MEOHREC   EST1
+      ITER   3 For Specs:        MEOHCONC
+
+      THE FOLLOWING VALUES ARE THE BASE POINTS FOR THE NUMERICAL DIFFERENTIATIONS
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   6  T = 302.0539  P =  20000.0      V = 2.531414E-08  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   1  T = 333.6954  P =  20000.0      V = 2.420888E-06  BETA = 0.525699      Q =  0.00000    
+      SPEC   1 ERROR = -0.18220E-01 OLD X =  0.10160E-02 NEW X =  0.11018E-02
+
+  LOOP C-1      ITER    3:  40 VARS NOT CONVERGED, MAX ERR/TOL     -1980.5        TIME =      7.23
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =      7.23
+      NO. TEMP ITER =    5     TEMP =  306.549    
+      KODE = 1  NTRIAL =   3  T = 306.5487  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =      7.23
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =      7.24
+      KODE = 1  NTRIAL =   7  T = 305.5822  P =  20000.0      V = 1.372655E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =      7.24
+      VOL-FLOW   =  0.4031E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.28     , BRAKE PWR  =   122.7     , ELEC PWR   =   122.7    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =      7.25
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.525366      Q = -538.254    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =      7.26
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.17608E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =      7.27
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    3    7     0.49523    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.13577E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =      7.30
+      KODE = 2  NTRIAL =  17  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.468404      Q = -11542.6    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =      7.31
+      NO. TEMP ITER =    6     TEMP =  298.024    
+      KODE = 1  NTRIAL =   6  T = 298.0242  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =      7.33
+      VOL-FLOW   =  0.3330E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   126.5     , BRAKE PWR  =   427.9     , ELEC PWR   =   427.9    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =      7.36
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  22120.9    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =      7.37
+      REACTOR DUTY =   8781.28      VOLUME =   1.59401      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.415386    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =      8.94
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    6   25   189.10    
+          2    3    9   84.164    
+          3    3    7   13.415    
+          4    3    7   3.5212    
+          5    2    5  0.87635    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.29580E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =      9.07
+      ITER   4 For Tear Streams: MEOHREC   EST1
+      ITER   4 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9490  P =  20000.0      V = 7.875677E-03  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      NO. TEMP ITER =    5     TEMP =  320.296    
+      KODE = 1  NTRIAL =   6  T = 333.1883  P =  20000.0      V =  0.00000      BETA = 0.523122      Q =  0.00000    
+      SPEC   1 ERROR = -0.11928E-01 OLD X =  0.11018E-02 NEW X =  0.12646E-02
+
+  LOOP C-1      ITER    4:  42 VARS NOT CONVERGED, MAX ERR/TOL     -1296.6        TIME =      9.08
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =      9.09
+      NO. TEMP ITER =    5     TEMP =  306.236    
+      KODE = 1  NTRIAL =   3  T = 306.2360  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =      9.09
+      VOL-FLOW   =  0.6449E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   19.35     , BRAKE PWR  =   65.44     , ELEC PWR   =   65.44    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =      9.09
+      KODE = 1  NTRIAL =   8  T = 305.1285  P =  20000.0      V = 4.296874E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =      9.10
+      VOL-FLOW   =  0.4046E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.41     , BRAKE PWR  =   123.2     , ELEC PWR   =   123.2    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =      9.12
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.523099      Q = -127.826    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =      9.12
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1      5.2845    
+ 
+          2    2     0.20070E-01
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =      9.13
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    8   54      7546.9    
+          2    1    9      737.13    
+          3    5   22      2702.2    
+          4    1    1      2091.7    
+          5    1    2      377.63    
+          6    4   10      910.42    
+          7    2    4      422.92    
+          8    2    4      133.57    
+          9    2    4      113.43    
+         10    2    3      28.917    
+         11    2    2      12.824    
+         12    2    2      5.5821    
+         13    2    2     0.60588    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11132E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =      9.34
+      KODE = 2  NTRIAL =  19  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.508321      Q = -9459.71    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =      9.35
+      NO. TEMP ITER =    6     TEMP =  298.043    
+      KODE = 1  NTRIAL =   6  T = 298.0431  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =      9.37
+      VOL-FLOW   =  0.3303E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.5     , BRAKE PWR  =   424.6     , ELEC PWR   =   424.6    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =      9.40
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21909.6    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =      9.41
+      REACTOR DUTY =   9710.73      VOLUME =   1.63266      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.389033    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     11.41
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    7   30   144.65    
+          2    5   16   282.80    
+          3    2    6   132.12    
+          4    3    9   10.506    
+          5    2    5   4.1138    
+          6    2    5  0.63869    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.38976E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     11.54
+      ITER   5 For Tear Streams: MEOHREC   EST1
+      ITER   5 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      NO. TEMP ITER =    5     TEMP =  300.508    
+      KODE = 1  NTRIAL =   3  T = 300.5075  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      NO. TEMP ITER =    5     TEMP =  320.310    
+      KODE = 1  NTRIAL =   8  T = 333.1886  P =  20000.0      V =  0.00000      BETA = 0.523051      Q =  0.00000    
+      SPEC   1 ERROR =  0.12191E-01 OLD X =  0.12646E-02 NEW X =  0.11823E-02
+
+  LOOP C-1      ITER    5:  42 VARS NOT CONVERGED, MAX ERR/TOL      1427.5        TIME =     11.56
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     11.56
+      NO. TEMP ITER =    5     TEMP =  306.395    
+      KODE = 1  NTRIAL =   3  T = 306.3949  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     11.56
+      VOL-FLOW   =  0.6113E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   18.34     , BRAKE PWR  =   62.03     , ELEC PWR   =   62.03    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     11.57
+      KODE = 1  NTRIAL =   8  T = 305.2262  P =  20000.0      V = 3.384229E-04  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     11.57
+      VOL-FLOW   =  0.4029E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.27     , BRAKE PWR  =   122.7     , ELEC PWR   =   122.7    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     11.59
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.523028      Q = -127.548    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     11.60
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1      1.3348    
+ 
+          2    2     0.57437E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     11.61
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4   14      2172.1    
+          2    1    5      1346.4    
+          3    1    2      163.96    
+          4    3    7      529.74    
+          5    2    4      126.66    
+          6    2    4      80.864    
+          7    2    3      19.515    
+          8    2    3      19.148    
+          9    2    2      1.0269    
+         10    2    2     0.69190    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11848E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     11.70
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.484085      Q = -10072.8    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     11.71
+      NO. TEMP ITER =    6     TEMP =  298.040    
+      KODE = 1  NTRIAL =   6  T = 298.0395  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     11.74
+      VOL-FLOW   =  0.3311E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.8     , BRAKE PWR  =   425.6     , ELEC PWR   =   425.6    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     11.77
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21969.0    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     11.78
+      REACTOR DUTY =   9853.52      VOLUME =   1.62302      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.395583    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     13.33
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    7   31   372.88    
+          2    3    9   172.14    
+          3    3    8   10.087    
+          4    2    5   2.8955    
+          5    2    5  0.32510    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.36521E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     13.45
+      ITER   6 For Tear Streams: MEOHREC   EST1
+      ITER   6 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9495  P =  20000.0      V = 1.389072E-03  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   9  T = 333.2053  P =  20000.0      V = 6.365365E-05  BETA = 0.476864      Q =  0.00000    
+      SPEC   1 ERROR =  0.59598E-02 OLD X =  0.11823E-02 NEW X =  0.11036E-02
+
+  LOOP C-1      ITER    6:  43 VARS NOT CONVERGED, MAX ERR/TOL     -1393.5        TIME =     13.46
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     13.46
+      NO. TEMP ITER =    5     TEMP =  306.545    
+      KODE = 1  NTRIAL =   3  T = 306.5454  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     13.46
+      VOL-FLOW   =  0.5791E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.37     , BRAKE PWR  =   58.76     , ELEC PWR   =   58.76    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     13.47
+      KODE = 1  NTRIAL =   8  T = 305.3420  P =  20000.0      V = 2.175397E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     13.47
+      VOL-FLOW   =  0.4223E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   38.01     , BRAKE PWR  =   128.6     , ELEC PWR   =   128.6    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     13.49
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.523072      Q = -152.826    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     13.50
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.59445    
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     13.51
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4   13      1044.7    
+          2    1    3      779.49    
+          3    3    6      571.36    
+          4    2    4      108.12    
+          5    2    4      30.823    
+          6    2    3      17.583    
+          7    2    2      9.1148    
+          8    2    2      1.8865    
+          9    2    2     0.66153    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11488E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     13.58
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.492306      Q = -9765.54    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     13.60
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0420  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     13.62
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     13.65
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21938.3    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     13.66
+      REACTOR DUTY =   9282.76      VOLUME =   1.60928      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401498    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     15.23
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    7   31   362.71    
+          2    3    9   167.18    
+          3    3    8   9.7637    
+          4    2    5   2.9417    
+          5    2    5  0.31070    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34213E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     15.35
+      ITER   7 For Tear Streams: MEOHREC   EST1
+      ITER   7 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9499  P =  20000.0      V = 4.519923E-05  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   7  T = 333.1978  P =  20000.0      V = 3.269636E-06  BETA = 0.522822      Q =  0.00000    
+      SPEC   1 ERROR =  0.32384E-03 OLD X =  0.11036E-02 NEW X =  0.10991E-02
+
+  LOOP C-1      ITER    7:  42 VARS NOT CONVERGED, MAX ERR/TOL     -50.113        TIME =     15.36
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     15.36
+      NO. TEMP ITER =    5     TEMP =  306.554    
+      KODE = 1  NTRIAL =   3  T = 306.5539  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     15.36
+      VOL-FLOW   =  0.5773E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.32     , BRAKE PWR  =   58.57     , ELEC PWR   =   58.57    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     15.37
+      KODE = 1  NTRIAL =   8  T = 305.3510  P =  20000.0      V = 1.678650E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     15.37
+      VOL-FLOW   =  0.4028E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.26     , BRAKE PWR  =   122.6     , ELEC PWR   =   122.6    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     15.38
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522791      Q = -135.259    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     15.39
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.50643    
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     15.40
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4    9      45.039    
+          2    3    4      47.956    
+          3    2    3      3.3114    
+          4    2    2      2.0917    
+          5    2    2     0.19398    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11502E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     15.45
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.489028      Q = -9778.28    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     15.46
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0424  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     15.48
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     15.51
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21938.8    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     15.52
+      REACTOR DUTY =   9304.99      VOLUME =   1.60821      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.402096    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     16.89
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   19   22.497    
+          2    3    8   3.7757    
+          3    2    6  0.50209    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.33998E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     17.00
+      ITER   8 For Tear Streams: MEOHREC   EST1
+      ITER   8 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      NO. TEMP ITER =    4     TEMP =  301.949    
+      KODE = 1  NTRIAL =   2  T = 301.9491  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   6  T = 333.1980  P =  20000.0      V = 1.286013E-05  BETA = 0.522842      Q =  0.00000    
+      SPEC   1 ERROR = -0.21923E-03 OLD X =  0.10991E-02 NEW X =  0.11009E-02
+
+  LOOP C-1      ITER    8:  33 VARS NOT CONVERGED, MAX ERR/TOL      47.581        TIME =     17.01
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     17.01
+      NO. TEMP ITER =    5     TEMP =  306.550    
+      KODE = 1  NTRIAL =   3  T = 306.5505  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     17.01
+      VOL-FLOW   =  0.5780E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.34     , BRAKE PWR  =   58.65     , ELEC PWR   =   58.65    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     17.02
+      KODE = 1  NTRIAL =   8  T = 305.3481  P =  20000.0      V = 1.660360E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     17.02
+      VOL-FLOW   =  0.4057E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.52     , BRAKE PWR  =   123.5     , ELEC PWR   =   123.5    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     17.03
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522807      Q = -137.170    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     17.04
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.12174E-01
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     17.04
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    4    9      16.729    
+          2    3    4      17.881    
+          3    2    2      1.2922    
+          4    2    2     0.80655    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11507E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     17.09
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.488977      Q = -9782.98    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     17.10
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0423  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     17.12
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     17.15
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21939.3    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     17.16
+      REACTOR DUTY =   9315.81      VOLUME =   1.60853      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401947    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     18.52
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   15   5.5948    
+          2    3    9  0.95778    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34053E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     18.61
+      ITER   9 For Tear Streams: MEOHREC   EST1
+      ITER   9 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9490  P =  20000.0      V = 4.748274E-07  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      NO. TEMP ITER =    5     TEMP =  320.295    
+      KODE = 1  NTRIAL =   4  T = 333.1908  P =  20000.0      V =  0.00000      BETA = 0.522831      Q =  0.00000    
+      SPEC   1 ERROR = -0.79691E-04 OLD X =  0.11009E-02 NEW X =  0.11020E-02
+
+  LOOP C-1      ITER    9:  33 VARS NOT CONVERGED, MAX ERR/TOL      15.095        TIME =     18.62
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     18.62
+      NO. TEMP ITER =    5     TEMP =  306.549    
+      KODE = 1  NTRIAL =   3  T = 306.5485  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     18.63
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     18.63
+      KODE = 1  NTRIAL =   8  T = 305.3463  P =  20000.0      V = 1.661135E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     18.63
+      VOL-FLOW   =  0.4019E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.17     , BRAKE PWR  =   122.3     , ELEC PWR   =   122.3    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     18.65
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522807      Q = -128.983    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     18.66
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.32781E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     18.67
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    3    7      2.8433    
+          2    2    2      3.2024    
+          3    2    2     0.22000    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11508E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     18.70
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.488961      Q = -9783.74    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     18.72
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0423  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     18.73
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     18.77
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21939.4    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     18.78
+      REACTOR DUTY =   9320.48      VOLUME =   1.60870      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401871    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     20.17
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   14   3.1934    
+          2    3    9  0.54653    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34085E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     20.26
+      ITER  10 For Tear Streams: MEOHREC   EST1
+      ITER  10 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      NO. TEMP ITER =    4     TEMP =  301.949    
+      KODE = 1  NTRIAL =   1  T = 301.9494  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      NO. TEMP ITER =    5     TEMP =  320.301    
+      KODE = 1  NTRIAL =   8  T = 333.1959  P =  20000.0      V =  0.00000      BETA = 0.522853      Q =  0.00000    
+      SPEC   1 ERROR = -0.88652E-06 OLD X =  0.11020E-02 NEW X =  0.11020E-02
+
+  LOOP C-1      ITER   10:   2 VARS NOT CONVERGED, MAX ERR/TOL      8.2744        TIME =     20.27
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     20.28
+      NO. TEMP ITER =    5     TEMP =  306.549    
+      KODE = 1  NTRIAL =   3  T = 306.5485  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     20.28
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     20.28
+      KODE = 1  NTRIAL =   8  T = 305.3465  P =  20000.0      V = 1.660519E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     20.28
+      VOL-FLOW   =  0.4019E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.17     , BRAKE PWR  =   122.3     , ELEC PWR   =   122.3    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     20.30
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522826      Q = -133.139    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     20.31
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.60825E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     20.32
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    3    7     0.58776    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11508E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     20.35
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.488945      Q = -9783.41    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     20.36
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0423  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     20.38
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     20.42
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21939.4    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     20.43
+      REACTOR DUTY =   9320.58      VOLUME =   1.60870      RES TIME =   3600.00    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401866    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     20.69
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   14  0.46666E-01
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34085E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     20.78
+      ITER  11 For Tear Streams: MEOHREC   EST1
+      ITER  11 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9503  P =  20000.0      V = 6.481653E-08  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   9  T = 333.1985  P =  20000.0      V = 2.579260E-05  BETA = 0.477139      Q =  0.00000    
+      SPEC   1 ERROR = -0.70533E-06 OLD X =  0.11020E-02 NEW X =  0.11020E-02
+
+  LOOP C-1      ITER   11:   1 VARS NOT CONVERGED, MAX ERR/TOL      5.8884        TIME =     20.79
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     20.79
+      NO. TEMP ITER =    5     TEMP =  306.548    
+      KODE = 1  NTRIAL =   3  T = 306.5484  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     20.79
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     20.80
+      KODE = 1  NTRIAL =   8  T = 305.3467  P =  20000.0      V = 1.659615E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     20.80
+      VOL-FLOW   =  0.4096E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.87     , BRAKE PWR  =   124.7     , ELEC PWR   =   124.7    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     20.82
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522819      Q = -139.877    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     20.83
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.28866E-02
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     20.83
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    3    7     0.39015    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11508E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     20.86
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.488961      Q = -9783.66    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     20.87
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0423  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     20.88
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     20.91
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21939.4    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     20.93
+      REACTOR DUTY =   9320.87      VOLUME =   1.60870      RES TIME =   3599.98    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401853    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     21.17
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   14  0.95563E-01
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34086E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     21.25
+      ITER  12 For Tear Streams: MEOHREC   EST1
+      ITER  12 For Specs:        MEOHCONC
+
+      --FLASH TEAR STREAM MEOHREC 
+      KODE = 1  NTRIAL =   5  T = 301.9497  P =  20000.0      V = 6.084172E-10  BETA =  1.00000      Q =  0.00000    
+
+      --FLASH TEAR STREAM EST1    
+      KODE = 1  NTRIAL =   4  T = 333.1977  P =  20000.0      V =  0.00000      BETA = 0.522847      Q =  0.00000    
+      SPEC   1 ERROR =  0.13090E-05 OLD X =  0.11020E-02 NEW X =  0.11020E-02
+
+  LOOP C-1      ITER   12:   1 VARS NOT CONVERGED, MAX ERR/TOL     -11.500        TIME =     21.25
+
+      UOS BLOCK MIXER1   MODEL: MIXER                                             TIME =     21.26
+      NO. TEMP ITER =    5     TEMP =  306.548    
+      KODE = 1  NTRIAL =   3  T = 306.5485  P =  100000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP1    MODEL: PUMP                                              TIME =     21.26
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+
+      UOS BLOCK MIXER2   MODEL: MIXER                                             TIME =     21.26
+      KODE = 1  NTRIAL =   8  T = 305.3465  P =  20000.0      V = 1.660215E-03  BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP3    MODEL: PUMP                                              TIME =     21.26
+      VOL-FLOW   =  0.4019E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.17     , BRAKE PWR  =   122.3     , ELEC PWR   =   122.3    
+
+      UOS BLOCK HX2      MODEL: HEATER                                            TIME =     21.28
+      KODE = 2  NTRIAL =   7  T = 333.1500  P =  110000.      V =  0.00000      BETA = 0.522818      Q = -134.417    
+
+      UOS BLOCK WASHCOL  MODEL: EXTRACT                                           TIME =     21.28
+
+      Convergence iterations:
+         OL   IL     Err/Tol
+          1    1     0.16140E-03
+ 
+
+      UOS BLOCK ESTCOL   MODEL: RADFRAC                                           TIME =     21.29
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    3    7     0.14962    
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.11508E-01    0.69444E-02    0.69444E-01
+
+      UOS BLOCK B2       MODEL: HEATER                                            TIME =     21.32
+      KODE = 2  NTRIAL =  18  T = 298.1500  P =  20000.0      V =  0.00000      BETA = 0.488957      Q = -9783.58    
+
+      UOS BLOCK B3       MODEL: MIXER                                             TIME =     21.33
+      NO. TEMP ITER =    6     TEMP =  298.042    
+      KODE = 1  NTRIAL =   6  T = 298.0423  P =  20000.0      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PUMP2    MODEL: PUMP                                              TIME =     21.35
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+
+      UOS BLOCK HX1      MODEL: HEATER                                            TIME =     21.38
+      KODE = 2  NTRIAL =   4  T = 333.1500  P =  400000.      V =  0.00000      BETA =  1.00000      Q =  21939.4    
+
+      UOS BLOCK REACTOR  MODEL: RCSTR                                             TIME =     21.39
+      REACTOR DUTY =   9320.68      VOLUME =   1.60870      RES TIME =   3599.99    
+      REACTOR T =   333.150      P =   400000.      V =   0.00000      BETA =  0.401862    
+
+      UOS BLOCK MEOHCOL  MODEL: RADFRAC                                           TIME =     21.86
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    5   14  0.64353E-01
+
+      RESULTS FOR MANIPULATED VARIABLES:
+      VARIABLE     FINAL VALUE    LOWER BOUND    UPPER BOUND
+         1         0.34086E-01    0.22222E-01    0.55556E-01
+
+      CONVERGENCE BLOCK C-1       METHOD: BROYDEN                                 TIME =     21.95
+      ITER  13 For Tear Streams: MEOHREC   EST1
+      ITER  13 For Specs:        MEOHCONC
+      SPEC   1 ERROR =  0.45455E-07                          X =  0.11020E-02
+
+  LOOP C-1      ITER   13:     *** CONVERGED *** , MAX ERR/TOL    -0.84243        TIME =     21.95
+
+      CALCULATOR BLOCK PO3FLOW                                                    TIME =     21.96
+
+      ENTHALPY CALCULATION FOR INLET STREAM H3PO4 OF BLOCK NEUTR                  TIME =     21.96
+      KODE = 2  NTRIAL =   3  T = 293.1500  P =  110000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+
+      UOS BLOCK NEUTR    MODEL: RSTOIC                                            TIME =     21.96
+      KODE = 2  NTRIAL =   6  T = 323.1500  P =  110000.      V =  0.00000      BETA = 0.999999      Q = -19600.1    
+
+      UOS BLOCK FILTER   MODEL: SEP                                               TIME =     21.97
+      ---FLASH OUTLET STREAM AQU3    :
+      KODE = 2  NTRIAL =   4  T = 323.1500  P =  110000.      V =  0.00000      BETA =  1.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SOLIDS  :
+      KODE = 2  NTRIAL =   5  T = 323.1500  P =  110000.      V =  0.00000      BETA = 0.999461      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: DISTL                                             TIME =     21.97
+      COND TEMP=   344.09     FEED TRAY TEMP=   535.56     BTM TEMP=   536.67    
+
+      GENERATING RESULTS FOR UOS BLOCK PUMP1    MODEL: PUMP                       TIME =     21.98
+      KODE = 5  NTRIAL =   5  T = 306.5485  P =  18982.8      V =  0.00000      BETA =  1.00000      Q = -3.16277    
+      VOL-FLOW   =  0.5784E-04 , DELTA P    =  0.3000E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   17.35     , BRAKE PWR  =   58.69     , ELEC PWR   =   58.69    
+      NPSH AVAIL =   95.25    
+
+      GENERATING RESULTS FOR UOS BLOCK PUMP2    MODEL: PUMP                       TIME =     21.98
+      KODE = 5  NTRIAL =   7  T = 298.0423  P = 1.650538E-05  V =  0.00000      BETA =  1.00000      Q = -4.97323    
+      VOL-FLOW   =  0.3307E-03 , DELTA P    =  0.3800E+06 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   125.7     , BRAKE PWR  =   425.1     , ELEC PWR   =   425.1    
+      NPSH AVAIL =   21.82    
+
+      GENERATING RESULTS FOR UOS BLOCK HX1      MODEL: HEATER                     TIME =     22.02
+
+      GENERATING RESULTS FOR UOS BLOCK PUMP3    MODEL: PUMP                       TIME =     22.02
+      KODE = 5  NTRIAL =   2  T = 333.1979  P =  20000.2      V =  0.00000      BETA = 0.522847      Q = 0.329278    
+      VOL-FLOW   =  0.4019E-03 , DELTA P    =  0.9000E+05 , PUMP EFF   =  0.2957    
+      FLUID PWR  =   36.17     , BRAKE PWR  =   122.3     , ELEC PWR   =   122.3    
+      NPSH AVAIL =   0.000    
+
+      GENERATING RESULTS FOR UOS BLOCK HX2      MODEL: HEATER                     TIME =     22.05
+
+      GENERATING RESULTS FOR UOS BLOCK B2       MODEL: HEATER                     TIME =     22.05
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =     22.05
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =     22.05
+
+ Report Writer entered                                                            Time =     22.08
+      STREAM DIRTYH2O WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   7  T = 578.2833  P =  40000.0      V =  0.00000      BETA =  1.00000      Q = 0.541201    
+      STREAM DIRTYH2O WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   7  T = 578.2833  P =  40000.0      V =  0.00000      BETA =  1.00000      Q = 0.541201    
+      STREAM GLYCEROL WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   8  T = 536.6703  P =  50000.0      V =  0.00000      Q = 9.261431E-07
+      STREAM WATMEOH WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2  NTRIAL =   5  T = 344.0942  P =  40000.0      V =  0.00000      BETA =  0.00000      Q =-6.624068E-07
+      STREAM WATMEOH WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2  NTRIAL =   5  T = 344.0942  P =  40000.0      V =  0.00000      BETA =  0.00000      Q =-6.624068E-07
+
+ Results generated                                                                Time =     22.55
+
+RUN SAVED
+
+
+
+ NO ERRORS OR WARNINGS GENERATED
