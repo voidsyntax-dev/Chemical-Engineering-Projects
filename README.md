@@ -51,12 +51,40 @@ The workflow runs in stages:
 On held-out data, the model catches about 84% of failures with about 95% precision.  
 Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Repository).
 
+---
+
+### Soft Sensor for Diethylbenzene Production
+
+This project builds a soft sensor that estimates the outlet composition of a CSTR producing ethylbenzene and diethylbenzene from benzene and ethylene. The composition is hard to measure online, so the sensor predicts it from easy-to-measure temperatures, pressures, flows, level, and controller setpoints.
+
+The workflow runs in stages:
+
+1. **Data:** Dynamic history from an Aspen Dynamics model of the reactor. Inputs are varied with random step changes in the reactor temperature and level setpoints, the flow setpoints, and the feed and utility conditions. Each run is logged at 0.01 h.
+2. **Normal-operation filter:** Rows where the reactor, level, or setpoints leave the normal band are removed, so the model learns only the operating range it will be used in.
+3. **Lag features:** Past values of each measurement are added, computed within continuous segments so no feature crosses a gap in the data.
+4. **Time-based split:** The first 70% of time is used for training and the last 30% for testing. Random splitting is avoided because neighboring samples are highly correlated.
+5. **Model comparison:** A mean baseline, Ridge, PLS, random forest, SVR, a multilayer perceptron, and gradient boosting are trained for each target. The MLP architecture for D-ETBENZ was tuned by time-ordered cross-validation on the training data. The ETBENZ MLP uses a fixed architecture of (32, 16).
+6. **Deployment:** The selected model for each target is saved with its scaler, feature list, lag settings, normal-band limits, and sampling interval, so the same preprocessing can be applied to new data.
+
+**Targets:** outlet mole fractions of ethylbenzene (ETBENZ) and diethylbenzene (D-ETBENZ).
+
+#### Results (held-out test period, last 30% of time)
+
+| Target | Selected model | RMSE | MAE | R² |
+|---|---|---|---|---|
+| ETBENZ | MLP (32, 16) | 0.004900 | 0.003548 | 0.979 |
+| D-ETBENZ | MLP (16,) | 0.000042 | 0.000027 | 0.892 |
+
+Mean baseline for comparison: ETBENZ R² of −0.001, D-ETBENZ R² of −0.048. Ridge scored 0.973 for ETBENZ and 0.733 for D-ETBENZ.
+
+
 ## Repository Structure
 ```
 Chemical-Engineering-Projects/
-├── Biodiesel production Unit/   # Biodiesel production process model
-├── Crude Distillation Unit/     # Crude distillation process model
-├── Predictive Maintenance/      # Dataset, model and report
+├── Biodiesel production Unit/                   # Biodiesel production process model
+├── Crude Distillation Unit/                     # Crude distillation process model
+├── Predictive Maintenance of Milling machine/   # Dataset, model and report
+├── Soft sensor model on CSTR outlet/            # CSTR Simulation, Model files
 ├── LICENSE
 └── README.md
 ```
