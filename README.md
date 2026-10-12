@@ -36,7 +36,7 @@ The flowsheet gives the final FAME product, glycerol, and aqueous waste streams 
 
 ---
 
-### Predictive Maintenance of a Milling Machine
+### Predictive Maintenance of Milling Machine
 
 This project develops a machine learning model that predicts equipment failure from operating conditions, so that maintenance can be scheduled before a breakdown occurs. 
 
@@ -53,7 +53,7 @@ Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Reposito
 
 ---
 
-### Soft Sensor for Diethylbenzene Production
+### Soft Sensor for Ethylbenzene Production
 
 This project builds a soft sensor that estimates the outlet composition of a CSTR producing ethylbenzene and diethylbenzene from benzene and ethylene. The composition is hard to measure online, so the sensor predicts it from easy-to-measure temperatures, pressures, flows, level, and controller setpoints.
 
@@ -84,7 +84,7 @@ Chemical-Engineering-Projects/
 ├── Biodiesel production Unit/                   # Biodiesel production process model
 ├── Crude Distillation Unit/                     # Crude distillation process model
 ├── Predictive Maintenance of Milling machine/   # Dataset, model and report
-├── Soft sensor model on CSTR outlet/            # CSTR Simulation, Model files
+├── Soft Sensor for Ethylbenzene Production/   # CSTR Simulation, Model files
 ├── LICENSE
 └── README.md
 ```
@@ -95,3 +95,4 @@ Chemical-Engineering-Projects/
 - **Crude Distillation Unit:** Aspen HYSYS V15
 - **Biodiesel production Unit:** ASPEN PLUS V15
 - **Predictive Maintenance of a Milling Machine:** requirements.txt (pip install -r requirements.txt)
+- **Soft Sensor for Ethylbenzene Production:** requirements.txt (pip install -r requirements.txt)
