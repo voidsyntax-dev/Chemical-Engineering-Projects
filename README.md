@@ -30,6 +30,59 @@ Mean baseline for comparison: ETBENZ R² of −0.001, D-ETBENZ R² of −0.048. 
 
 ---
 
+### Reinforcement Learning Control of a Van de Vusse CSTR
+
+This project trains a reinforcement learning (RL) controller for a jacketed CSTR running the Van de Vusse reactions (A → B → C, 2A → D), where B is the desired product. The controller manipulates the feed rate and jacket cooling duty to hold the product concentration at a set-point while keeping the reactor below 130 °C. It is benchmarked against an industrial PI scheme and a nonlinear model predictive controller (MPC).
+
+The workflow runs in stages:
+
+1. **Process model:** Material, energy and jacket balances with Arrhenius kinetics, a side reaction, and a cooling-only jacket, using literature parameters (Klatt & Engell, 1998). The model is checked against the published steady state, a mass-balance closure test, and a reference ODE solver.
+2. **Realistic plant environment:** The model is wrapped as a Gymnasium environment with a 20 s dead time and thermocouple lag on temperature, a 30 s analyzer delay on concentrations, measurement noise, valve saturation and rate limits. Each episode adds feed-temperature drift, fouling, coolant capacity loss and kinetic mismatch.
+3. **Baselines:** A dual PI controller (concentration ← feed rate, temperature ← jacket duty) tuned by grid search, and a nonlinear MPC (CasADi + IPOPT, 200 s horizon) with a disturbance observer for offset-free tracking.
+4. **RL training:** A PPO agent is first trained from scratch on a GPU, then retrained as MPC-guided PPO. This combines behaviour cloning from MPC demonstrations, PPO with an imitation term that decays over training, and DAgger rounds in which the MPC corrects the agent's own trajectories.
+5. **Robustness:** The agent gets error-memory inputs (5- and 20-min error averages) and is trained over a wide range of kinetic mismatch (±15%). It is then tested on a held-out "hard" set (kinetics 15–22% off nominal) never used in training or model selection.
+
+**Objective:** track the product concentration cB while respecting the temperature limit and limiting valve movement.
+
+#### Results (20 identical scenarios per set, mean |cB − set-point| in mol/L)
+
+| Test set | PI | Nonlinear MPC | MPC-guided PPO |
+|---|---|---|---|
+| Nominal plant | 0.078 | 0.011 | 0.013 |
+| Perturbed plant | 0.093 | 0.030 | 0.032 |
+| Hard, held out | 0.110 | 0.046 | 0.046 |
+| Compute per decision | ~0 | 10–34 ms | 0.6 ms |
+
+On the held-out set the RL controller matches nonlinear MPC on tracking at about 1/20–1/50 of the computation per decision, with no online optimisation. No controller had a thermal runaway or time above 130 °C in any test. PI error is 3–8× higher, because the two loops interact, the product gain changes sign near the optimum, and the process has dead time.
+
+---
+
+### Fault Detection and Diagnosis for the Tennessee Eastman Process
+
+This project builds fault detection and diagnosis systems for the Tennessee Eastman Process (TEP), a standard benchmark plant with a reactor, condenser, separator, stripper and recycle loop under closed-loop control. The controllers hide faults, so the monitors must pick up small changes in 52 measured and manipulated variables and name the fault behind them.
+
+The workflow runs in stages:
+
+1. **Data and simulator check:** The Rieth et al. (2017) dataset is used with its official train and test split, with 500 runs for each of 20 faults. The Downs and Vogel Fortran model is compiled and reproduces the published normal operating point within 0.24%.
+2. **PCA baseline:** T² and SPE statistics with control limits set only from held-out normal runs. Diagnosis uses contribution plots.
+3. **Learned models:** XGBoost on windowed features, and an LSTM autoencoder trained on normal data only with a classifier head for diagnosis (trained on a Kaggle GPU).
+4. **Fixed alarm rule:** Every model alarms when its score stays above the 99th-percentile limit for 3 samples in a row. Test data never sets a threshold or picks a model.
+5. **Evaluation and leakage checks:** Detection rate, false-alarm rate, delay and diagnosis accuracy for each fault, with 95% intervals over 5 seeds. Results above 99% go through leakage checks.
+
+**Faults:** 20 process faults, including steps, random variations, drifts and valve sticking.
+
+| Model | Samples in alarm | False alarms | Diagnosis accuracy |
+|---|---|---|---|
+| PCA | 62.6% | 0.06% | 64.3% |
+| LSTM autoencoder | 74.6% | 0.66% | 81.8% |
+| XGBoost | 82.7% | 0.20% | 86.5% |
+
+No model reaches 99% detection on 14 of 20 faults. Faults 3, 9 and 15 are the hardest: the best detection is 10.6%, 3.1% and 1.1%. The leakage checks found no problem.
+
+Dataset: Rieth et al. (2017), Additional Tennessee Eastman Process Simulation Data for Anomaly Detection Evaluation (Harvard Dataverse).
+
+---
+
 ### Predictive Maintenance of Milling Machine
 
 This project develops a machine learning model that predicts equipment failure from operating conditions, so that maintenance can be scheduled before a breakdown occurs. 
@@ -83,11 +136,12 @@ Chemical-Engineering-Projects/
 ├── Biodiesel production Unit/                   # Biodiesel production process model
 ├── Crude Distillation Unit/                     # Crude distillation process model
 ├── Predictive Maintenance of Milling machine/   # Dataset, model and report
-├── Soft Sensor for Ethylbenzene Production/   # CSTR Simulation, Model files
+├── Soft Sensor for Ethylbenzene Production/     # CSTR Simulation, Model files
+├── RL Control of Van de Vusse CSTR/             # Gymnasium env, PI/MPC baselines, PPO training, models
+├── Tennessee Eastman Fault Detection/           # Simulator check, PCA/XGBoost/LSTM models, report
 ├── LICENSE
 └── README.md
 ```
-
 
 ## Requirements
 

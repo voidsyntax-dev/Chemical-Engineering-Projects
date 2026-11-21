@@ -1,0 +1,11 @@
+{
+ "fdr_sample": 0.745527575,
+ "det_run": 0.95624,
+ "delay_min": 195.04080430703056,
+ "far_pre_onset": 0.0060170212765957454,
+ "diag_acc": 0.818341152368758,
+ "diag_acc_alarmed": 0.8401146368128449,
+ "far_fault_free_sample": 0.006590860786397449,
+ "far_fault_free_run": 0.6892000000000001,
+ "seeds": 5
+}

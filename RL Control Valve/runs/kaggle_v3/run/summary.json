@@ -1,0 +1,12 @@
+{
+  "train_mode": "randomized",
+  "move_penalty": 0.5,
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "n_envs": 8,
+  "target_steps": 5000000,
+  "sb3": "2.9.2",
+  "torch": "2.11.0+cu130",
+  "num_timesteps": 5005312,
+  "wall_time_min": 26.76
+}

@@ -1,0 +1,13 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.f text eol=lf
+*.pyf text eol=lf
+*.ipynb text eol=lf
+*.png binary
+*.pt binary
+*.npz binary
+*.RData binary
+# keep notebooks out of language statistics
+*.ipynb linguist-generated=true

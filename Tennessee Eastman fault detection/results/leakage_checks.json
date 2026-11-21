@@ -1,0 +1,1173 @@
+{
+ "A_row_overlap": {
+  "train_rows": 5250000,
+  "test_rows": 10080000,
+  "identical_rows_in_both": 0,
+  "train_rows_unique": 4976277,
+  "note": "hash of the 52-value float32 row"
+ },
+ "B_flagged_above_99pct": [
+  {
+   "model": "PCA",
+   "fault": 1,
+   "metric": "fdr_sample",
+   "value": 0.995,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 1,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 2,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 4,
+   "metric": "fdr_sample",
+   "value": 0.9968,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 4,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 4,
+   "metric": "diag_acc",
+   "value": 0.9921,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 4,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9944,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 5,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 6,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 6,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 7,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 7,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 8,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 10,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 11,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 12,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 13,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 14,
+   "metric": "fdr_sample",
+   "value": 0.9971,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 14,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 16,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 17,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 18,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 19,
+   "metric": "det_run",
+   "value": 0.9996,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA",
+   "fault": 20,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0003,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 1,
+   "metric": "fdr_sample",
+   "value": 0.995,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 1,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 2,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 4,
+   "metric": "fdr_sample",
+   "value": 0.9967,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 4,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 4,
+   "metric": "diag_acc",
+   "value": 0.9921,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 4,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9944,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 5,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 6,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 6,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 7,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 7,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 8,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 10,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 11,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 12,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 13,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 14,
+   "metric": "fdr_sample",
+   "value": 0.9971,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 14,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 16,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 17,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 18,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 19,
+   "metric": "det_run",
+   "value": 0.998,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "PCA-theory",
+   "fault": 20,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0002,
+   "fault_free_far_sample": 0.0006
+  },
+  {
+   "model": "XGBoost",
+   "fault": 1,
+   "metric": "fdr_sample",
+   "value": 0.9914,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 1,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 1,
+   "metric": "diag_acc",
+   "value": 0.9995,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 1,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9995,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 2,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 2,
+   "metric": "diag_acc",
+   "value": 0.9996,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 2,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 3,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 4,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 4,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 4,
+   "metric": "diag_acc",
+   "value": 0.9997,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 4,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9997,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 5,
+   "metric": "fdr_sample",
+   "value": 0.9962,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 5,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 5,
+   "metric": "diag_acc",
+   "value": 0.9997,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 5,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9997,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 6,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 6,
+   "metric": "diag_acc",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 6,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 7,
+   "metric": "fdr_sample",
+   "value": 0.9966,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 7,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 7,
+   "metric": "diag_acc",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 7,
+   "metric": "diag_acc_alarmed",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 8,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 8,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9937,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 10,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 10,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9955,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 11,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 11,
+   "metric": "diag_acc",
+   "value": 0.9972,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 11,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9992,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 12,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 13,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 14,
+   "metric": "fdr_sample",
+   "value": 0.9942,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 14,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 14,
+   "metric": "diag_acc",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 14,
+   "metric": "diag_acc_alarmed",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 16,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 17,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 17,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9983,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 18,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 18,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9924,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 19,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 19,
+   "metric": "diag_acc",
+   "value": 0.9991,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 19,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9997,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 20,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "XGBoost",
+   "fault": 20,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9966,
+   "pre_onset_alarm_rate": 0.0012,
+   "fault_free_far_sample": 0.002
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 1,
+   "metric": "fdr_sample",
+   "value": 0.9911,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 1,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 1,
+   "metric": "diag_acc",
+   "value": 0.9996,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 1,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9996,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 2,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 2,
+   "metric": "diag_acc",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 2,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 4,
+   "metric": "fdr_sample",
+   "value": 0.9971,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 4,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 4,
+   "metric": "diag_acc",
+   "value": 0.9986,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 4,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9986,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 5,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 5,
+   "metric": "diag_acc",
+   "value": 0.9992,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 5,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9991,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 6,
+   "metric": "fdr_sample",
+   "value": 0.9971,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 6,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 6,
+   "metric": "diag_acc",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 6,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9999,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 7,
+   "metric": "fdr_sample",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 7,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 7,
+   "metric": "diag_acc",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 7,
+   "metric": "diag_acc_alarmed",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 8,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 10,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 11,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 11,
+   "metric": "diag_acc",
+   "value": 0.9913,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 11,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9946,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 12,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 13,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 14,
+   "metric": "fdr_sample",
+   "value": 0.9956,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 14,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 14,
+   "metric": "diag_acc",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 14,
+   "metric": "diag_acc_alarmed",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 16,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 17,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 17,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9996,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 18,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 19,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 19,
+   "metric": "diag_acc",
+   "value": 0.9975,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 19,
+   "metric": "diag_acc_alarmed",
+   "value": 0.999,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 20,
+   "metric": "det_run",
+   "value": 1.0,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  },
+  {
+   "model": "LSTM-AE",
+   "fault": 20,
+   "metric": "diag_acc_alarmed",
+   "value": 0.9961,
+   "pre_onset_alarm_rate": 0.006,
+   "fault_free_far_sample": 0.0066
+  }
+ ],
+ "C_D_controls": {
+  "XGBoost": {
+   "shuffled_label_diag_acc": 2.5608194622279126e-06,
+   "chance": 0.047619047619047616,
+   "pre_onset_windows_predicted_normal": 0.9613442622950819
+  },
+  "LSTM-AE": {
+   "shuffled_label_diag_acc": 0.002503457106274007,
+   "chance": 0.05,
+   "pre_onset_windows_predicted_normal": 0.9813617021276597
+  }
+ },
+ "E_construction_audit": {
+  "features": [
+   "xmeas_1",
+   "xmeas_2",
+   "xmeas_3",
+   "xmeas_4",
+   "xmeas_5",
+   "xmeas_6",
+   "xmeas_7",
+   "xmeas_8",
+   "xmeas_9",
+   "xmeas_10",
+   "xmeas_11",
+   "xmeas_12",
+   "xmeas_13",
+   "xmeas_14",
+   "xmeas_15",
+   "xmeas_16",
+   "xmeas_17",
+   "xmeas_18",
+   "xmeas_19",
+   "xmeas_20",
+   "xmeas_21",
+   "xmeas_22",
+   "xmeas_23",
+   "xmeas_24",
+   "xmeas_25",
+   "xmeas_26",
+   "xmeas_27",
+   "xmeas_28",
+   "xmeas_29",
+   "xmeas_30",
+   "xmeas_31",
+   "xmeas_32",
+   "xmeas_33",
+   "xmeas_34",
+   "xmeas_35",
+   "xmeas_36",
+   "xmeas_37",
+   "xmeas_38",
+   "xmeas_39",
+   "xmeas_40",
+   "xmeas_41",
+   "xmv_1",
+   "xmv_2",
+   "xmv_3",
+   "xmv_4",
+   "xmv_5",
+   "xmv_6",
+   "xmv_7",
+   "xmv_8",
+   "xmv_9",
+   "xmv_10",
+   "xmv_11"
+  ],
+  "label_like_columns_used": [],
+  "scaler_fit": "fault-free TRAINING arrays only (PCA: 80% runs split by run; LSTM-AE: all 500 training runs, test untouched)",
+  "thresholds": "99th percentile on held-out fault-free TRAINING runs (split by run)",
+  "train_windows": "drawn only from the official train files; faulty-run windows start at/after onset so none straddle it",
+  "eval_windows_for_diagnosis": "start >= onset (160) in test runs, so none straddle onset",
+  "window_overlap_train_vs_test": "impossible: windows are cut inside a single run and train/test runs are disjoint (Check A)"
+ }
+}

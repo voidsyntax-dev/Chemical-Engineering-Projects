@@ -1,0 +1,5 @@
+%cd /kaggle/working/rlvalve
+!pip install -q "stable-baselines3>=2.3" "gymnasium>=0.29"
+!python check_model.py
+!python train.py --total-steps 2000000 --save-dir /kaggle/working/run --device cuda --n-envs 8
+!python evaluate.py --model /kaggle/working/run/final_model.zip --device cuda --out /kaggle/working/results

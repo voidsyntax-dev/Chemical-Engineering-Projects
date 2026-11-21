@@ -1,0 +1,83 @@
+{
+ "pre_onset_windows_predicted_normal": 0.9613442622950819,
+ "shuffled_label_control_diag_acc": 2.5608194622279126e-06,
+ "chance_level": 0.047619047619047616,
+ "top_features_gain": [
+  [
+   "mean:xmeas_1",
+   259.74627685546875
+  ],
+  [
+   "last:xmv_6",
+   200.05604553222656
+  ],
+  [
+   "std:xmeas_9",
+   130.49545288085938
+  ],
+  [
+   "mean:xmv_4",
+   126.4853286743164
+  ],
+  [
+   "std:xmeas_5",
+   116.18187713623047
+  ],
+  [
+   "std:xmv_10",
+   112.06192016601562
+  ],
+  [
+   "last:xmeas_10",
+   110.2574234008789
+  ],
+  [
+   "mean:xmv_10",
+   103.20405578613281
+  ],
+  [
+   "last:xmeas_1",
+   98.44408416748047
+  ],
+  [
+   "mean:xmv_11",
+   94.58035278320312
+  ],
+  [
+   "std:xmeas_22",
+   87.27405548095703
+  ],
+  [
+   "last:xmv_4",
+   83.3763656616211
+  ],
+  [
+   "last:xmeas_13",
+   64.67247772216797
+  ],
+  [
+   "last:xmv_3",
+   63.189971923828125
+  ],
+  [
+   "mean:xmeas_21",
+   61.89143371582031
+  ]
+ ],
+ "window": 20,
+ "rounds_max": 400,
+ "params": {
+  "objective": "multi:softprob",
+  "num_class": 21,
+  "tree_method": "hist",
+  "max_depth": 6,
+  "learning_rate": 0.1,
+  "subsample": 0.8,
+  "colsample_bytree": 0.6,
+  "min_child_weight": 3,
+  "n_jobs": -1,
+  "eval_metric": "mlogloss"
+ },
+ "K_CONSEC": 3,
+ "THR_Q": 0.99
+}

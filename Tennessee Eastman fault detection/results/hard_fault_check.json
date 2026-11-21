@@ -1,0 +1,200 @@
+{
+ "3": {
+  "AUC_vs_faultfree": 0.9523383705005246,
+  "AUC_within_run": 0.9607190142659167,
+  "frac_post_above_thr": 0.5249808429118774,
+  "frac_faultfree_above_thr": 0.011025477707006369,
+  "frac_pre_onset_above_thr": 0.007659574468085106,
+  "top_features": [
+   [
+    "mean:xmeas_21",
+    51.7
+   ],
+   [
+    "mean:xmeas_20",
+    46.1
+   ],
+   [
+    "last:xmeas_20",
+    45.9
+   ],
+   [
+    "last:xmeas_38",
+    42.1
+   ],
+   [
+    "mean:xmv_1",
+    40.6
+   ],
+   [
+    "mean:xmeas_4",
+    40.0
+   ]
+  ]
+ },
+ "9": {
+  "AUC_vs_faultfree": 0.5635108441320741,
+  "AUC_within_run": 0.6274225572674654,
+  "frac_post_above_thr": 0.02718007662835249,
+  "frac_faultfree_above_thr": 0.01073248407643312,
+  "frac_pre_onset_above_thr": 0.006425531914893617,
+  "top_features": [
+   [
+    "mean:xmeas_20",
+    19.2
+   ],
+   [
+    "mean:xmeas_4",
+    16.5
+   ],
+   [
+    "last:xmeas_20",
+    16.5
+   ],
+   [
+    "std:xmeas_16",
+    16.1
+   ],
+   [
+    "mean:xmeas_21",
+    15.2
+   ],
+   [
+    "std:xmeas_21",
+    14.9
+   ]
+  ]
+ },
+ "15": {
+  "AUC_vs_faultfree": 0.6350437669424311,
+  "AUC_within_run": 0.6697880604874867,
+  "frac_post_above_thr": 0.040528735632183906,
+  "frac_faultfree_above_thr": 0.010382165605095542,
+  "frac_pre_onset_above_thr": 0.008127659574468085,
+  "top_features": [
+   [
+    "std:xmeas_22",
+    78.0
+   ],
+   [
+    "std:xmeas_11",
+    32.5
+   ],
+   [
+    "std:xmeas_18",
+    16.6
+   ],
+   [
+    "last:xmv_9",
+    12.5
+   ],
+   [
+    "std:xmeas_13",
+    12.5
+   ],
+   [
+    "mean:xmeas_19",
+    12.2
+   ]
+  ]
+ },
+ "5": {
+  "AUC_vs_faultfree": 0.9999999891158454,
+  "AUC_within_run": 1.0,
+  "frac_post_above_thr": 1.0,
+  "frac_faultfree_above_thr": 0.011777070063694267,
+  "frac_pre_onset_above_thr": 0.00774468085106383,
+  "top_features": [
+   [
+    "mean:xmv_11",
+    2112.7
+   ],
+   [
+    "last:xmv_11",
+    233.7
+   ],
+   [
+    "std:xmv_5",
+    157.8
+   ],
+   [
+    "trend:xmv_11",
+    99.5
+   ],
+   [
+    "last:xmeas_17",
+    80.4
+   ],
+   [
+    "std:xmeas_20",
+    61.1
+   ]
+  ]
+ },
+ "19": {
+  "AUC_vs_faultfree": 0.9999970971520609,
+  "AUC_within_run": 0.9999979104915627,
+  "frac_post_above_thr": 0.9999540229885058,
+  "frac_faultfree_above_thr": 0.009866242038216561,
+  "frac_pre_onset_above_thr": 0.006382978723404255,
+  "top_features": [
+   [
+    "std:xmeas_5",
+    703.2
+   ],
+   [
+    "std:xmv_5",
+    402.2
+   ],
+   [
+    "std:xmv_10",
+    243.7
+   ],
+   [
+    "std:xmeas_6",
+    110.9
+   ],
+   [
+    "trend:xmeas_5",
+    93.3
+   ],
+   [
+    "std:xmeas_9",
+    48.6
+   ]
+  ]
+ },
+ "1": {
+  "AUC_vs_faultfree": 1.0,
+  "AUC_within_run": 1.0,
+  "frac_post_above_thr": 1.0,
+  "frac_faultfree_above_thr": 0.010197452229299363,
+  "frac_pre_onset_above_thr": 0.004680851063829788,
+  "top_features": [
+   [
+    "mean:xmeas_1",
+    3283.8
+   ],
+   [
+    "mean:xmv_4",
+    2166.5
+   ],
+   [
+    "last:xmv_3",
+    2150.5
+   ],
+   [
+    "mean:xmv_3",
+    1455.0
+   ],
+   [
+    "last:xmeas_1",
+    1189.4
+   ],
+   [
+    "std:xmeas_16",
+    267.1
+   ]
+  ]
+ }
+}

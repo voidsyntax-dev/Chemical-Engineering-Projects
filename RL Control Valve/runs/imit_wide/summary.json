@@ -1,0 +1,19 @@
+{
+  "kind": "mpc_guided_ppo",
+  "base": "runs/imit_int/final_model.zip",
+  "move_penalty": 0.15,
+  "lam0": 1.0,
+  "critic_warmup": 150000,
+  "ft_std": 0.1,
+  "clip_range": 0.1,
+  "integral_obs": true,
+  "train_mode": "randomized_wide",
+  "lam1": 0.05,
+  "lr": 0.0001,
+  "n_envs": 8,
+  "demo_samples": 72000,
+  "num_timesteps": 4014080,
+  "dagger_rounds": 7,
+  "buffer": 152640,
+  "wall_min": 20.3
+}

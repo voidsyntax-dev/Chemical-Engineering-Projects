@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Training by-products (regenerable)
+runs/**/checkpoints/
+runs/**/logs/
+runs/**/eval/
+runs/**/best/
+runs/**/demos.npz
+runs/**/bc_model.zip
+runs/**/dagger_policy_*.zip
+runs/*_log*.txt
+runs/smoke/
+*.log
+
+# Scratch evaluations: only the final comparison is committed
+results/*/
+!results/compare_wide/
+
+# Generated Kaggle cell (python kaggle/make_cell.py)
+kaggle/cell_unpack.py
+
+# Editors / OS
+.vscode/
+.idea/
+.claude/
+Thumbs.db
+.DS_Store

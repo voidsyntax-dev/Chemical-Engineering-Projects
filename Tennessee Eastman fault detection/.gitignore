@@ -1,0 +1,33 @@
+# environments / caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.virtual_documents/
+.claude/
+
+# data (4.6 GB; download from Harvard Dataverse, see README) and derived caches
+data/raw/
+data/processed/
+
+# compiled simulator and build products (rebuilt by sim/build_ext.ps1)
+sim/build/
+sim/*.pyd
+sim/*.dll
+sim/*.so
+*.o
+
+# logs, scratch, smoke-test output, archives
+*.log
+out/
+tmp/
+*.zip
+kaggle/*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
