@@ -100,19 +100,30 @@ Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Reposito
 
 ---
 
-### Crude Distillation Unit
+### Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)
 
-This project simulates an atmospheric crude oil distillation unit, which separates crude oil into fractions by boiling point.
+This project builds a steady-state model of a refinery crude and vacuum distillation complex in DWSIM 10. It is based on a HYSYS CDU flowsheet and covers desalting, crude and vacuum distillation, light-ends recovery, sweetening and sulphur recovery. It then adds a heat-recovery network to cut the fired-heater duty. The whole flowsheet is built by Python scripts, so it can be rebuilt and changed without redrawing.
 
-The process runs in stages:
+The workflow runs in stages:
 
-1. **Preheating:** Crude oil is preheated through a train of heat exchangers, using the hot product streams to recover energy.
-2. **Furnace:** The crude is heated to the required temperature in a fired heater (H-101), fired with fuel gas and air.
-3. **Pre-fractionation:** A pre-fractionating column removes the lightest components before the main separation.
-4. **Stabilization:** A debutanizer column removes light gases (LPG and fuel gas) from the naphtha, producing a stabilized liquid.
-5. **Atmospheric fractionation:** The atmospheric unit separates the stream into naphtha, kerosene, diesel, atmospheric gas oil (AGO), and atmospheric residue.
+1. **Crude basis:** A heavy, sour, salty crude (Arab-Heavy type, 100 kbpd, 27.6 °API, 2.85 wt% sulphur, 11 PTB salt) is defined from a supplied assay. It uses 19 real compounds and 11 pseudo-components with the given MW, Tc, Pc and acentric factor, and the Peng-Robinson property package.
+2. **Flash fix:** DWSIM's default flash returned false all-vapour results above about 250 °C for this crude. Switching to the Nested Loops v2 flash fixed it.
+3. **Hybrid process model:** The desalter, pre-fractionator, atmospheric tower and vacuum tower are chains of cut-point splitters, because rigorous columns would not converge on a wide-boiling feed. The two debutanisers, the deethaniser and the depropaniser are rigorous columns and all converge. The model also has a fired heater with a firebox, amine treating, MEROX and a Claus unit with tail-gas incinerator.
+4. **Heat integration:** Thirteen exchangers recover heat from the hot product draws, the debutaniser bottoms and the pre-fractionator overhead into three crude preheat trains. Exchanger targets came from enthalpy curves with a minimum approach of about 15 K.
+5. **Closing the loops:** Thermal recycles between trains and the sulphur-unit feed are real DWSIM Recycle blocks. The firebox now burns part of the plant's own sweet fuel gas, so no copied streams remain.
+6. **Layout and deliverables:** A hand-designed process-flow canvas puts the crude train on a main line, with the light ends above it and the product coolers below. Checks cover mass closure, sulphur balance and solver status. Outputs are the `.dwxmz` model, an exchanger table and a technical report.
 
-The model covers the main product streams and the energy integration between them.
+**Products:** sweet naphtha, kerosene, diesel, atmospheric gas oil, light and heavy vacuum gas oil, vacuum residue, propane, C4 LPG, fuel gas and liquid sulphur.
+
+#### Results (steady-state solution)
+
+| Item | Utility-heated case | Heat-integrated |
+|---|---|---|
+| Heater duty (E-100, H101, FH-100, E-102) | 138.5 MW | 27.0 MW (−81 %) |
+| Heat recovered | – | 112.2 MW (13 exchangers) |
+| Minimum approach | – | 13.9 K |
+
+Product yields (wt% of crude): naphtha 8.7, kerosene 14.2, diesel 13.9, AGO 5.3, LVGO 7.4, HVGO 15.5, vacuum residue 33.8. Mass closure is 100.000 %, and sulphur in equals sulphur out at 16,795 kg/h. All units and all four rigorous columns converge. The remaining 18.7 MW furnace trim and 17.2 MW vacuum furnace need heat above about 330 °C, which no product stream has.
 
 ---
 
@@ -133,19 +144,22 @@ The flowsheet gives the final FAME product, glycerol, and aqueous waste streams 
 ## Repository Structure
 ```
 Chemical-Engineering-Projects/
-├── Biodiesel production Unit/                   # Biodiesel production process model
-├── Crude Distillation Unit/                     # Crude distillation process model
-├── Predictive Maintenance of Milling machine/   # Dataset, model and report
-├── Soft Sensor for Ethylbenzene Production/     # CSTR Simulation, Model files
-├── RL Control of Van de Vusse CSTR/             # Gymnasium env, PI/MPC baselines, PPO training, models
-├── Tennessee Eastman Fault Detection/           # Simulator check, PCA/XGBoost/LSTM models, report
+├── Biodiesel production Unit/                                                  # Biodiesel production process model
+├── Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)/          # Crude + Vacuum distillation process model
+├── Predictive Maintenance of Milling machine/                                  # Dataset, model and report
+├── Soft Sensor for Ethylbenzene Production/                                    # CSTR Simulation, Model files
+├── RL Control of Van de Vusse CSTR/                                            # Gymnasium env, PI/MPC baselines, PPO training, models
+├── Tennessee Eastman Fault Detection/                                          # Simulator check, PCA/XGBoost/LSTM models, report
 ├── LICENSE
 └── README.md
 ```
 
 ## Requirements
 
-- **Crude Distillation Unit:** Aspen HYSYS V15
+- **Crude + Vacuum Distillation Unit:** DWSIM 10
 - **Biodiesel production Unit:** ASPEN PLUS V15
 - **Predictive Maintenance of a Milling Machine:** requirements.txt (pip install -r requirements.txt)
 - **Soft Sensor for Ethylbenzene Production:** requirements.txt (pip install -r requirements.txt)
+- **Fault Detection and Diagnosis for the Tennessee Eastman Process:** requirements.txt (pip install -r requirements.txt)
+- **Reinforcement Learning Control of a Van de Vusse CSTR:** requirements.txt (pip install -r requirements.txt)
+
