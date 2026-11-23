@@ -5,16 +5,29 @@
 **Rebuild:** `.venv\Scripts\python.exe build_scripts\build_refinery.py` (Python 3.11 + pythonnet, ~3 min; `set HEAT_INTEGRATION=0` for the baseline).
 Block diagram: `flowsheet_final.png`. Verified exchanger table: `heat_integration_report.txt` (made by `build_scripts\hx_report.py`).
 
-## Heat integration (original 11 exchangers)
-11 DWSIM heat exchangers recover **107 MW** from the hot product draws (kerosene, diesel, AGO, LVGO, HVGO, vacuum residue)
-into three crude trains: pre-desalter crude (H7â€“H11), desalted crude (H3â€“H6) and stabilised crude to the atmospheric furnace (H1â€“H2).
-Minimum approach 14.2 K. Heater duty falls from **138.5 MW to 31.6 MW (âˆ’77 %)**: E-100 trim 5.9, H101 trim 3.9, FH-100 3.1, E-102 trim 18.7 MW.
-FH-100 fuel scales down with its 3.1 MW duty. Product slate, mass and sulphur balances are unchanged from the baseline.
-How it is solved: a hot stream used in two crude trains (kerosene, diesel, HVGO, vacuum residue) forms a true thermal recycle, so
-the second use is fed by a *tear copy* of the first use's outlet. The build iterates the tear temperatures (converged to 0.06 K).
-Exchanger targets were designed on enthalpy curves (`hx_network.json`, greedy design, MITA â‰¥ 15 K, hot outlets not below product-spec temperatures).
-Product trim coolers remain on LVGO (11 MW less heat than the utility case) etc.; vacuum-residue is pumped to 12 bar and HVGO/LVGO to 5 bar
-because DWSIM's flash fails for the heavy vacuum cuts at low pressure in some temperature windows.
+## Heat integration (13 exchangers) - scope and caveats
+13 DWSIM heat exchangers recover **112 MW** into three crude preheat trains: pre-desalter crude (H7-H13), desalted crude (H3-H6)
+and stabilised crude to the atmospheric furnace (H1-H2). Hot sources: kerosene, diesel, AGO, LVGO, HVGO, vacuum residue, plus
+debutaniser-2 naphtha (H12) and pre-fractionator overhead vapour (H13). Minimum approach 13.9 K.
+
+**Crude-train heater duty** (E-100, H101, FH-100, E-102) falls from 138.5 MW to **27.0 MW (-81 %)**.
+This excludes the 17.2 MW vacuum furnace, which is unchanged. **Including it**, total fired/heater duty goes from 155.7 MW to
+44.2 MW, a **72 % reduction**.
+
+Read these numbers with the following caveats:
+- **Draw temperatures are optimistic.** The cut-point splitters deliver every product at flash-zone temperature: kerosene, diesel and AGO
+  at 343.5 C, LVGO, HVGO and vacuum residue at 388 C. Real side draws are much cooler (e.g. kerosene roughly 190-230 C, diesel 270-300 C),
+  so the available high-grade heat, and therefore the 112 MW and -81 %, are overstated compared with a real tower.
+- **Not a pinch design.** The network came from greedy stream matching on enthalpy curves (MITA >= 15 K, hot outlets not below product-spec
+  temperatures), not from a pinch-analysis target. Some matches are thermodynamically wasteful, e.g. H3 uses 388 C LVGO to heat crude from
+  125 C (a ~234 K hot-end approach). The remaining 18.7 MW E-102 trim and 17.2 MW vacuum furnace are therefore not proven unrecoverable;
+  a pinch-based redesign or realistic draw temperatures would change both the recovered heat and what is left.
+- Exchanger areas, fouling and pressure-drop design were not done.
+
+How it is solved: a hot stream used in two trains forms a thermal recycle, closed with DWSIM Recycle blocks (tower draws to exchanger hot sides,
+cross-train tear streams, Claus feed). FH-100 burns part of the plant's own sweet fuel gas through a splitter. Vacuum residue is pumped to 12 bar and
+HVGO/LVGO to 5 bar because DWSIM's flash fails for heavy vacuum cuts at low pressure in some temperature windows.
+Product slate, mass balance (100.000 %) and sulphur balance (16,795 kg/h in = out) are unchanged by the integration.
 
 ## Basis
 - Crude per the supplied Arab-Heavy-type assay: 100 kbpd, 589,000 kg/h, 27.6 Â°API, 2.85 wt % S, ~11 PTB salt, 0.25 wt % BS&W
@@ -49,6 +62,6 @@ because DWSIM's flash fails for the heavy vacuum cuts at low pressure in some te
 6. Liquid sulphur leaves the thermal reactor stream hot (â‰ˆ540 Â°C mixed header) â€” no sulphur pit / cooler modelled.
 
 ## Results (see `build_refinery.py` output)
-Mass balance closes to 100.000 %; sulphur balance closes (16,860 kg/h in = out).
+Mass balance closes to 100.000 %; sulphur balance closes (16,795 kg/h in = out).
 Yields (wt % of crude): sweet naphtha 8.7, kerosene 14.2, diesel 13.9, AGO 5.3, LVGO 7.4, HVGO 15.5, vacuum residue 33.8,
 propane 0.2, C4 LPG 0.4, fuel gas 0.3.
