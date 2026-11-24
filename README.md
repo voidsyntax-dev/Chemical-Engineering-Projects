@@ -4,32 +4,6 @@ A collection of chemical engineering process simulations and data science applic
 
 ## Projects
 
-### Soft Sensor for Ethylbenzene Production
-
-This project builds a soft sensor that estimates the outlet composition of a CSTR producing ethylbenzene and diethylbenzene from benzene and ethylene. The composition is hard to measure online, so the sensor predicts it from easy-to-measure temperatures, pressures, flows, level, and controller setpoints.
-
-The workflow runs in stages:
-
-1. **Data:** Dynamic history from an Aspen Dynamics model of the reactor. Inputs are varied with random step changes in the reactor temperature and level setpoints, the flow setpoints, and the feed and utility conditions. Each run is logged at 0.01 h.
-2. **Normal-operation filter:** Rows where the reactor, level, or setpoints leave the normal band are removed, so the model learns only the operating range it will be used in.
-3. **Lag features:** Past values of each measurement are added, computed within continuous segments so no feature crosses a gap in the data.
-4. **Time-based split:** The first 70% of time is used for training and the last 30% for testing. Random splitting is avoided because neighboring samples are highly correlated.
-5. **Model comparison:** A mean baseline, Ridge, PLS, random forest, SVR, a multilayer perceptron, and gradient boosting are trained for each target. The MLP architecture for D-ETBENZ was tuned by time-ordered cross-validation on the training data. The ETBENZ MLP uses a fixed architecture of (32, 16).
-6. **Deployment:** The selected model for each target is saved with its scaler, feature list, lag settings, normal-band limits, and sampling interval, so the same preprocessing can be applied to new data.
-
-**Targets:** outlet mole fractions of ethylbenzene (ETBENZ) and diethylbenzene (D-ETBENZ).
-
-#### Results (held-out test period, last 30% of time)
-
-| Target | Selected model | RMSE | MAE | R² |
-|---|---|---|---|---|
-| ETBENZ | MLP (32, 16) | 0.004900 | 0.003548 | 0.979 |
-| D-ETBENZ | MLP (16,) | 0.000042 | 0.000027 | 0.892 |
-
-Mean baseline for comparison: ETBENZ R² of −0.001, D-ETBENZ R² of −0.048. Ridge scored 0.973 for ETBENZ and 0.733 for D-ETBENZ.
-
----
-
 ### Reinforcement Learning Control of a Van de Vusse CSTR
 
 This project trains a reinforcement learning (RL) controller for a jacketed CSTR running the Van de Vusse reactions (A → B → C, 2A → D), where B is the desired product. The controller manipulates the feed rate and jacket cooling duty to hold the product concentration at a set-point while keeping the reactor below 130 °C. It is benchmarked against an industrial PI scheme and a nonlinear model predictive controller (MPC).
@@ -71,6 +45,8 @@ The workflow runs in stages:
 
 **Faults:** 20 process faults, including steps, random variations, drifts and valve sticking.
 
+#### Results (official test split, mean over 20 faults and 5 seeds)
+
 | Model | Samples in alarm | False alarms | Diagnosis accuracy |
 |---|---|---|---|
 | PCA | 62.6% | 0.06% | 64.3% |
@@ -83,27 +59,55 @@ Dataset: Rieth et al. (2017), Additional Tennessee Eastman Process Simulation Da
 
 ---
 
+### Soft Sensor for Ethylbenzene Production
+
+This project builds a soft sensor that estimates the outlet composition of a CSTR producing ethylbenzene and diethylbenzene from benzene and ethylene. The composition is hard to measure online, so the sensor predicts it from easy-to-measure temperatures, pressures, flows, level, and controller setpoints.
+
+The workflow runs in stages:
+
+1. **Data:** Dynamic history from an Aspen Dynamics model of the reactor. Inputs are varied with random step changes in the reactor temperature and level setpoints, the flow setpoints, and the feed and utility conditions. Each run is logged at 0.01 h.
+2. **Normal-operation filter:** Rows where the reactor, level, or setpoints leave the normal band are removed, so the model learns only the operating range it will be used in.
+3. **Lag features:** Past values of each measurement are added, computed within continuous segments so no feature crosses a gap in the data.
+4. **Time-based split:** The first 70% of time is used for training and the last 30% for testing. Random splitting is avoided because neighboring samples are highly correlated.
+5. **Model comparison:** A mean baseline, Ridge, PLS, random forest, SVR, a multilayer perceptron, and gradient boosting are trained for each target. The MLP architecture for D-ETBENZ was tuned by time-ordered cross-validation on the training data. The ETBENZ MLP uses a fixed architecture of (32, 16).
+6. **Deployment:** The selected model for each target is saved with its scaler, feature list, lag settings, normal-band limits, and sampling interval, so the same preprocessing can be applied to new data.
+
+**Targets:** outlet mole fractions of ethylbenzene (ETBENZ) and diethylbenzene (D-ETBENZ).
+
+#### Results (held-out test period, last 30% of time)
+
+| Target | Selected model | RMSE | MAE | R² |
+|---|---|---|---|---|
+| ETBENZ | MLP (32, 16) | 0.004900 | 0.003548 | 0.979 |
+| D-ETBENZ | MLP (16,) | 0.000042 | 0.000027 | 0.892 |
+
+Mean baseline for comparison: ETBENZ R² of −0.001, D-ETBENZ R² of −0.048. Ridge scored 0.973 for ETBENZ and 0.733 for D-ETBENZ.
+
+---
+
 ### Day-Ahead Solar and Wind Generation Forecasting for Belgium
 
 This project forecasts Belgium's national solar PV, onshore wind and offshore wind generation 1 to 24 hours ahead, with 10/50/90% prediction intervals. The focus is avoiding leakage: every input was really available when the forecast was issued. In particular, the weather inputs are the forecasts actually published by then, not the weather that later happened.
 
 The workflow runs in stages:
 
-Data: Elia open data gives generation and monitored capacity every 15 minutes, averaged to hourly. The weather inputs are archived ECMWF IFS 9 km forecast runs (00 and 12 UTC) at 7 points over Belgium, from the Open-Meteo Single Runs API. Forecasts were issued from March 2024 to May 2025.
-Issue-time enforcement: A forecast run is used only 7 h after it starts, so forecasts are issued at 07:00 and 19:00 UTC, and lead L uses forecast step 7 + L. Lagged generation comes only from at least 1 h before issue time. Assertions check both rules on every row.
-Feature engineering: Solar features are irradiance, cloud cover, clear-sky index and sun position (pvlib). Wind features are 100 m wind speed and its cube, air density, wind power density, shear and direction. Lagged capacity factors are added for all three. The targets are capacity factors based on the capacity known at issue time.
-Leak-free split: The test set holds forecasts issued from 1 March 2025. The training set holds only targets observed before that date. The number of boosting rounds is chosen on the last 60 days of training data with the same rule. Hyperparameters are fixed in advance.
-Models and baselines: Each technology gets one LightGBM point model and three quantile models. They are compared with same-hour persistence, last-value persistence, clear-sky-scaled persistence for solar, and an isotonic power curve on forecast wind speed for wind.
-Scoring: nMAE and nRMSE are in % of capacity. Solar is scored on daytime hours only. Offshore leaves out curtailed hours and a window when one wind farm is missing from Elia's data.
+1. **Data:** Elia open data gives generation and monitored capacity every 15 minutes, averaged to hourly. The weather inputs are archived ECMWF IFS 9 km forecast runs (00 and 12 UTC) at 7 points over Belgium, from the Open-Meteo Single Runs API. Forecasts were issued from March 2024 to May 2025.
+2. **Issue-time enforcement:** A forecast run is used only 7 h after it starts, so forecasts are issued at 07:00 and 19:00 UTC, and lead L uses forecast step 7 + L. Lagged generation comes only from at least 1 h before issue time. Assertions check both rules on every row.
+3. **Feature engineering:** Solar features are irradiance, cloud cover, clear-sky index and sun position (pvlib). Wind features are 100 m wind speed and its cube, air density, wind power density, shear and direction. Lagged capacity factors are added for all three. The targets are capacity factors based on the capacity known at issue time.
+4. **Leak-free split:** The test set holds forecasts issued from 1 March 2025. The training set holds only targets observed before that date. The number of boosting rounds is chosen on the last 60 days of training data with the same rule. Hyperparameters are fixed in advance.
+5. **Models and baselines:** Each technology gets one LightGBM point model and three quantile models. They are compared with same-hour persistence, last-value persistence, clear-sky-scaled persistence for solar, and an isotonic power curve on forecast wind speed for wind.
+6. **Scoring:** nMAE and nRMSE are in % of capacity. Solar is scored on daytime hours only. Offshore leaves out curtailed hours and a window when one wind farm is missing from Elia's data.
 
-Targets: hourly solar PV, onshore wind and offshore wind generation for Belgium.
+**Targets:** hourly solar PV, onshore wind and offshore wind generation for Belgium.
 
-Results (held-out test period, March–May 2025, nRMSE in % of capacity)
-Model	Solar (daytime)	Onshore wind	Offshore wind
-Persistence (same hour)	12.55	12.80	26.08
-Strongest simple baseline	12.60	4.39	11.11
-LightGBM	5.81 (+54%)	3.94 (+10%)	8.57 (+23%)
-Elia's own day-ahead forecast	5.05	4.08	8.85
+#### Results (held-out test period, March–May 2025, nRMSE in % of capacity)
+
+| Model | Solar (daytime) | Onshore wind | Offshore wind |
+|---|---|---|---|
+| Persistence (same hour) | 12.55 | 12.80 | 26.08 |
+| Strongest simple baseline | 12.60 | 4.39 | 11.11 |
+| LightGBM | 5.81 (+54%) | 3.94 (+10%) | 8.57 (+23%) |
+| Elia's own day-ahead forecast | 5.05 | 4.08 | 8.85 |
 
 The strongest simple baseline is clear-sky persistence for solar and the power curve for wind. LightGBM beats Elia's operational forecast for both onshore and offshore wind, and comes within 0.8 points of it for solar. Training the same model on reanalysis weather would have overstated its wind accuracy by 11–14%. The 10–90% intervals contain 72–74% of actual values against an 80% target.
 
@@ -143,23 +147,6 @@ The solver reduced the 240-tube, 0.65 m trial geometry to a 48-tube design that 
 
 ---
 
-### Predictive Maintenance of Milling Machine
-
-This project develops a machine learning model that predicts equipment failure from operating conditions, so that maintenance can be scheduled before a breakdown occurs. 
-
-The workflow runs in stages:
-
-1. **Data and quality checks:** 10,000 machine readings covering air and process temperature, rotational speed, torque, tool wear, and machine type. Conflicting failure labels are identified and handled.
-2. **Feature engineering:** derived variables such as temperature difference, mechanical power, and torque-to-speed ratio that capture operating conditions linked to failure.
-3. **Model comparison:** eleven models, including a baseline, are trained and tuned, with validation designed to avoid data leakage and to respect the time order of the data.
-4. **Threshold selection:** the decision threshold is set to minimise expected cost, where a missed failure is ten times as costly as a false alarm.
-5. **Deployment:** the selected gradient boosting model is saved with its threshold and feature settings, along with an input-validated prediction function.
-
-On held-out data, the model catches about 84% of failures with about 95% precision.  
-Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Repository).
-
----
-
 ### Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)
 
 This project builds a steady-state model of a refinery crude and vacuum distillation complex in DWSIM 10. It is based on a HYSYS CDU flowsheet and covers desalting, crude and vacuum distillation, light-ends recovery, sweetening and sulphur recovery. It then adds a heat-recovery network to cut the fired-heater duty. The whole flowsheet is built by Python scripts, so it can be rebuilt and changed without redrawing.
@@ -188,7 +175,35 @@ Product yields (wt% of crude): naphtha 8.7, kerosene 14.2, diesel 13.9, AGO 5.3,
 
 ---
 
-### Biodiesel production Unit
+### Predictive Maintenance of Milling Machine
+
+This project develops a machine learning model that predicts equipment failure from operating conditions, so that maintenance can be scheduled before a breakdown occurs. 
+
+The workflow runs in stages:
+
+1. **Data and quality checks:** 10,000 machine readings covering air and process temperature, rotational speed, torque, tool wear, and machine type. Conflicting failure labels are identified and handled.
+2. **Feature engineering:** derived variables such as temperature difference, mechanical power, and torque-to-speed ratio that capture operating conditions linked to failure.
+3. **Model comparison:** eleven models, including a baseline, are trained and tuned, with validation designed to avoid data leakage and to respect the time order of the data. Seven resampling strategies (including SMOTE, ADASYN and SMOTE-Tomek) are compared for the 3.4% failure class.
+4. **Threshold selection:** the decision threshold is set to minimise expected cost, where a missed failure is ten times as costly as a false alarm.
+5. **Deployment:** the selected gradient boosting model is saved with its threshold and feature settings, along with an input-validated prediction function.
+
+#### Results (chronological hold-out set, 68 failures)
+
+| Metric | Gradient boosting |
+|---|---|
+| PR-AUC | 0.905 |
+| ROC-AUC | 0.974 |
+| Precision (failure class) | 0.950 |
+| Recall (failure class) | 0.838 |
+| F1 (failure class) | 0.891 |
+
+At the cost-optimal threshold, the model catches about 84% of failures with 95% precision.
+
+Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Repository).
+
+---
+
+### Biodiesel Production Unit
 
 This project models a base-catalyzed biodiesel plant that converts vegetable oil and methanol into fatty acid methyl esters (FAME), the main component of biodiesel, with glycerol as a byproduct.
 
@@ -202,30 +217,39 @@ The process runs in stages:
 
 The flowsheet gives the final FAME product, glycerol, and aqueous waste streams as outputs.
 
+#### Results (steady-state solution)
+
+| Item | Value |
+|---|---|
+| Oil feed | 1,050 kg/h |
+| One-pass ester conversion | 96.4% |
+| Methanol recovery (recycle loops) | 94.0% |
+| FAME product purity | 99.7 wt% ester (meets EN 14214 limits) |
+| Share of heating duty in vacuum columns | 75% |
+| Net heating duty | ~125 kW |
+
 ## Repository Structure
 ```
 Chemical-Engineering-Projects/
-├── Biodiesel production Unit/                                                  # Biodiesel production process model
-├── Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)/          # Crude + Vacuum distillation process model
-├── Predictive Maintenance of Milling machine/                                  # Dataset, model and report
+├── RL Control Valve/                                                           # Gymnasium env, PI/MPC baselines, PPO training, models
+├── Tennessee Eastman fault detection/                                          # Simulator check, PCA/XGBoost/LSTM models, report
 ├── Soft Sensor for Ethylbenzene Production/                                    # CSTR Simulation, Model files
-├── RL Control of Van de Vusse CSTR/                                            # Gymnasium env, PI/MPC baselines, PPO training, models
-├── Tennessee Eastman Fault Detection/                                          # Simulator check, PCA/XGBoost/LSTM models, report
-├── Shell-and-Tube Heat Exchanger Design/                                       # Design package, CLI, web interface, examples, tests
-├── Solar and Wind Forecasting Belgium/                                         # Datasets, LightGBM training script, leakage notes
+├── Clean energy prediction/                                                    # Datasets, LightGBM training script, leakage notes
+├── Shell and Tube heat exchanger design/                                       # Design package, CLI, web interface, examples, tests
+├── Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)/          # Crude + Vacuum distillation process model
+├── Predictive Maintenance of Milling Machine/                                  # Dataset, model and report
+├── Biodiesel production Unit/                                                  # Biodiesel production process model
 ├── LICENSE
 └── README.md
 ```
 
 ## Requirements
 
-- **Crude + Vacuum Distillation Unit:** DWSIM 10
-- **Biodiesel production Unit:** ASPEN PLUS V15
-- **Predictive Maintenance of a Milling Machine:** requirements.txt (pip install -r requirements.txt)
-- **Soft Sensor for Ethylbenzene Production:** requirements.txt (pip install -r requirements.txt)
-- **Fault Detection and Diagnosis for the Tennessee Eastman Process:** requirements.txt (pip install -r requirements.txt)
 - **Reinforcement Learning Control of a Van de Vusse CSTR:** requirements.txt (pip install -r requirements.txt)
-- **Shell-and-Tube Heat Exchanger Design Tool:** requirements.txt (pip install -r requirements.txt)
+- **Fault Detection and Diagnosis for the Tennessee Eastman Process:** requirements.txt (pip install -r requirements.txt)
+- **Soft Sensor for Ethylbenzene Production:** requirements.txt (pip install -r requirements.txt)
 - **Day-Ahead Solar and Wind Generation Forecasting for Belgium:** requirements.txt (pip install -r requirements.txt)
-
-
+- **Shell-and-Tube Heat Exchanger Design Tool:** requirements.txt (pip install -r requirements.txt)
+- **Crude + Vacuum Distillation Unit:** DWSIM 10
+- **Predictive Maintenance of a Milling Machine:** requirements.txt (pip install -r requirements.txt)
+- **Biodiesel Production Unit:** Aspen Plus V15
