@@ -1,4 +1,4 @@
-# Crude + Vacuum Refinery â€” DWSIM model
+# Crude + Vacuum Refinery : DWSIM model
 
 **Open (heat-integrated, current):** `Crude_Vacuum_Refinery_HeatIntegrated.dwxmz` in DWSIM 10 (results stored in the file).
 **Utility-heated baseline:** `Crude_Vacuum_Refinery_utility_baseline.dwxmz` (same process, no heat recovery).
