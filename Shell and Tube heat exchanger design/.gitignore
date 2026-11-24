@@ -1,0 +1,61 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python bytecode and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+# Generated reports (CLI, examples, web app downloads)
+*_report.txt
+*_report.xlsx
+report.txt
+report.xlsx
+heat_exchanger_report.xlsx
+
+# Excel lock files
+~$*.xlsx
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local environment / secrets
+.env
+.env.*
+
+# Claude Code local settings
+.claude/settings.local.json

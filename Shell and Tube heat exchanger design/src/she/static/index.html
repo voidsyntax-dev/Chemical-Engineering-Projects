@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shell-and-Tube Designer</title>
+<style>
+:root{
+  --bg:#f4f6f8;--panel:#fff;--ink:#17202a;--muted:#5d6b78;--line:#dde3e8;--accent:#0b6bcb;--accent-ink:#fff;
+  --ok:#17803d;--ok-bg:#e3f4e8;--bad:#b42318;--bad-bg:#fdeae8;--warn:#9a6700;--warn-bg:#fff4d6;--field:#fbfcfd;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1418;--panel:#171e24;--ink:#e6ebef;--muted:#93a1ad;--line:#27313a;--accent:#4aa3ff;--accent-ink:#06121f;
+  --ok:#5fd38a;--ok-bg:#12301e;--bad:#ff8a7e;--bad-bg:#3a1714;--warn:#f2c14e;--warn-bg:#352b0e;--field:#12181d;}}
+:root[data-theme="dark"]{--bg:#0f1418;--panel:#171e24;--ink:#e6ebef;--muted:#93a1ad;--line:#27313a;--accent:#4aa3ff;--accent-ink:#06121f;
+  --ok:#5fd38a;--ok-bg:#12301e;--bad:#ff8a7e;--bad-bg:#3a1714;--warn:#f2c14e;--warn-bg:#352b0e;--field:#12181d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+h1{font-size:17px;margin:0}
+h1 small{font-weight:400;color:var(--muted);margin-left:8px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button,select,input{font:inherit;color:inherit}
+button{border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:7px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+button:disabled{opacity:.55;cursor:wait}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent}
+.seg button.on{background:var(--accent);color:var(--accent-ink)}
+main{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:16px;padding:16px;max-width:1500px;margin:0 auto}
+@media (max-width:900px){main{grid-template-columns:1fr}}
+section.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+section.card h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+label{display:block;font-size:12px;color:var(--muted)}
+label span{display:block;margin-bottom:2px}
+input,select,textarea{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--field)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.dim{opacity:.5}
+.hint{font-size:12px;color:var(--muted);margin:6px 0 0}
+.balance{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;padding:8px 10px;border-radius:7px;margin-top:10px}
+.balance.ok{background:var(--ok-bg);color:var(--ok)}.balance.bad{background:var(--bad-bg);color:var(--bad)}
+.banner{padding:12px 14px;border-radius:9px;margin-bottom:14px;font-weight:600}
+.banner.ok{background:var(--ok-bg);color:var(--ok)}.banner.bad{background:var(--bad-bg);color:var(--bad)}
+.banner small{display:block;font-weight:400;margin-top:2px;white-space:pre-wrap}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.tile b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.tile span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse}
+td,th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:600}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.bad{background:var(--bad-bg);color:var(--bad)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.cols section.card{margin-bottom:0}
+.bars div{display:grid;grid-template-columns:34px 1fr 52px;gap:8px;align-items:center;margin:4px 0;font-size:13px}
+.bars i{display:block;height:8px;border-radius:4px;background:var(--accent)}
+.bars em{background:var(--line);border-radius:4px;display:block}
+ul.warn{margin:0;padding-left:18px;color:var(--warn)}ul.warn li{margin:3px 0}
+.warnbox{background:var(--warn-bg);border-radius:9px;padding:10px 12px;margin-top:14px}
+textarea{font:12px/1.4 ui-monospace,Consolas,monospace;min-height:380px}
+.empty{color:var(--muted);padding:40px 10px;text-align:center}
+.tabs{margin-bottom:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Shell-and-Tube Designer<small>preliminary screening only</small></h1>
+  <div class="bar">
+    <div class="seg" id="mode"><button data-m="design" class="on" title="Search tube count, passes and baffle spacing">Design</button><button data-m="rate" title="Rate the exact geometry you enter">Rate</button></div>
+    <button id="sample">Load sample</button>
+    <button id="run" class="primary">Run (Ctrl+Enter)</button>
+  </div>
+</header>
+<main>
+  <div id="inputs">
+    <div class="seg tabs"><button data-t="form" class="on">Form</button><button data-t="json">JSON</button></div>
+    <div id="formView"></div>
+    <div id="jsonView" hidden>
+      <section class="card"><h2>Input document</h2>
+        <textarea id="jsonText" spellcheck="false"></textarea>
+        <div class="bar" style="margin-top:8px"><button id="applyJson">Apply to form</button><button id="dlJson">Download JSON</button></div>
+        <p class="hint">Same schema as the CLI. An optional <code>mechanical</code> object (design_pressure_pa, allowable_stress_pa) is used for the tube-sheet screen.</p>
+      </section>
+    </div>
+  </div>
+  <div id="results"><div class="empty">Load the sample or enter data, then press <b>Run</b>.</div></div>
+</main>
+<script>
+"use strict";
+const F = {
+  top: [
+    ["target_duty_w","Target duty","W"],["tube_length_m","Tube length","m"],["tube_inner_diameter_m","Tube inner dia.","m"],
+    ["tube_passes","Tube passes","-"],["wall_conductivity_w_m_k","Wall conductivity","W/m/K"],
+    ["fouling_inner_m2_k_w","Fouling, tube side","m²K/W"],["fouling_outer_m2_k_w","Fouling, shell side","m²K/W"],
+  ],
+  stream: [
+    ["mass_flow_kg_s","Mass flow","kg/s"],["inlet_temperature_k","Inlet T","K"],["outlet_temperature_k","Outlet T","K"],
+    ["density_kg_m3","Density","kg/m³"],["specific_heat_j_kg_k","Cp","J/kg/K"],["viscosity_pa_s","Viscosity","Pa·s"],
+    ["conductivity_w_m_k","Conductivity","W/m/K"],["wall_viscosity_pa_s","Viscosity at wall (optional)","Pa·s",true],
+  ],
+  geometry: [
+    ["shell_inner_diameter_m","Shell ID","m","seed"],["tube_outer_diameter_m","Tube OD","m"],["tube_pitch_m","Tube pitch","m"],
+    ["tube_count","Tube count","-","seed"],["baffle_cut_fraction","Baffle cut (fraction of ID)","-"],["baffle_spacing_m","Baffle spacing","m","seed"],
+    ["tube_to_baffle_clearance_m","Tube–baffle clearance (diametral)","m"],["shell_to_baffle_clearance_m","Shell–baffle clearance (diametral)","m"],
+    ["seal_strips","Seal strip pairs","-"],
+  ],
+  constraints: [
+    ["max_tube_pressure_drop_pa","Max tube ΔP","Pa"],["max_shell_pressure_drop_pa","Max shell ΔP","Pa"],
+    ["minimum_duty_fraction","Min. duty fraction","-"],["max_iterations","Max evaluations","-"],["max_shell_diameter_m","Max shell ID","m"],
+  ],
+  mechanical: [["design_pressure_pa","Design pressure (assumed)","Pa"],["allowable_stress_pa","Allowable stress (assumed)","Pa"]],
+};
+const DEFAULTS = {wall_conductivity_w_m_k:16, fouling_inner_m2_k_w:0.0002, fouling_outer_m2_k_w:0.0001, baffle_cut_fraction:0.25,
+  tube_to_baffle_clearance_m:0.0008, shell_to_baffle_clearance_m:0.003, seal_strips:0, minimum_duty_fraction:1, max_iterations:2000,
+  max_shell_diameter_m:2, max_tube_pressure_drop_pa:100000, max_shell_pressure_drop_pa:50000, design_pressure_pa:1e6, allowable_stress_pa:1.1e8};
+const SELECTS = {hot_stream_side:["shell","tube"], tube_layout:["triangular","square"], objective:["area","pressure_drop","cost"]};
+let mode = "design";
+const $ = s => document.querySelector(s);
+
+function field(path, label, unit, optional, seed) {
+  const id = "f_" + path.replace(/\./g, "__");
+  return `<label data-seed="${seed ? 1 : 0}"><span>${label} <small>${unit}</small></span><input id="${id}" data-path="${path}" type="number" step="any" ${optional ? 'data-optional="1"' : ""}></label>`;
+}
+function select(path, label) {
+  const id = "f_" + path.replace(/\./g, "__");
+  return `<label><span>${label}</span><select id="${id}" data-path="${path}">${SELECTS[path.split(".").pop()].map(o => `<option>${o}</option>`).join("")}</select></label>`;
+}
+function build() {
+  const stream = (key, title) => `<section class="card"><h2>${title}</h2><div class="grid">${F.stream.map(([k,l,u,o]) => field(key + "." + k, l, u, o)).join("")}</div></section>`;
+  $("#formView").innerHTML =
+    `<section class="card"><h2>Duty &amp; tubes</h2><div class="grid">${F.top.map(([k,l,u]) => field(k,l,u)).join("")}${select("hot_stream_side","Hot stream on")}</div>
+      <div id="balance" class="balance"></div></section>` +
+    stream("hot_stream","Hot stream") + stream("cold_stream","Cold stream") +
+    `<section class="card"><h2>Bundle &amp; baffles</h2><div class="grid">${F.geometry.map(([k,l,u,s]) => field("geometry." + k,l,u,false,s)).join("")}${select("geometry.tube_layout","Layout")}</div>
+      <p class="hint" id="seedHint">In Design mode the shell ID, tube count and baffle spacing are only a starting point; the solver chooses them.</p></section>` +
+    `<section class="card"><h2>Constraints</h2><div class="grid">${F.constraints.map(([k,l,u]) => field("constraints." + k,l,u)).join("")}${select("constraints.objective","Objective")}</div></section>` +
+    `<section class="card"><h2>Tube-sheet screen</h2><div class="grid">${F.mechanical.map(([k,l,u]) => field("mechanical." + k,l,u)).join("")}</div></section>`;
+  document.querySelectorAll("[data-path]").forEach(el => el.addEventListener("input", () => { balance(); save(); syncJson(); }));
+}
+const get = (o, p) => p.split(".").reduce((a, k) => a == null ? undefined : a[k], o);
+function set(o, p, v) { const ks = p.split("."); ks.slice(0, -1).forEach(k => o = o[k] ??= {}); o[ks.at(-1)] = v; }
+
+function collect() {
+  const doc = {};
+  document.querySelectorAll("[data-path]").forEach(el => {
+    const p = el.dataset.path;
+    if (el.tagName === "SELECT") { set(doc, p, el.value); return; }
+    if (el.value.trim() === "") { if (!el.dataset.optional && !(p.split(".").pop() in DEFAULTS)) set(doc, p, null); return; }
+    set(doc, p, Number(el.value));
+  });
+  return doc;
+}
+function fill(doc) {
+  document.querySelectorAll("[data-path]").forEach(el => {
+    let v = get(doc, el.dataset.path);
+    if (v === undefined) v = DEFAULTS[el.dataset.path.split(".").pop()];
+    if (el.tagName === "SELECT") { el.value = v ?? el.options[0].value; return; }  // omitted dropdown -> first option
+    el.value = v ?? "";
+  });
+  balance(); syncJson();
+}
+function balance() {
+  const d = collect(), n = x => (typeof x === "number" ? x : NaN);
+  const side = d.hot_stream_side;
+  const q = s => n(s?.mass_flow_kg_s) * n(s?.specific_heat_j_kg_k);
+  const hot = q(d.hot_stream) * (n(d.hot_stream?.inlet_temperature_k) - n(d.hot_stream?.outlet_temperature_k));
+  const cold = q(d.cold_stream) * (n(d.cold_stream?.outlet_temperature_k) - n(d.cold_stream?.inlet_temperature_k));
+  const t = n(d.target_duty_w), el = $("#balance");
+  if (![hot, cold, t].every(Number.isFinite)) { el.className = "balance"; el.textContent = "Enter both streams to see the energy balance."; return; }
+  const tol = 0.02, ok = Math.abs(hot - cold) <= tol * Math.max(hot, cold) && Math.abs(t - cold) <= tol * Math.max(t, cold);
+  el.className = "balance " + (ok ? "ok" : "bad");
+  el.innerHTML = `<span>Hot m·cp·ΔT: <b>${(hot/1e3).toFixed(1)} kW</b></span><span>Cold: <b>${(cold/1e3).toFixed(1)} kW</b></span><span>Target: <b>${(t/1e3).toFixed(1)} kW</b></span><span>${ok ? "balanced (±2 %)" : "NOT balanced: the run will be rejected"}</span>`;
+}
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll("#mode button").forEach(b => b.classList.toggle("on", b.dataset.m === m));
+  document.querySelectorAll("label[data-seed='1']").forEach(l => l.classList.toggle("dim", m === "design"));
+  $("#seedHint").textContent = m === "design"
+    ? "In Design mode the shell ID, tube count and baffle spacing are only a starting point; the solver chooses them."
+    : "Rate mode evaluates exactly this geometry (tube count must divide evenly by the passes).";
+}
+function save() { try { localStorage.setItem("she_input", JSON.stringify(collect())); } catch (e) {} }
+function syncJson() { $("#jsonText").value = JSON.stringify(collect(), null, 2); }
+
+const f = (x, d = 3) => x == null ? "n/a" : Number(x).toLocaleString(undefined, {maximumSignificantDigits: d + 1});
+const kw = x => x == null ? "n/a" : (x / 1e3).toLocaleString(undefined, {maximumFractionDigits: 1});
+const mm = x => x == null ? "n/a" : (x * 1e3).toLocaleString(undefined, {maximumFractionDigits: 1});
+const row = (k, v, u = "") => `<tr><td>${k}</td><td class="num">${v}</td><td>${u}</td></tr>`;
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function render(r) {
+  const g = r.geometry, t = r.thermal, h = r.hydraulic, bd = r.bell_delaware;
+  const failed = r.checks.filter(c => !c.pass);
+  const bars = Object.entries(bd.factors).map(([k, v]) => `<div><b>${k}</b><em><i style="width:${Math.min(100, v / 1.3 * 100)}%"></i></em><span>${v.toFixed(3)}</span></div>`).join("");
+  const parts = o => Object.entries(o).map(([k, v]) => `${k} ${(v / 1e3).toFixed(2)} kPa`).join(", ");
+  $("#results").innerHTML = `
+    <div class="banner ${r.feasible ? "ok" : "bad"}">${r.feasible ? "All thermal, hydraulic and geometry checks pass" : "Constraint violation: " + failed.map(c => c.name).join(", ")}
+      <small>${r.iterations ? r.iterations + " rating evaluations in the search" : "Rated the geometry as entered"}</small></div>
+    <div class="tiles">
+      <div class="tile"><b>${g.tube_count}</b><span>tubes · ${g.tube_passes} pass${g.tube_passes > 1 ? "es" : ""}</span></div>
+      <div class="tile"><b>${mm(g.shell_inner_diameter_m)} mm</b><span>shell ID</span></div>
+      <div class="tile"><b>${f(g.area_m2)} m²</b><span>area (outside)</span></div>
+      <div class="tile"><b>${kw(t.duty_w)} kW</b><span>duty (target ${kw(t.target_duty_w)})</span></div>
+      <div class="tile"><b>${f(t.overall_u_w_m2_k)}</b><span>U, W/m²K (dirty)</span></div>
+      <div class="tile"><b>${f(h.tube_dp_pa / 1e3)} / ${f(h.shell_dp_pa / 1e3)}</b><span>ΔP tube / shell, kPa</span></div>
+    </div>
+    <section class="card"><h2>Checks</h2><table>${r.checks.map(c => `<tr><td><span class="pill ${c.pass ? "ok" : "bad"}">${c.pass ? "PASS" : "FAIL"}</span></td><td>${c.name}</td><td>${esc(c.detail)}</td></tr>`).join("")}</table></section>
+    <div class="cols" style="margin-top:14px">
+      <section class="card"><h2>Geometry</h2><table>
+        ${row("Tube OD / ID", mm(g.tube_outer_diameter_m) + " / " + mm(g.tube_inner_diameter_m), "mm")}
+        ${row("Pitch · layout", mm(g.tube_pitch_m), "mm · " + g.layout)}
+        ${row("Tube length", f(g.tube_length_m), "m")}
+        ${row("Baffle spacing · cut", mm(g.baffle_spacing_m) + " · " + (g.baffle_cut_fraction * 100).toFixed(0) + " %", "mm")}
+        ${row("Number of baffles", g.number_of_baffles)}
+        ${row("Bundle OTL", mm(g.bundle_diameter_m), "mm")}
+        ${row("Tube-sheet (screen)", mm(g.tubesheet_thickness_m), "mm")}</table></section>
+      <section class="card"><h2>Thermal</h2><table>
+        ${row("Hot outlet", f(t.hot_outlet_k, 5), "K")}${row("Cold outlet", f(t.cold_outlet_k, 5), "K")}
+        ${row("LMTD · F", f(t.lmtd_k) + " · " + (t.correction_factor == null ? "n/a" : t.correction_factor.toFixed(3)), "K")}
+        ${row("NTU · ε", f(t.ntu) + " · " + t.effectiveness.toFixed(3))}
+        ${row("Tube-side h", f(t.tube_h_w_m2_k), "W/m²K")}${row("Shell-side h", f(t.shell_h_w_m2_k), "W/m²K")}
+        ${row("Required area", f(t.required_area_m2), "m²")}${row("Area margin", t.area_margin_pct == null ? "n/a" : t.area_margin_pct.toFixed(1), "%")}</table></section>
+      <section class="card"><h2>Hydraulics</h2><table>
+        ${row("Tube velocity", f(h.tube_velocity_m_s), "m/s")}${row("Tube Re · regime", f(h.tube_reynolds, 4) + " · " + h.tube_regime)}
+        ${row("Tube ΔP", f(h.tube_dp_pa / 1e3), "kPa")}
+        <tr><td colspan="3" class="hint">${parts(h.tube_dp_parts_pa)}</td></tr>
+        ${row("Shell crossflow velocity", f(h.shell_velocity_m_s), "m/s")}${row("Shell Re", f(h.shell_reynolds, 4))}
+        ${row("Shell ΔP", f(h.shell_dp_pa / 1e3), "kPa")}
+        <tr><td colspan="3" class="hint">${parts(h.shell_dp_parts_pa)}</td></tr></table></section>
+      <section class="card"><h2>Bell–Delaware factors</h2><div class="bars">${bars}</div>
+        <p class="hint">Ideal h ${f(bd.ideal_h_w_m2_k)} W/m²K · Rl ${bd.pressure_factors.Rl.toFixed(3)} · Rb ${bd.pressure_factors.Rb.toFixed(3)} · Rs ${bd.pressure_factors.Rs.toFixed(3)}</p></section>
+    </div>
+    <div class="warnbox"><ul class="warn">${r.warnings.map(w => `<li>${esc(w)}</li>`).join("")}</ul></div>
+    <div class="bar" style="margin-top:14px"><button id="dlXlsx">Download Excel report</button></div>`;
+  $("#dlXlsx").onclick = downloadXlsx;
+}
+function showError(msg) { $("#results").innerHTML = `<div class="banner bad">Could not run<small>${esc(msg)}</small></div>`; }
+
+async function post(url) {
+  const res = await fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(collect())});
+  return res;
+}
+async function run() {
+  const btn = $("#run"); btn.disabled = true; btn.textContent = "Running…";
+  try {
+    const res = await post(mode === "design" ? "/api/design" : "/api/rate");
+    const body = await res.json();
+    res.ok ? render(body) : showError(body.error);
+  } catch (e) { showError("Cannot reach the local server: " + e.message); }
+  btn.disabled = false; btn.textContent = "Run (Ctrl+Enter)";
+}
+function download(name, blob) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+async function downloadXlsx() {
+  const res = await post("/api/report");
+  if (!res.ok) { showError((await res.json()).error); return; }
+  download("heat_exchanger_report.xlsx", await res.blob());
+}
+async function loadSample() { fill(await (await fetch("/api/sample")).json()); save(); }
+
+document.querySelectorAll("#mode button").forEach(b => b.onclick = () => setMode(b.dataset.m));
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.toggle("on", x === b));
+  $("#formView").hidden = b.dataset.t !== "form"; $("#jsonView").hidden = b.dataset.t !== "json";
+});
+$("#sample").onclick = loadSample;
+$("#run").onclick = run;
+$("#dlJson").onclick = () => download("heat_exchanger_input.json", new Blob([$("#jsonText").value], {type: "application/json"}));
+$("#applyJson").onclick = () => { try { fill(JSON.parse($("#jsonText").value)); save(); } catch (e) { alert("Invalid JSON: " + e.message); } };
+document.addEventListener("keydown", e => { if (e.ctrlKey && e.key === "Enter") run(); });
+
+build();
+let stored = null;
+try { stored = JSON.parse(localStorage.getItem("she_input")); } catch (e) {}
+stored && Object.keys(stored).length > 3 ? fill(stored) : loadSample();
+setMode("design");
+</script>
+</body>
+</html>
