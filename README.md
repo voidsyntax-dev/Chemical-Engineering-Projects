@@ -83,6 +83,66 @@ Dataset: Rieth et al. (2017), Additional Tennessee Eastman Process Simulation Da
 
 ---
 
+### Day-Ahead Solar and Wind Generation Forecasting for Belgium
+
+This project forecasts Belgium's national solar PV, onshore wind and offshore wind generation 1 to 24 hours ahead, with 10/50/90% prediction intervals. The focus is avoiding leakage: every input was really available when the forecast was issued. In particular, the weather inputs are the forecasts actually published by then, not the weather that later happened.
+
+The workflow runs in stages:
+
+Data: Elia open data gives generation and monitored capacity every 15 minutes, averaged to hourly. The weather inputs are archived ECMWF IFS 9 km forecast runs (00 and 12 UTC) at 7 points over Belgium, from the Open-Meteo Single Runs API. Forecasts were issued from March 2024 to May 2025.
+Issue-time enforcement: A forecast run is used only 7 h after it starts, so forecasts are issued at 07:00 and 19:00 UTC, and lead L uses forecast step 7 + L. Lagged generation comes only from at least 1 h before issue time. Assertions check both rules on every row.
+Feature engineering: Solar features are irradiance, cloud cover, clear-sky index and sun position (pvlib). Wind features are 100 m wind speed and its cube, air density, wind power density, shear and direction. Lagged capacity factors are added for all three. The targets are capacity factors based on the capacity known at issue time.
+Leak-free split: The test set holds forecasts issued from 1 March 2025. The training set holds only targets observed before that date. The number of boosting rounds is chosen on the last 60 days of training data with the same rule. Hyperparameters are fixed in advance.
+Models and baselines: Each technology gets one LightGBM point model and three quantile models. They are compared with same-hour persistence, last-value persistence, clear-sky-scaled persistence for solar, and an isotonic power curve on forecast wind speed for wind.
+Scoring: nMAE and nRMSE are in % of capacity. Solar is scored on daytime hours only. Offshore leaves out curtailed hours and a window when one wind farm is missing from Elia's data.
+
+Targets: hourly solar PV, onshore wind and offshore wind generation for Belgium.
+
+Results (held-out test period, March–May 2025, nRMSE in % of capacity)
+Model	Solar (daytime)	Onshore wind	Offshore wind
+Persistence (same hour)	12.55	12.80	26.08
+Strongest simple baseline	12.60	4.39	11.11
+LightGBM	5.81 (+54%)	3.94 (+10%)	8.57 (+23%)
+Elia's own day-ahead forecast	5.05	4.08	8.85
+
+The strongest simple baseline is clear-sky persistence for solar and the power curve for wind. LightGBM beats Elia's operational forecast for both onshore and offshore wind, and comes within 0.8 points of it for solar. Training the same model on reanalysis weather would have overstated its wind accuracy by 11–14%. The 10–90% intervals contain 72–74% of actual values against an 80% target.
+
+Data: Elia Open Data (ods031, ods032) and ECMWF IFS forecasts via the Open-Meteo Single Runs API.
+
+---
+
+### Shell-and-Tube Heat Exchanger Design Tool
+
+This project builds a Python package for the preliminary thermal, hydraulic and mechanical design of shell-and-tube heat exchangers. Given the two process streams, a target duty and pressure-drop limits, it either rates a fixed geometry or searches for the smallest exchanger that meets every constraint. It runs as a library, a JSON command-line tool, or a local web page.
+
+The workflow runs in stages:
+
+1. **Input checks:** Streams, geometry and constraints are read from JSON with strict validation for unknown fields, types and NaN values. The hot duty, cold duty and target duty must agree within 2 %, so an inconsistent energy balance is rejected before any calculation.
+2. **Thermal model:** Heat duty, LMTD with the F-correction for one shell pass and multiple tube passes, and tube-side coefficients that blend continuously through the laminar–turbulent transition, with Sieder–Tate wall correction. Rating uses effectiveness–NTU, so both stream energy balances close.
+3. **Shell side:** Bell–Delaware method following Taborek/Serth, with the five correction factors for baffle cut, leakage, bypass, unequal spacing and laminar flow. Shell pressure drop uses the window, cross-flow and end-zone terms. A Kern estimate is kept for comparison.
+4. **Hydraulics:** Tube-side pressure drop with Colebrook–White friction, plus return losses.
+5. **Design solver:** Searches tube count, tube passes, shell diameter and baffle spacing. The shell diameter is derived from the tube count so the bundle physically fits. A design is accepted only if it meets duty, outlet temperatures, both pressure-drop limits and the TEMA baffle-spacing limits.
+6. **Mechanical screening and reporting:** Tube-sheet thickness, a vortex-shedding vibration screen and a cost proxy. Results go to a text report and an Excel report, and the web interface shows pass/fail checks in Design and Rate modes.
+
+**Objective:** meet the target duty with the least heat-transfer area while staying within the pressure-drop limits.
+
+#### Results (sample case: 4.18 kg/s process stream cooled 150 → 100 °C by 2.0 kg/s water heated 20 → 80 °C)
+
+| Item | Value |
+|---|---|
+| Duty (target 501.6 kW) | 501.6 kW |
+| Selected geometry | 48 tubes (19.05 mm OD, 5 m), 4 tube passes, 0.22 m shell ID |
+| Heat-transfer area | 14.4 m² |
+| LMTD / F-correction | 74.9 K / 0.903 |
+| h tube / h shell / U | 4,072 / 831 / 516 W/(m² K) |
+| Tube ΔP (limit 200 kPa) | 14.2 kPa |
+| Shell ΔP (limit 100 kPa) | 18.9 kPa |
+| Bell–Delaware factors Jc, Jl, Jb | 1.06, 0.71, 0.72 |
+
+The solver reduced the 240-tube, 0.65 m trial geometry to a 48-tube design that passes all checks: duty, outlet temperatures, pressure drop, baffle spacing and vibration. Both outlet temperatures match the specification to within 0.0001 K. The 146 tests cover the thermal, Bell–Delaware, rating, mechanical, CLI and web-interface modules.
+
+---
+
 ### Predictive Maintenance of Milling Machine
 
 This project develops a machine learning model that predicts equipment failure from operating conditions, so that maintenance can be scheduled before a breakdown occurs. 
@@ -99,8 +159,6 @@ On held-out data, the model catches about 84% of failures with about 95% precisi
 Dataset: AI4I 2020 Predictive Maintenance Dataset (UCI Machine Learning Repository).
 
 ---
-
-### Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)
 
 ### Crude and Vacuum Refinery Flowsheet with Heat Integration (DWSIM)
 
@@ -153,6 +211,8 @@ Chemical-Engineering-Projects/
 ├── Soft Sensor for Ethylbenzene Production/                                    # CSTR Simulation, Model files
 ├── RL Control of Van de Vusse CSTR/                                            # Gymnasium env, PI/MPC baselines, PPO training, models
 ├── Tennessee Eastman Fault Detection/                                          # Simulator check, PCA/XGBoost/LSTM models, report
+├── Shell-and-Tube Heat Exchanger Design/                                       # Design package, CLI, web interface, examples, tests
+├── Solar and Wind Forecasting Belgium/                                         # Datasets, LightGBM training script, leakage notes
 ├── LICENSE
 └── README.md
 ```
@@ -165,4 +225,7 @@ Chemical-Engineering-Projects/
 - **Soft Sensor for Ethylbenzene Production:** requirements.txt (pip install -r requirements.txt)
 - **Fault Detection and Diagnosis for the Tennessee Eastman Process:** requirements.txt (pip install -r requirements.txt)
 - **Reinforcement Learning Control of a Van de Vusse CSTR:** requirements.txt (pip install -r requirements.txt)
+- **Shell-and-Tube Heat Exchanger Design Tool:** requirements.txt (pip install -r requirements.txt)
+- **Day-Ahead Solar and Wind Generation Forecasting for Belgium:** requirements.txt (pip install -r requirements.txt)
+
 
