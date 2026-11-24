@@ -69,19 +69,19 @@ The workflow runs in stages:
 2. **Normal-operation filter:** Rows where the reactor, level, or setpoints leave the normal band are removed, so the model learns only the operating range it will be used in.
 3. **Lag features:** Past values of each measurement are added, computed within continuous segments so no feature crosses a gap in the data.
 4. **Time-based split:** The first 70% of time is used for training and the last 30% for testing. Random splitting is avoided because neighboring samples are highly correlated.
-5. **Model comparison:** A mean baseline, Ridge, PLS, random forest, SVR, a multilayer perceptron, and gradient boosting are trained for each target. The MLP architecture for D-ETBENZ was tuned by time-ordered cross-validation on the training data. The ETBENZ MLP uses a fixed architecture of (32, 16).
+5. **Model comparison:** A mean baseline, Ridge, PLS, random forest, SVR, a multilayer perceptron, and gradient boosting are trained for each target. The MLP architecture for diethylbenzene was tuned by time-ordered cross-validation on the training data. The ethylbenzene MLP uses a fixed architecture of (32, 16).
 6. **Deployment:** The selected model for each target is saved with its scaler, feature list, lag settings, normal-band limits, and sampling interval, so the same preprocessing can be applied to new data.
 
-**Targets:** outlet mole fractions of ethylbenzene (ETBENZ) and diethylbenzene (D-ETBENZ).
+**Targets:** outlet mole fractions of ethylbenzene and diethylbenzene.
 
 #### Results (held-out test period, last 30% of time)
 
 | Target | Selected model | RMSE | MAE | R² |
 |---|---|---|---|---|
-| ETBENZ | MLP (32, 16) | 0.004900 | 0.003548 | 0.979 |
-| D-ETBENZ | MLP (16,) | 0.000042 | 0.000027 | 0.892 |
+| Ethylbenzene | MLP (32, 16) | 0.004900 | 0.003548 | 0.979 |
+| Diethylbenzene | MLP (16,) | 0.000042 | 0.000027 | 0.892 |
 
-Mean baseline for comparison: ETBENZ R² of −0.001, D-ETBENZ R² of −0.048. Ridge scored 0.973 for ETBENZ and 0.733 for D-ETBENZ.
+Mean baseline for comparison: ethylbenzene R² of −0.001, diethylbenzene R² of −0.048. Ridge scored 0.973 for ethylbenzene and 0.733 for diethylbenzene.
 
 ---
 
